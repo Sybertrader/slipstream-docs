@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy, security, and support — Slipstream</title>
+    <meta name="description" content="Privacy policy, security statement, and support contact for Slipstream on Jira Cloud." />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./assets/slipstream-logo-144.png" />
+  </head>
+  <body>
+    <header class="site-head">
+      <div class="wrap bar">
+        <a class="brand" href="./index.html">
+          <img src="./assets/slipstream-logo-144.png" width="144" height="144" alt="Slipstream logo" />
+          <span>
+            <strong>Slipstream</strong>
+            <span>Release Risk &amp; Dependency Radar</span>
+          </span>
+        </a>
+        <nav aria-label="Documentation">
+          <a href="./index.html">User Guide</a>
+          <a href="./privacy.html">Privacy &amp; Security</a>
+          <a href="./privacy.html#support">Support</a>
+        </nav>
+      </div>
+    </header>
+    <div class="wrap hero">
+      <p class="badge">Runs on Atlassian · Zero External Egress</p>
+      <h1>Privacy policy, security, and support</h1>
+      <p class="lede">Slipstream is an Atlassian Forge app. It runs inside the customer’s Jira Cloud site. Compute, storage, and model calls stay on Atlassian infrastructure.</p>
+    </div>
+    <main class="wrap">
+      <section id="policy">
+        <h2>Privacy policy</h2>
+        <p>The Marketplace vendor is Dave Storey. Atlassian hosts the app, Forge SQL, and <code>@forge/llm</code>. Atlassian is the merchant of record for Paid subscriptions.</p>
+        <h3>Where processing happens</h3>
+        <p>One hundred percent of Slipstream compute and SQL storage is Atlassian-hosted Forge. There is no vendor server, no external database, and no analytics or error-reporting service. <code>permissions.external</code> is empty. The app qualifies for Runs on Atlassian.</p>
+        <h3>What is read</h3>
+        <p>With the customer admin’s consent at install, Slipstream reads Jira work items, issue links, comments, descriptions, Fix Versions, sprints, and project metadata through Jira Cloud REST API v3 and the Jira Software fields discovered on the issue. It uses those fields to infer dependencies and to score schedule risk. It does not read Confluence in v1.0. It does not call <code>/rest/dev-status</code>. Branch, pull-request, and commit names are used only when someone has already written them into a Jira comment, description, or issue link.</p>
+        <h3>What is stored</h3>
+        <p>Forge SQL tables are keyed by the installation’s <code>cloud_id</code>, taken from Forge <code>installContext</code>. The app does not accept a tenant id from the browser. Stored work-item fields are issue keys, project keys, summaries, status category, estimate provenance, schedule math, dependency edges, FMEA scores, and release forecasts. The only person identifier stored is the assignee’s Atlassian <code>accountId</code>. Display names and email addresses are not written to Forge SQL. UI copy redacts any email address that appears inside a stored brief before it is shown.</p>
+        <h3>Model use</h3>
+        <p><code>@forge/llm</code> runs only for an active Paid or 30-day Evaluation license, and only inside Forge. Each scan sends at most five highest-RPN chains. Excerpts are capped at 160 characters and treated as untrusted data. Free and expired installs make zero model calls. There is no third-party AI subprocessor. Prompts and completions are not sent to a vendor endpoint. Graph traversal, critical-path math, PERT confidence, and FMEA scoring run in deterministic TypeScript.</p>
+        <h3>Retention and uninstall</h3>
+        <p>Snapshot-scoped rows carry <code>created_at</code>. A daily job deletes rows older than 30 days in bounded batches of 1,000, at most 20 batches per run. A 35-day-old row is deleted. A 5-day-old row stays. Uninstall follows Forge’s installation data lifecycle: the app can no longer read that site’s Jira data, and Atlassian-managed deletion plus the same 30-day purge removes stored rows. There is no vendor copy to delete.</p>
+        <h3>Sharing</h3>
+        <p>Slipstream does not sell data, does not advertise, and does not deliver alerts through Slack, Teams, Discord, email, or webhooks. v1.0 shows the Stage-Gate brief in the Jira page and the issue panel. It does not declare <code>write:jira-work</code> and it does not post Jira comments.</p>
+        <h3>GDPR and UK GDPR rights</h3>
+        <p>Slipstream does not keep a separate user profile. A customer admin uninstalls the app from Jira administration to end processing for that site. An individual asks their Jira admin to clear or reassign the work item. The next scan overwrites <code>accountId</code> when the assignee changes, and the 30-day purge drops the stored identifier with the row. To access, correct, or object to processing of the stored <code>accountId</code>, contact the address below. The vendor acknowledges privacy and security requests within 24 business hours.</p>
+      </section>
+      <section id="security">
+        <h2>Security</h2>
+        <ul>
+          <li>Every SQL statement filters <code>cloud_id</code> from the installation context. A payload cloud id is ignored.</li>
+          <li>UI resolvers read precomputed Forge SQL. A manual scan checks the clicking user’s Jira browse permission before a job is queued. Issue reads for the scan run as the installed app only after that gate, or from a scheduled or product event.</li>
+          <li>Scopes are limited to reading Jira work, the assignee account id on the issue, software issue and sprint fields, and Forge app storage.</li>
+          <li>Forge SQL and Forge logs are Atlassian-operated. The app does not ship its own log drain.</li>
+          <li>Report a vulnerability to the security contact below. A fix ships as a Forge app version. Customers do not patch a server.</li>
+        </ul>
+      </section>
+      <section id="support">
+        <h2>Support and security contact</h2>
+        <p>Support and security reports go to <a href="mailto:support@criticalpathworks.com">support@criticalpathworks.com</a>. Replace this placeholder domain with the vendor’s published address before the Marketplace listing goes live. The vendor replies within 24 business hours and does not ask the customer to export a database.</p>
+        <p><a href="./index.html">Back to the user guide</a></p>
+      </section>
+    </main>
+    <footer class="wrap site-foot">
+      <p>Dave Storey · Slipstream · Atlassian Forge for Jira Cloud.</p>
+    </footer>
+  </body>
+</html>
