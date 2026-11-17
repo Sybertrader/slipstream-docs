@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slipstream — Release Risk &amp; Dependency Radar</title>
+    <meta name="description" content="Quick-start guide for Slipstream, the Forge release-risk radar for Jira Cloud." />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./assets/cpw-logo.png" />
+  </head>
+  <body>
+    <header class="site-head">
+      <div class="wrap bar">
+        <a class="brand" href="/">
+          <img src="./assets/cpw-logo.png" width="480" height="331" alt="" />
+          <span>
+            <strong>Critical Path Works</strong>
+            <span>Atlassian Cloud Software Studio</span>
+          </span>
+        </a>
+        <nav aria-label="Primary">
+          <a href="/#products">Products</a>
+          <a href="/slipstream.html" aria-current="page">Slipstream Guide</a>
+          <a href="/privacy.html">Privacy &amp; Security</a>
+          <a href="mailto:support@criticalpathworks.com">Support</a>
+        </nav>
+      </div>
+    </header>
+    <div class="wrap hero">
+      <nav class="crumb" aria-label="Breadcrumb">
+        <a href="/">Critical Path Works</a>
+        <span aria-hidden="true">/</span>
+        <a href="/#products">Products</a>
+        <span aria-hidden="true">/</span>
+        <span>Slipstream</span>
+      </nav>
+      <p class="badge">Runs on Atlassian · Zero External Egress</p>
+      <h1>Know whether the release date still holds.</h1>
+      <p class="lede">Slipstream reads the Jira work you already have, builds the dependency graph, and shows the critical path, the Fix Version odds, and the risks that can still move the date.</p>
+    </div>
+    <main class="wrap">
+      <section id="quick-start">
+        <h2>2-minute quick start</h2>
+        <p>The first page opens with no CSV, no spreadsheet, and no setup wizard.</p>
+        <div class="steps">
+          <article class="step">
+            <span>01</span>
+            <h3>Install</h3>
+            <p>A Jira admin installs Slipstream from the Atlassian Marketplace. Atlassian is the merchant of record. Paid is about $2.00 per Jira seat per month after the 30-day Evaluation.</p>
+          </article>
+          <article class="step">
+            <span>02</span>
+            <h3>Use a Fix Version</h3>
+            <p>Put the release issues on a Fix Version and set its release date. That date is the PERT target. Issues without a version still appear on the portfolio radar.</p>
+          </article>
+          <article class="step">
+            <span>03</span>
+            <h3>Run the first scan</h3>
+            <p>Open Slipstream from the Jira global or project page and choose Run scan. The page returns a job id. The graph, forecasts, and FMEA scores are read back from Forge SQL after the scan finishes.</p>
+          </article>
+          <article class="step">
+            <span>04</span>
+            <h3>Read the gate</h3>
+            <p>The header shows GO, CONDITIONAL, or HOLD, plus PERT confidence and critical-path days. Engineers also see the same risk on the issue panel inside the ticket.</p>
+          </article>
+        </div>
+        <table>
+          <caption class="lede">Free and Trial or Paid scan cadence</caption>
+          <thead>
+            <tr><th>Capability</th><th>Free</th><th>30-day Evaluation and Paid</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Projects</td><td>Up to 2 Jira projects</td><td>Full portfolio, no project cap</td></tr>
+            <tr><td>Scans</td><td>1 scheduled scan each 24 hours and 1 manual scan each 24 hours</td><td>Hourly scheduled scans and event-driven scans</td></tr>
+            <tr><td>Model briefs</td><td>Off. Deterministic summary only</td><td>Top 5 highest-RPN chains via Forge <code>@forge/llm</code></td></tr>
+            <tr><td>Data leaving Atlassian</td><td>None</td><td>None. The model runs inside Forge</td></tr>
+          </tbody>
+        </table>
+      </section>
+      <section id="radar">
+        <h2>Reading the Release Radar</h2>
+        <div class="gates">
+          <article class="gate gate-go">
+            <h3>GO</h3>
+            <p>No unresolved cycle, release confidence at 80% or above when a target date exists, and no open High or Critical RPN.</p>
+          </article>
+          <article class="gate gate-watch">
+            <h3>CONDITIONAL</h3>
+            <p>Confidence from 50% up to 80%, or any open risk at RPN 150 or above. High is 150–249. Critical is 250 and above.</p>
+          </article>
+          <article class="gate gate-hold">
+            <h3>HOLD</h3>
+            <p>An unresolved cycle remains, or release confidence is below 50%.</p>
+          </article>
+        </div>
+        <h3>Fix Version forecasts</h3>
+        <p>Each card is one stored Fix Version. The title is prefixed with the project key, so two versions that share a name stay distinct, for example <strong>BILL · Slipstream Sandbox Train</strong>. The card shows the target date, expected days ± standard deviation, the PERT confidence percentage, and the projected finish. A missing target date shows “No target date” instead of a percentage.</p>
+        <h3>Critical path and dependencies</h3>
+        <p><strong>FLOAT 0</strong> marks an issue on the critical path. Total float and free float are both shown. Explicit links and inferred links use separate badges:</p>
+        <ul>
+          <li>Explicit Blocks link — 100% confidence</li>
+          <li>Cross-project epic parent or child — 90% confidence</li>
+          <li>Branch, pull request, or commit name written in a comment or description — 75% confidence</li>
+          <li>Plain issue-key mention — 70% confidence</li>
+          <li>Shared Fix Version — 60% confidence</li>
+        </ul>
+        <p>A cycle is broken before the schedule is calculated. The removed edge is the lowest-confidence link, and the affected issues show a cycle alert. Detection for that anomaly is 10.</p>
+        <p class="note">Unestimated default means story points, time tracking, and dates were all missing, so the duration used the issue-type default. The forecast warning counts how many items used that default.</p>
+      </section>
+      <section id="fmea">
+        <h2>FMEA risk scoring and the Jira issue panel</h2>
+        <p>Every open issue receives <strong>RPN = Severity × Occurrence × Detection</strong>. Each factor is an integer from 1 to 10, so open RPN runs from 1 to 1,000. Done issues score 0 and stay off the top-risk board.</p>
+        <div class="cards">
+          <article class="card">
+            <h3>Severity, Occurrence, Detection</h3>
+            <p>Severity reflects how much the issue can move the release. Occurrence rises with missing ownership, sprint carry-over, and schedule pressure. Detection rises when the estimate is weak, the link is implicit, or a cycle was broken. The radar shows S, O, and D next to the RPN.</p>
+          </article>
+          <article class="card">
+            <h3>Issue panel</h3>
+            <p>Open any Jira issue and read the Slipstream panel. It shows the summary, numeric float with FLOAT 0 highlighted, upstream and implicit-upstream counts, downstream blast radius, the S / O / D breakdown, the owner role, and both the model brief and the deterministic brief when they are stored. Display names and email addresses are not shown.</p>
+          </article>
+        </div>
+      </section>
+      <section id="what-if">
+        <h2>What-If simulator and release brief</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>In-memory scenarios</h3>
+            <p>Add delay days, remove a dependency, or shift a Fix Version target. Slipstream replays the schedule on the snapshot already loaded in the page. The simulation does not write Forge SQL and does not edit the Jira issues.</p>
+          </article>
+          <article class="card">
+            <h3>Copy Release Brief</h3>
+            <p>Copy Release Brief builds a Markdown note with the stage-gate, readiness, confidence, critical path, cycles, and top risks. Account ids and email addresses are left out, so the note can be pasted into a release conversation.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer class="legal">
+      <div class="wrap">
+        <p>© 2026 Critical Path Works Ltd · Registered in England and Wales (Company No. 17585654)</p>
+        <p>Registered Office: 77 Lansdowne Road, Newcastle Upon Tyne, United Kingdom, NE12 9BD · <a href="mailto:support@criticalpathworks.com">support@criticalpathworks.com</a> · <a href="/privacy.html">Privacy &amp; Security</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
