@@ -5,61 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Support — Critical Path Works Ltd</title>
     <meta name="description" content="How to get help with Slipstream for Jira Cloud from Critical Path Works Ltd." />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="/assets/site.css" />
     <link rel="icon" href="/favicon.png" />
   </head>
-  <body>
-    <header class="site-head">
-      <div class="wrap bar">
-        <a class="brand" href="/">
-          <span class="brand-mark"><img src="/assets/cpw-mark.png" alt="Critical Path Works"></span>
-          <span>
-            <strong>Critical Path Works</strong>
-            <span>Atlassian Cloud Software Studio</span>
-          </span>
+  <body class="bg-white text-slate-800 antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-3 focus:py-2">Skip to content</a>
+    <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
+        <a href="/" class="flex items-center gap-3">
+          <img src="/assets/cpw-mark.png" alt="" class="h-9 w-9" width="36" height="36" />
+          <span class="text-sm font-semibold tracking-tight text-slate-900">Critical Path Works</span>
         </a>
-        <nav aria-label="Primary">
-          <a href="/#products">Products</a>
-          <a href="/slipstream.html">Slipstream Guide</a>
-          <a href="/privacy.html">Privacy &amp; Security</a>
-          <a href="/support.html" aria-current="page">Support</a>
+        <nav class="hidden items-center gap-8 text-sm text-slate-600 md:flex" aria-label="Primary">
+          <a href="/slipstream.html" class="hover:text-slate-900">Product</a>
+          <a href="/guide.html" class="hover:text-slate-900">Guide</a>
+          <a href="mailto:support@criticalpathworks.com?subject=Slipstream%20early%20access" class="rounded-md bg-blue-700 px-4 py-2 font-medium text-white hover:bg-blue-800">Request Early Access</a>
         </nav>
+        <details class="relative md:hidden">
+          <summary class="cursor-pointer list-none rounded-md border border-slate-300 px-3 py-2 text-sm font-medium text-slate-900">Menu</summary>
+          <div class="absolute right-0 mt-2 flex w-56 flex-col gap-3 rounded-lg border border-slate-200 bg-white p-4 text-sm shadow-lg">
+            <a href="/slipstream.html">Product</a>
+            <a href="/guide.html">Guide</a>
+            <a href="mailto:support@criticalpathworks.com?subject=Slipstream%20early%20access" class="rounded-md bg-blue-700 px-3 py-2 text-center font-medium text-white">Request Early Access</a>
+          </div>
+        </details>
       </div>
     </header>
-    <div class="wrap hero">
-      <p class="badge">Runs on Atlassian · Zero External Egress</p>
-      <h1>Slipstream Support</h1>
-      <p class="lede">Customers get help with Slipstream for Jira Cloud by email. Critical Path Works Ltd answers product questions, install issues, and release-radar questions from the address below.</p>
-    </div>
-    <main class="wrap">
-      <section id="contact">
-        <h2>Contact &amp; Response SLA</h2>
-        <p>Email <a href="mailto:support@criticalpathworks.com">support@criticalpathworks.com</a>. Critical Path Works Ltd replies within 24 business hours.</p>
+    <main id="main" class="mx-auto max-w-3xl px-6 py-16">
+      <p class="text-sm font-medium text-blue-700">Runs on Atlassian</p>
+      <h1 class="mt-3 text-4xl font-semibold tracking-tight text-slate-950">Slipstream Support</h1>
+      <p class="mt-4 text-lg leading-8 text-slate-600">Customers get help with Slipstream for Jira Cloud by email. Critical Path Works Ltd answers product questions, install issues, and release-radar questions from the address below.</p>
+      <section id="contact" class="mt-12">
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Contact and response</h2>
+        <p class="mt-4 leading-7">Email <a href="mailto:support@criticalpathworks.com" class="font-medium text-blue-700 hover:text-blue-800">support@criticalpathworks.com</a>. Critical Path Works Ltd replies within 24 business hours.</p>
       </section>
-      <section id="data">
-        <h2>Data &amp; Privacy Note</h2>
-        <p>Critical Path Works Ltd never asks customers to export a database or share raw Jira data. Slipstream runs entirely on Atlassian Forge infrastructure.</p>
+      <section id="data" class="mt-12">
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Data and privacy</h2>
+        <p class="mt-4 leading-7">Critical Path Works Ltd never asks customers to export a database or share raw Jira data. Slipstream runs entirely on Atlassian Forge infrastructure.</p>
       </section>
-      <section id="include">
-        <h2>What to Include in Your Request</h2>
-        <ul>
-          <li>Your Jira Cloud site URL (<code>*.atlassian.net</code>)</li>
+      <section id="include" class="mt-12">
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-950">What to include in your request</h2>
+        <ul class="mt-4 list-disc space-y-2 pl-5 leading-7">
+          <li>Your Jira Cloud site URL (<code class="rounded bg-slate-100 px-1 py-0.5 text-sm">*.atlassian.net</code>)</li>
           <li>Affected project key(s) or Fix Version name</li>
           <li>A brief description of the issue or question, plus screenshots if relevant</li>
         </ul>
       </section>
-      <section id="links">
-        <h2>Helpful Links</h2>
-        <ul>
-          <li><a href="/slipstream.html">Slipstream guide</a></li>
-          <li><a href="/privacy.html">Privacy &amp; Security</a></li>
+      <section id="links" class="mt-12">
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Helpful links</h2>
+        <ul class="mt-4 list-disc space-y-2 pl-5 leading-7">
+          <li><a href="/slipstream.html" class="font-medium text-blue-700 hover:text-blue-800">Slipstream product</a></li>
+          <li><a href="/guide.html" class="font-medium text-blue-700 hover:text-blue-800">Slipstream guide</a></li>
+          <li><a href="/privacy.html" class="font-medium text-blue-700 hover:text-blue-800">Privacy &amp; Security</a></li>
         </ul>
       </section>
     </main>
-    <footer class="legal">
-      <div class="wrap">
-        <p>© 2026 Critical Path Works Ltd · Registered in England and Wales (Company No. 17585654)</p>
-        <p>Registered Office: 77 Lansdowne Road, Newcastle Upon Tyne, United Kingdom, NE12 9BD · <a href="mailto:support@criticalpathworks.com">support@criticalpathworks.com</a> · <a href="/privacy.html">Privacy &amp; Security</a></p>
+    <footer class="border-t border-slate-200 bg-slate-950 text-slate-300">
+      <div class="mx-auto grid max-w-6xl gap-10 px-6 py-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <p class="font-semibold text-white">Critical Path Works</p>
+          <p class="mt-3 text-sm leading-6">Release risk for Jira Cloud, built on Atlassian Forge.</p>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Product</p>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li><a href="/slipstream.html" class="hover:text-white">Slipstream</a></li>
+            <li><a href="/guide.html" class="hover:text-white">Guide</a></li>
+            <li><a href="mailto:support@criticalpathworks.com?subject=Slipstream%20early%20access" class="hover:text-white">Request early access</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Company</p>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li><a href="/privacy.html" class="hover:text-white">Privacy &amp; Security</a></li>
+            <li><a href="/support.html" class="hover:text-white">Support</a></li>
+            <li><a href="mailto:support@criticalpathworks.com" class="hover:text-white">support@criticalpathworks.com</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Legal entity</p>
+          <p class="mt-3 text-sm leading-6">Critical Path Works Ltd<br />Company No. 17585654<br />Registered in England and Wales</p>
+        </div>
+      </div>
+      <div class="border-t border-slate-800">
+        <p class="mx-auto max-w-6xl px-6 py-4 text-xs text-slate-500">© 2026 Critical Path Works Ltd. Atlassian is the merchant of record for Paid subscriptions.</p>
       </div>
     </footer>
   </body>

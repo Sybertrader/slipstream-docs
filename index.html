@@ -3,76 +3,146 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Critical Path Works — Release risk for Jira, without Jira Premium</title>
-    <meta name="description" content="Slipstream is an early-warning release radar that runs 100% on Atlassian. Catch unlinked cross-project blockers before they move the release date. $4.00 per user per month, or $40 per user per year." />
-    <link rel="stylesheet" href="./styles.css" />
+    <title>Slipstream — See the release slip before the status meeting</title>
+    <meta name="description" content="Slipstream finds the cross-project Jira blocker nobody linked, including the one in a comment or a pull request, and shows whether the release date still holds. $4.00 per user per month, or $40 per user per year. Runs on Atlassian." />
+    <link rel="stylesheet" href="/assets/site.css" />
     <link rel="icon" href="/favicon.png" />
   </head>
-  <body>
-    <header class="site-head">
-      <div class="wrap bar">
-        <a class="brand" href="/">
-          <span class="brand-mark"><img src="/assets/cpw-mark.png" alt="Critical Path Works"></span>
-          <span>
-            <strong>Critical Path Works</strong>
-            <span>Atlassian Cloud Software Studio</span>
-          </span>
+  <body class="bg-white text-slate-900 antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-3 focus:py-2">Skip to content</a>
+    <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
+        <a href="/" class="flex items-center gap-3">
+          <img src="/assets/cpw-mark.png" alt="" class="h-9 w-9" width="36" height="36" />
+          <span class="text-sm font-semibold tracking-tight">Critical Path Works</span>
         </a>
-        <nav aria-label="Primary">
-          <a href="/#products">Products</a>
-          <a href="/slipstream.html">Slipstream Guide</a>
-          <a href="/privacy.html">Privacy &amp; Security</a>
-          <a href="/support.html">Support</a>
+        <nav class="hidden items-center gap-8 text-sm text-slate-600 md:flex" aria-label="Primary">
+          <a href="/slipstream.html" class="hover:text-slate-900">Product</a>
+          <a href="/guide.html" class="hover:text-slate-900">Guide</a>
+          <a href="mailto:support@criticalpathworks.com?subject=Slipstream%20early%20access" class="rounded-md bg-blue-700 px-4 py-2 font-medium text-white hover:bg-blue-800">Request Early Access</a>
         </nav>
+        <details class="relative md:hidden">
+          <summary class="cursor-pointer list-none rounded-md border border-slate-300 px-3 py-2 text-sm font-medium">Menu</summary>
+          <div class="absolute right-0 mt-2 flex w-56 flex-col gap-3 rounded-lg border border-slate-200 bg-white p-4 text-sm shadow-lg">
+            <a href="/slipstream.html">Product</a>
+            <a href="/guide.html">Guide</a>
+            <a href="mailto:support@criticalpathworks.com?subject=Slipstream%20early%20access" class="rounded-md bg-blue-700 px-3 py-2 text-center font-medium text-white">Request Early Access</a>
+          </div>
+        </details>
       </div>
     </header>
-    <div class="wrap hero">
-      <p class="badge">Runs on Atlassian · Your Jira data stays in Atlassian</p>
-      <h1>See the release slip before the status meeting does.</h1>
-      <p class="lede">TPMs and release managers lose hours every week chasing updates across spreadsheets and four Jira boards. Slipstream is the early-warning radar for that meeting. It runs entirely on Atlassian and finds the cross-project blockers nobody linked, including the ones buried in a comment or a pull request, before they move the date.</p>
-    </div>
-    <main class="wrap">
-      <section id="products">
-        <h2>Products</h2>
-        <article class="product flagship">
-          <p class="eyebrow">Flagship</p>
-          <div class="product-id">
-            <img src="./assets/slipstream-logo-144.png" width="144" height="144" alt="Slipstream logo" />
-            <div>
-              <h3>Slipstream — Release Risk &amp; Dependency Radar</h3>
-              <p class="badge">Runs on Atlassian · Zero External Egress</p>
+    <main id="main">
+      <section class="mx-auto grid max-w-6xl items-center gap-12 px-6 pb-16 pt-16 lg:grid-cols-2 lg:pt-20">
+        <div>
+          <p class="text-sm font-medium text-blue-700">For release leaders on Jira</p>
+          <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl sm:leading-tight">See which other team is about to move your date.</h1>
+          <p class="mt-6 text-lg leading-8 text-slate-600">Slipstream finds the cross-project blocker nobody linked, including the one written in a comment or a pull request. You see the longest chain, and whether the release date still holds. The work never leaves Atlassian.</p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="mailto:support@criticalpathworks.com?subject=Slipstream%20early%20access" class="rounded-md bg-blue-700 px-5 py-3 text-sm font-medium text-white hover:bg-blue-800">Request Early Access</a>
+            <a href="/slipstream.html" class="rounded-md border border-slate-300 px-5 py-3 text-sm font-medium text-slate-800 hover:bg-slate-50">See the product</a>
+          </div>
+          <p class="mt-4 text-sm text-slate-500">Free for up to 10 Jira users. Paid is $4.00 per user per month, or $40 per user per year.</p>
+        </div>
+        <img src="/assets/hero-screenshot.png" alt="Slipstream inside Jira, showing delivery confidence, the length of the critical path, and a Fix Version forecast." class="w-full rounded-2xl border border-slate-200 bg-slate-50 shadow-sm" />
+      </section>
+
+      <section class="border-y border-slate-200 bg-slate-50" aria-label="What the week costs now">
+        <div class="mx-auto grid max-w-6xl gap-8 px-6 py-14 md:grid-cols-3">
+          <article>
+            <h2 class="text-sm font-semibold text-slate-950">The weekly chase</h2>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Release managers, TPMs, and engineering directors spend hours in spreadsheets and status meetings asking one question: will this date hold?</p>
+          </article>
+          <article>
+            <h2 class="text-sm font-semibold text-slate-950">The missing link</h2>
+            <p class="mt-2 text-sm leading-6 text-slate-600">In a 15-person company, standup covers it. Across several squads and one shared release, the blocker sits in another project, often only as a comment.</p>
+          </article>
+          <article>
+            <h2 class="text-sm font-semibold text-slate-950">The expensive workaround</h2>
+            <p class="mt-2 text-sm leading-6 text-slate-600">Jira Plans needs Premium or Enterprise. Premium lists at $19.60 per user per month for the first 100 users, for the whole company, and it only schedules links someone already created.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-6xl px-6 py-20">
+        <p class="text-sm font-medium text-blue-700">What Monday looks like</p>
+        <h2 class="mt-2 max-w-2xl text-3xl font-semibold tracking-tight">Three answers, from the Jira work you already have.</h2>
+        <div class="mt-12 grid gap-8 lg:grid-cols-3">
+          <article class="overflow-hidden rounded-2xl border border-slate-200">
+            <img src="/assets/feature-dependencies.png" alt="A map of implicit cross-project dependencies, including links found in issue text and shared Fix Versions." class="w-full border-b border-slate-200 bg-slate-50" />
+            <div class="p-6">
+              <h3 class="text-base font-semibold text-slate-950">The blocker nobody linked</h3>
+              <p class="mt-2 text-sm leading-6 text-slate-600">Blocks links stay when a team remembered them. Slipstream also reads branch names, pull requests, and issue keys written in comments, and marks how sure each one is.</p>
             </div>
+          </article>
+          <article class="overflow-hidden rounded-2xl border border-slate-200">
+            <img src="/assets/feature-gates.png" alt="A Fix Version forecast with a target date, expected duration, and delivery confidence." class="w-full border-b border-slate-200 bg-slate-50" />
+            <div class="p-6">
+              <h3 class="text-base font-semibold text-slate-950">Whether the date still holds</h3>
+              <p class="mt-2 text-sm leading-6 text-slate-600">Each Fix Version with a release date gets a delivery chance and a projected finish. A version with no date is called out, so a missing date is never treated as healthy.</p>
+            </div>
+          </article>
+          <article class="overflow-hidden rounded-2xl border border-slate-200">
+            <img src="/assets/feature-critical-path.png" alt="Ranked release risks, with items that have no slack marked on the longest chain." class="w-full border-b border-slate-200 bg-slate-50" />
+            <div class="p-6">
+              <h3 class="text-base font-semibold text-slate-950">The chain with no slack</h3>
+              <p class="mt-2 text-sm leading-6 text-slate-600">The longest chain of remaining work is listed and ranked. You can ask what happens if one item slips. The answer stays on the page and does not rewrite Jira.</p>
+            </div>
+          </article>
+        </div>
+        <p class="mt-8 text-sm text-slate-500">The gate rules, the formulas, and the setup steps are in the <a href="/guide.html" class="font-medium text-blue-700 hover:text-blue-800">guide</a>.</p>
+      </section>
+
+      <section class="border-t border-slate-200 bg-slate-950 text-white">
+        <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 lg:grid-cols-2">
+          <div>
+            <p class="text-sm font-medium text-blue-300">The offer</p>
+            <h2 class="mt-3 text-3xl font-semibold tracking-tight">Cross-project release forecasting without upgrading every Jira seat.</h2>
+            <p class="mt-4 leading-7 text-slate-300">Atlassian bills the customer. A 30-day Evaluation comes first. After that, Paid is $4.00 per user per month, or $40 per user per year.</p>
+            <a href="mailto:support@criticalpathworks.com?subject=Slipstream%20early%20access" class="mt-8 inline-block rounded-md bg-white px-5 py-3 text-sm font-medium text-slate-950 hover:bg-slate-100">Request Early Access</a>
           </div>
-          <p>Stop paying the Atlassian tax. Get cross-project release forecasting without a $10-plus-per-seat Jira Premium upgrade for the whole company. Slipstream reads the Jira work you already have and tells a VP of Engineering, an Engineering Director, or a TPM whether the date still holds.</p>
-          <div class="tiers">
-            <article class="tier">
-              <h3>The weekly cost today</h3>
-              <p>Status is a spreadsheet plus a walk across several boards. The blocker that matters was typed into a comment, not drawn as a link.</p>
-            </article>
-            <article class="tier">
-              <h3>What leaders get</h3>
-              <p>One release view, inside Jira. Unlinked cross-project blockers surface before the date moves. Nothing is sent outside Atlassian.</p>
-            </article>
-            <article class="tier">
-              <h3>Free</h3>
-              <p>Up to 2 Jira projects, so a team can see the radar before anyone approves a purchase.</p>
-            </article>
-            <article class="tier">
-              <h3>30-day Evaluation and Paid</h3>
-              <p>$4.00 per user per month, or $40 per user per year. Atlassian bills the customer.</p>
-            </article>
-          </div>
-          <div class="actions">
-            <a class="btn" href="/slipstream.html">Open User Guide</a>
-            <a href="/privacy.html">Privacy &amp; Security</a>
-          </div>
-        </article>
+          <ul class="space-y-4 text-sm leading-6 text-slate-300">
+            <li class="rounded-xl border border-slate-800 bg-slate-900 p-5"><span class="block font-medium text-white">Free</span> Up to 10 Jira users, on up to 2 projects. One scheduled scan and one manual scan a day.</li>
+            <li class="rounded-xl border border-slate-800 bg-slate-900 p-5"><span class="block font-medium text-white">Paid and Evaluation</span> The full portfolio, hourly scans, and a short brief on the five highest-risk chains. The brief runs inside Forge.</li>
+            <li class="rounded-xl border border-slate-800 bg-slate-900 p-5"><span class="block font-medium text-white">Security</span> BigPicture stores project data on Appfire infrastructure. Structure by Tempo processes Jira-derived data outside Atlassian. Slipstream has no vendor server. The scan stays in Atlassian.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-3xl px-6 py-20 text-center">
+        <h2 class="text-3xl font-semibold tracking-tight">Put it on the release you are worried about.</h2>
+        <p class="mt-4 text-lg leading-8 text-slate-600">One Fix Version. One scan. You will see the cross-project blockers, the longest chain, and whether the date still holds before the next status meeting.</p>
+        <a href="mailto:support@criticalpathworks.com?subject=Slipstream%20early%20access" class="mt-8 inline-block rounded-md bg-blue-700 px-5 py-3 text-sm font-medium text-white hover:bg-blue-800">Request Early Access</a>
       </section>
     </main>
-    <footer class="legal">
-      <div class="wrap">
-        <p>© 2026 Critical Path Works Ltd · Registered in England and Wales (Company No. 17585654)</p>
-        <p>Registered Office: 77 Lansdowne Road, Newcastle Upon Tyne, United Kingdom, NE12 9BD · <a href="mailto:support@criticalpathworks.com">support@criticalpathworks.com</a> · <a href="/privacy.html">Privacy &amp; Security</a></p>
+    <footer class="border-t border-slate-200 bg-slate-950 text-slate-300">
+      <div class="mx-auto grid max-w-6xl gap-10 px-6 py-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <p class="font-semibold text-white">Critical Path Works</p>
+          <p class="mt-3 text-sm leading-6">Release risk for Jira Cloud, built on Atlassian Forge.</p>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Product</p>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li><a href="/slipstream.html" class="hover:text-white">Slipstream</a></li>
+            <li><a href="/guide.html" class="hover:text-white">Guide</a></li>
+            <li><a href="mailto:support@criticalpathworks.com?subject=Slipstream%20early%20access" class="hover:text-white">Request early access</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Company</p>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li><a href="/privacy.html" class="hover:text-white">Privacy &amp; Security</a></li>
+            <li><a href="/support.html" class="hover:text-white">Support</a></li>
+            <li><a href="mailto:support@criticalpathworks.com" class="hover:text-white">support@criticalpathworks.com</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Legal entity</p>
+          <p class="mt-3 text-sm leading-6">Critical Path Works Ltd<br />Company No. 17585654<br />Registered in England and Wales</p>
+        </div>
+      </div>
+      <div class="border-t border-slate-800">
+        <p class="mx-auto max-w-6xl px-6 py-4 text-xs text-slate-500">© 2026 Critical Path Works Ltd. Atlassian is the merchant of record for Paid subscriptions.</p>
       </div>
     </footer>
   </body>

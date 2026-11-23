@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@source "../index.html";
+@source "../slipstream.html";
+@source "../guide.html";
+@source "../privacy.html";
+@source "../support.html";
+
+summary::-webkit-details-marker {
+  display: none;
+}

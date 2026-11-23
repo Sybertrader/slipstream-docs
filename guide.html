@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slipstream guide — Critical Path Works</title>
+    <meta name="description" content="Setup, stage-gate rules, PERT expected duration and standard deviation, and FMEA RPN scoring for Slipstream on Jira Cloud." />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <link rel="icon" href="/favicon.png" />
+  </head>
+  <body class="bg-white text-slate-800 antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-3 focus:py-2">Skip to content</a>
+    <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
+        <a href="/" class="flex items-center gap-3">
+          <img src="/assets/cpw-mark.png" alt="" class="h-9 w-9" width="36" height="36" />
+          <span class="text-sm font-semibold tracking-tight text-slate-900">Critical Path Works</span>
+        </a>
+        <nav class="hidden items-center gap-8 text-sm text-slate-600 md:flex" aria-label="Primary">
+          <a href="/slipstream.html" class="hover:text-slate-900">Product</a>
+          <a href="/guide.html" class="text-slate-900" aria-current="page">Guide</a>
+          <a href="mailto:support@criticalpathworks.com?subject=Slipstream%20early%20access" class="rounded-md bg-blue-700 px-4 py-2 font-medium text-white hover:bg-blue-800">Request Early Access</a>
+        </nav>
+        <details class="relative md:hidden">
+          <summary class="cursor-pointer list-none rounded-md border border-slate-300 px-3 py-2 text-sm font-medium text-slate-900">Menu</summary>
+          <div class="absolute right-0 mt-2 flex w-56 flex-col gap-3 rounded-lg border border-slate-200 bg-white p-4 text-sm shadow-lg">
+            <a href="/slipstream.html">Product</a>
+            <a href="/guide.html">Guide</a>
+            <a href="mailto:support@criticalpathworks.com?subject=Slipstream%20early%20access" class="rounded-md bg-blue-700 px-3 py-2 text-center font-medium text-white">Request Early Access</a>
+          </div>
+        </details>
+      </div>
+    </header>
+    <div class="mx-auto grid max-w-6xl gap-12 px-6 py-12 lg:grid-cols-[15rem_minmax(0,1fr)]">
+      <aside class="lg:sticky lg:top-24 lg:self-start">
+        <nav aria-label="Guide chapters" class="flex gap-4 overflow-x-auto text-sm text-slate-600 lg:flex-col lg:gap-2 lg:overflow-visible">
+          <a href="#setup" class="shrink-0 hover:text-slate-900">Setup</a>
+          <a href="#gates" class="shrink-0 hover:text-slate-900">Release gates</a>
+          <a href="#dependencies" class="shrink-0 hover:text-slate-900">Dependencies</a>
+          <a href="#pert" class="shrink-0 hover:text-slate-900">PERT and standard deviation</a>
+          <a href="#fmea" class="shrink-0 hover:text-slate-900">FMEA formulas</a>
+          <a href="#issue" class="shrink-0 hover:text-slate-900">Inside the issue</a>
+          <a href="#what-if" class="shrink-0 hover:text-slate-900">What-if</a>
+          <a href="#plans" class="shrink-0 hover:text-slate-900">Free and Paid</a>
+        </nav>
+      </aside>
+      <main id="main" class="min-w-0 max-w-3xl">
+        <p class="text-sm font-medium text-blue-700">Technical guide</p>
+        <h1 class="mt-3 text-4xl font-semibold tracking-tight text-slate-950">How Slipstream reads a release.</h1>
+        <p class="mt-4 text-lg leading-8 text-slate-600">Graph traversal, critical-path math, PERT confidence, and FMEA scores run in deterministic TypeScript. A model is used only to write a short brief on Paid and Evaluation sites, and only after the scores exist.</p>
+
+        <section id="setup" class="mt-14 scroll-mt-24">
+          <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Setup</h2>
+          <p class="mt-4 leading-7">The first page opens with no CSV, no spreadsheet, and no setup wizard.</p>
+          <ol class="mt-6 list-decimal space-y-4 pl-5 leading-7">
+            <li><span class="font-medium text-slate-950">Install.</span> A Jira admin installs Slipstream from the Atlassian Marketplace. Atlassian is the merchant of record. After the 30-day Evaluation, Paid is $4.00 per user per month, or $40 per user per year.</li>
+            <li><span class="font-medium text-slate-950">Use a Fix Version.</span> Put the release issues on a Fix Version and set its release date. That date is what the forecast is judged against. Issues without a version still appear on the portfolio view.</li>
+            <li><span class="font-medium text-slate-950">Run the first scan.</span> Open Slipstream from the Jira Apps menu or the project sidebar and choose Run scan. The page updates when the scan finishes.</li>
+            <li><span class="font-medium text-slate-950">Read the gate.</span> The header shows GO, CONDITIONAL, HOLD, or NO DATE, together with the chance of hitting the date and the length of the longest chain.</li>
+          </ol>
+        </section>
+
+        <section id="gates" class="mt-14 scroll-mt-24">
+          <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Release gates</h2>
+          <p class="mt-4 leading-7">The gate is evaluated after the scan. A missing number is never treated as a healthy release.</p>
+          <div class="mt-6 overflow-x-auto">
+            <table class="w-full border-collapse text-left text-sm">
+              <thead>
+                <tr class="border-b border-slate-200 text-slate-500">
+                  <th class="py-2 pr-4 font-medium">Screen</th>
+                  <th class="py-2 font-medium">Rule</th>
+                </tr>
+              </thead>
+              <tbody class="text-slate-700">
+                <tr class="border-b border-slate-100"><td class="py-3 pr-4 font-medium text-slate-950">HOLD</td><td class="py-3">Work still loops on itself, or the chance of hitting the date is below 50%.</td></tr>
+                <tr class="border-b border-slate-100"><td class="py-3 pr-4 font-medium text-slate-950">NO DATE</td><td class="py-3">A Fix Version has no release date, or confidence cannot be calculated, and nothing stronger has already forced HOLD.</td></tr>
+                <tr class="border-b border-slate-100"><td class="py-3 pr-4 font-medium text-slate-950">CONDITIONAL</td><td class="py-3">Confidence is from 50% up to, but not including, 80%, or an open item is High or Critical risk.</td></tr>
+                <tr><td class="py-3 pr-4 font-medium text-slate-950">GO</td><td class="py-3">Numeric confidence is 80% or better, there is no cycle, no high-risk open item, and every watched Fix Version has a date.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="mt-4 leading-7">High risk starts at a score of 150. Critical starts at 250. Each Fix Version card shows the target date, expected duration, the chance of hitting the date, and the projected finish. A missing date does not show a percentage.</p>
+        </section>
+
+        <section id="dependencies" class="mt-14 scroll-mt-24">
+          <h2 class="text-2xl font-semibold tracking-tight text-slate-950">What counts as a blocker</h2>
+          <p class="mt-4 leading-7">An item with no slack is on the longest chain. Slipstream also keeps weaker signals, and it labels how sure each one is.</p>
+          <ul class="mt-4 list-disc space-y-2 pl-5 leading-7">
+            <li>A Blocks link — confidence 1.00.</li>
+            <li>A parent or child epic that crosses projects — confidence 0.90.</li>
+            <li>A branch, pull request, or commit name written in a comment or description — confidence 0.75.</li>
+            <li>A plain issue key written in the text — confidence 0.70.</li>
+            <li>The same Fix Version name in two different projects — confidence 0.60.</li>
+          </ul>
+          <p class="mt-4 leading-7">If work loops back on itself, Slipstream breaks the weakest link, marks the issues in the loop, and does not pretend the loop is a schedule. False keys such as UTF-8 or CVE-2026-1234 are rejected.</p>
+          <p class="mt-4 leading-7">When an item has no story points, no time estimate, and no dates, Slipstream uses a plain default for that issue type and records the estimate source. A release made mostly of defaults is not called on track.</p>
+        </section>
+
+        <section id="pert" class="mt-14 scroll-mt-24">
+          <h2 class="text-2xl font-semibold tracking-tight text-slate-950">PERT and standard deviation</h2>
+          <p class="mt-4 leading-7">Slipstream does not ask a team to type optimistic, most likely, and pessimistic estimates. It takes the most likely duration already implied by the issue, then derives the three points.</p>
+          <ul class="mt-4 list-disc space-y-2 pl-5 leading-7">
+            <li>Most likely, <span class="font-medium">M</span>, is the working-day duration from story points, the time estimate, or the issue-type default.</li>
+            <li>Optimistic <span class="font-medium">O = 0.8 × M</span>.</li>
+            <li>Pessimistic <span class="font-medium">P = M × (1.5 + 0.25 × risk words)</span>. Risk words in the text include blocked, delay, risk, waiting, overdue, and slip.</li>
+          </ul>
+          <p class="mt-4 leading-7">Expected duration and variance for one item:</p>
+          <p class="mt-3 rounded-md bg-slate-50 px-4 py-3 font-mono text-sm text-slate-900">E = (O + 4M + P) / 6</p>
+          <p class="mt-3 rounded-md bg-slate-50 px-4 py-3 font-mono text-sm text-slate-900">variance = ((P − O) / 6)²</p>
+          <p class="mt-4 leading-7">Along a path, variances add. The standard deviation is the square root of that sum. Confidence against a target date uses the standard normal distribution:</p>
+          <p class="mt-3 rounded-md bg-slate-50 px-4 py-3 font-mono text-sm text-slate-900">z = (T − E) / σ</p>
+          <p class="mt-4 leading-7">The chance of finishing by <span class="font-medium">T</span> is the normal cumulative probability of <span class="font-medium">z</span>, using the Abramowitz–Stegun approximation. A target one standard deviation above the expected path is about 84%. The expected path itself is 50%. Two standard deviations early is about 2.3%. If the Fix Version has no release date, confidence and <span class="font-medium">z</span> are left empty. They are not shown as zero, and they are not shown as 100%.</p>
+        </section>
+
+        <section id="fmea" class="mt-14 scroll-mt-24">
+          <h2 class="text-2xl font-semibold tracking-tight text-slate-950">FMEA formulas</h2>
+          <p class="mt-4 leading-7">Each open item gets one Risk Priority Number from severity, occurrence, and detection. Each factor is an integer from 1 to 10. Finished items score 0 and drop off the list.</p>
+          <p class="mt-3 rounded-md bg-slate-50 px-4 py-3 font-mono text-sm text-slate-900">RPN = S × O × D</p>
+          <p class="mt-4 leading-7">The open range is 1 to 1,000. Bands are Low below 125, Medium from 125 up to 150, High from 150 to 249, and Critical at 250 or above.</p>
+          <h3 class="mt-8 text-lg font-semibold text-slate-950">Severity</h3>
+          <p class="mt-3 leading-7">Starts at 1. Add 4 when the item is on the critical path or its total float is zero. Add 3 when it blocks at least five other issues. Add 2 when those issues sit in two or more projects. Cap at 10.</p>
+          <h3 class="mt-8 text-lg font-semibold text-slate-950">Occurrence</h3>
+          <p class="mt-3 leading-7">Starts at 1. Add 2 for each sprint the item has already carried over. Add 1 for every four days since the last status change. Add 1 when the item’s PERT variance is at least 1 day squared. Cap at 10.</p>
+          <h3 class="mt-8 text-lg font-semibold text-slate-950">Detection</h3>
+          <p class="mt-3 leading-7">Starts at 2. Add 3 when the blast radius crosses projects. Add 2 when every incoming link is implicit. Add 2 when nobody owns the item. Add 1 when the duration is a default because the issue was unestimated. A cycle sets detection to 10. Cap at 10.</p>
+          <p class="mt-4 leading-7">A critical-path, cross-project, unassigned item with two sprint carryovers, eight stale days, only an implicit incoming link, and five blocked issues across two projects scores S = 10, O = 7, D = 9, RPN = 630.</p>
+        </section>
+
+        <section id="issue" class="mt-14 scroll-mt-24">
+          <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Inside the Jira issue</h2>
+          <p class="mt-4 leading-7">Open any issue and read the Slipstream panel. It shows whether the item is on the longest chain, what is blocking it, what it blocks, and the short brief. Names and email addresses are not shown. Copy Release Brief produces a note for the release review: the call, the chance of hitting the date, the longest chain, and the top risks. Account ids are left out.</p>
+        </section>
+
+        <section id="what-if" class="mt-14 scroll-mt-24">
+          <h2 class="text-2xl font-semibold tracking-tight text-slate-950">What-if</h2>
+          <p class="mt-4 leading-7">Add delay, remove a dependency, or move the release date. Slipstream answers from the scan already on the page. It does not change Jira and it does not write a second plan to storage.</p>
+          <img src="/assets/feature-what-if.png" alt="What-if simulator adding five days to one issue and showing the critical path move from 31 days to 36 days." class="mt-6 w-full rounded-xl border border-slate-200" />
+        </section>
+
+        <section id="plans" class="mt-14 scroll-mt-24">
+          <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Free and Paid</h2>
+          <div class="mt-6 overflow-x-auto">
+            <table class="w-full border-collapse text-left text-sm">
+              <thead>
+                <tr class="border-b border-slate-200 text-slate-500">
+                  <th class="py-2 pr-4 font-medium">Capability</th>
+                  <th class="py-2 pr-4 font-medium">Free</th>
+                  <th class="py-2 font-medium">30-day Evaluation and Paid</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-slate-100"><td class="py-3 pr-4">Price</td><td class="py-3 pr-4">£0. Sites of up to 10 Jira users.</td><td class="py-3">$4.00 per user per month, or $40 per user per year. Atlassian bills the customer.</td></tr>
+                <tr class="border-b border-slate-100"><td class="py-3 pr-4">Projects</td><td class="py-3 pr-4">Up to 2 Jira projects</td><td class="py-3">Full portfolio, no project cap</td></tr>
+                <tr class="border-b border-slate-100"><td class="py-3 pr-4">Scans</td><td class="py-3 pr-4">1 scheduled scan and 1 manual scan each 24 hours</td><td class="py-3">Hourly scheduled scans and event-driven scans</td></tr>
+                <tr><td class="py-3 pr-4">Written briefs</td><td class="py-3 pr-4">A plain summary. No model.</td><td class="py-3">A short brief on the five highest-risk chains. The model runs inside Atlassian.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="mt-8 leading-7">Questions go to <a href="mailto:support@criticalpathworks.com" class="font-medium text-blue-700 hover:text-blue-800">support@criticalpathworks.com</a>. Critical Path Works Ltd replies within 24 business hours.</p>
+        </section>
+      </main>
+    </div>
+    <footer class="border-t border-slate-200 bg-slate-950 text-slate-300">
+      <div class="mx-auto grid max-w-6xl gap-10 px-6 py-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <p class="font-semibold text-white">Critical Path Works</p>
+          <p class="mt-3 text-sm leading-6">Release risk for Jira Cloud, built on Atlassian Forge.</p>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Product</p>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li><a href="/slipstream.html" class="hover:text-white">Slipstream</a></li>
+            <li><a href="/guide.html" class="hover:text-white">Guide</a></li>
+            <li><a href="mailto:support@criticalpathworks.com?subject=Slipstream%20early%20access" class="hover:text-white">Request early access</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Company</p>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li><a href="/privacy.html" class="hover:text-white">Privacy &amp; Security</a></li>
+            <li><a href="/support.html" class="hover:text-white">Support</a></li>
+            <li><a href="mailto:support@criticalpathworks.com" class="hover:text-white">support@criticalpathworks.com</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Legal entity</p>
+          <p class="mt-3 text-sm leading-6">Critical Path Works Ltd<br />Company No. 17585654<br />Registered in England and Wales</p>
+        </div>
+      </div>
+      <div class="border-t border-slate-800">
+        <p class="mx-auto max-w-6xl px-6 py-4 text-xs text-slate-500">© 2026 Critical Path Works Ltd. Atlassian is the merchant of record for Paid subscriptions.</p>
+      </div>
+    </footer>
+  </body>
+</html>

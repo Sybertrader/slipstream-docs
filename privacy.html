@@ -5,72 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Privacy and security — Critical Path Works</title>
     <meta name="description" content="Privacy policy and security statement for Critical Path Works Ltd and Slipstream on Jira Cloud." />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="/assets/site.css" />
     <link rel="icon" href="/favicon.png" />
   </head>
-  <body>
-    <header class="site-head">
-      <div class="wrap bar">
-        <a class="brand" href="/">
-          <span class="brand-mark"><img src="/assets/cpw-mark.png" alt="Critical Path Works"></span>
-          <span>
-            <strong>Critical Path Works</strong>
-            <span>Atlassian Cloud Software Studio</span>
-          </span>
+  <body class="bg-white text-slate-800 antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-3 focus:py-2">Skip to content</a>
+    <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
+        <a href="/" class="flex items-center gap-3">
+          <img src="/assets/cpw-mark.png" alt="" class="h-9 w-9" width="36" height="36" />
+          <span class="text-sm font-semibold tracking-tight text-slate-900">Critical Path Works</span>
         </a>
-        <nav aria-label="Primary">
-          <a href="/#products">Products</a>
-          <a href="/slipstream.html">Slipstream Guide</a>
-          <a href="/privacy.html" aria-current="page">Privacy &amp; Security</a>
-          <a href="/support.html">Support</a>
+        <nav class="hidden items-center gap-8 text-sm text-slate-600 md:flex" aria-label="Primary">
+          <a href="/slipstream.html" class="hover:text-slate-900">Product</a>
+          <a href="/guide.html" class="hover:text-slate-900">Guide</a>
+          <a href="mailto:support@criticalpathworks.com?subject=Slipstream%20early%20access" class="rounded-md bg-blue-700 px-4 py-2 font-medium text-white hover:bg-blue-800">Request Early Access</a>
         </nav>
+        <details class="relative md:hidden">
+          <summary class="cursor-pointer list-none rounded-md border border-slate-300 px-3 py-2 text-sm font-medium text-slate-900">Menu</summary>
+          <div class="absolute right-0 mt-2 flex w-56 flex-col gap-3 rounded-lg border border-slate-200 bg-white p-4 text-sm shadow-lg">
+            <a href="/slipstream.html">Product</a>
+            <a href="/guide.html">Guide</a>
+            <a href="mailto:support@criticalpathworks.com?subject=Slipstream%20early%20access" class="rounded-md bg-blue-700 px-3 py-2 text-center font-medium text-white">Request Early Access</a>
+          </div>
+        </details>
       </div>
     </header>
-    <div class="wrap hero">
-      <p class="badge">Runs on Atlassian · Zero External Egress</p>
-      <h1>Privacy policy and security</h1>
-      <p class="lede">Slipstream is an Atlassian Forge app. It runs inside the customer’s Jira Cloud site. Compute, storage, and model calls stay on Atlassian infrastructure.</p>
-    </div>
-    <main class="wrap">
-      <section id="policy">
-        <h2>Privacy policy</h2>
-        <p>The Marketplace vendor is Critical Path Works Ltd (Company No. 17585654, Registered in England and Wales, Registered Office: 77 Lansdowne Road, Newcastle Upon Tyne, United Kingdom, NE12 9BD). Atlassian hosts the app, Forge SQL, and <code>@forge/llm</code>. Atlassian is the merchant of record for Paid subscriptions.</p>
-        <h3>Where processing happens</h3>
-        <p>One hundred percent of Slipstream compute and SQL storage is Atlassian-hosted Forge. There is no vendor server, no external database, and no analytics or error-reporting service. <code>permissions.external</code> is empty. The app qualifies for Runs on Atlassian.</p>
-        <h3>What is read</h3>
-        <p>With the customer admin’s consent at install, Slipstream reads Jira work items, issue links, comments, descriptions, Fix Versions, sprints, and project metadata through Jira Cloud REST API v3 and the Jira Software fields discovered on the issue. It uses those fields to infer dependencies and to score schedule risk. It does not read Confluence in v1.0. It does not call <code>/rest/dev-status</code>. Branch, pull-request, and commit names are used only when someone has already written them into a Jira comment, description, or issue link.</p>
-        <h3>What is stored</h3>
-        <p>Forge SQL tables are keyed by the installation’s <code>cloud_id</code>, taken from Forge <code>installContext</code>. The app does not accept a tenant id from the browser. Stored work-item fields are issue keys, project keys, summaries, status category, estimate provenance, schedule math, dependency edges, FMEA scores, and release forecasts. The only person identifier stored is the assignee’s Atlassian <code>accountId</code>. Display names and email addresses are not written to Forge SQL. UI copy redacts any email address that appears inside a stored brief before it is shown.</p>
-        <h3>Model use</h3>
-        <p><code>@forge/llm</code> runs only for an active Paid or 30-day Evaluation license, and only inside Forge. Each scan sends at most five highest-RPN chains. Excerpts are capped at 160 characters and treated as untrusted data. Free and expired installs make zero model calls. There is no third-party AI subprocessor. Prompts and completions are not sent to a vendor endpoint. Graph traversal, critical-path math, PERT confidence, and FMEA scoring run in deterministic TypeScript.</p>
-        <h3>Retention and uninstall</h3>
-        <p>Snapshot-scoped rows carry <code>created_at</code>. A daily job deletes rows older than 30 days in bounded batches of 1,000, at most 20 batches per run. A 35-day-old row is deleted. A 5-day-old row stays. Uninstall follows Forge’s installation data lifecycle: the app can no longer read that site’s Jira data, and Atlassian-managed deletion plus the same 30-day purge removes stored rows. There is no vendor copy to delete.</p>
-        <h3>Sharing</h3>
-        <p>Slipstream does not sell data, does not advertise, and does not deliver alerts through Slack, Teams, Discord, email, or webhooks. v1.0 shows the Stage-Gate brief in the Jira page and the issue panel. It does not declare <code>write:jira-work</code> and it does not post Jira comments.</p>
-        <h3>GDPR and UK GDPR rights</h3>
-        <p>Slipstream does not keep a separate user profile. A customer admin uninstalls the app from Jira administration to end processing for that site. An individual asks their Jira admin to clear or reassign the work item. The next scan overwrites <code>accountId</code> when the assignee changes, and the 30-day purge drops the stored identifier with the row. To access, correct, or object to processing of the stored <code>accountId</code>, contact the address below. The vendor acknowledges privacy and security requests within 24 business hours.</p>
+    <main id="main" class="mx-auto max-w-3xl px-6 py-16">
+      <p class="text-sm font-medium text-blue-700">Runs on Atlassian</p>
+      <h1 class="mt-3 text-4xl font-semibold tracking-tight text-slate-950">Privacy policy and security</h1>
+      <p class="mt-4 text-lg leading-8 text-slate-600">Slipstream is an Atlassian Forge app. It runs inside the customer’s Jira Cloud site. Compute, storage, and model calls stay on Atlassian infrastructure.</p>
+      <section id="policy" class="mt-12">
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Privacy policy</h2>
+        <p class="mt-4 leading-7">The Marketplace vendor is Critical Path Works Ltd (Company No. 17585654, Registered in England and Wales). Atlassian hosts the app, Forge SQL, and <code class="rounded bg-slate-100 px-1 py-0.5 text-sm">@forge/llm</code>. Atlassian is the merchant of record for Paid subscriptions.</p>
+        <h3 class="mt-8 text-lg font-semibold text-slate-950">Where processing happens</h3>
+        <p class="mt-3 leading-7">One hundred percent of Slipstream compute and SQL storage is Atlassian-hosted Forge. There is no vendor server, no external database, and no analytics or error-reporting service. <code class="rounded bg-slate-100 px-1 py-0.5 text-sm">permissions.external</code> is empty. The app qualifies for Runs on Atlassian.</p>
+        <h3 class="mt-8 text-lg font-semibold text-slate-950">What is read</h3>
+        <p class="mt-3 leading-7">With the customer admin’s consent at install, Slipstream reads Jira work items, issue links, comments, descriptions, Fix Versions, sprints, and project metadata through Jira Cloud REST API v3 and the Jira Software fields discovered on the issue. It uses those fields to infer dependencies and to score schedule risk. It does not read Confluence in v1.0. It does not call <code class="rounded bg-slate-100 px-1 py-0.5 text-sm">/rest/dev-status</code>. Branch, pull-request, and commit names are used only when someone has already written them into a Jira comment, description, or issue link.</p>
+        <h3 class="mt-8 text-lg font-semibold text-slate-950">What is stored</h3>
+        <p class="mt-3 leading-7">Forge SQL tables are keyed by the installation’s <code class="rounded bg-slate-100 px-1 py-0.5 text-sm">cloud_id</code>, taken from Forge <code class="rounded bg-slate-100 px-1 py-0.5 text-sm">installContext</code>. The app does not accept a tenant id from the browser. Stored work-item fields are issue keys, project keys, summaries, status category, estimate provenance, schedule math, dependency edges, FMEA scores, and release forecasts. The only person identifier stored is the assignee’s Atlassian <code class="rounded bg-slate-100 px-1 py-0.5 text-sm">accountId</code>. Display names and email addresses are not written to Forge SQL. UI copy redacts any email address that appears inside a stored brief before it is shown.</p>
+        <h3 class="mt-8 text-lg font-semibold text-slate-950">Model use</h3>
+        <p class="mt-3 leading-7"><code class="rounded bg-slate-100 px-1 py-0.5 text-sm">@forge/llm</code> runs only for an active Paid or 30-day Evaluation license, and only inside Forge. Each scan sends at most five highest-RPN chains. Excerpts are capped at 160 characters and treated as untrusted data. Free and expired installs make zero model calls. There is no third-party AI subprocessor. Prompts and completions are not sent to a vendor endpoint. Graph traversal, critical-path math, PERT confidence, and FMEA scoring run in deterministic TypeScript.</p>
+        <h3 class="mt-8 text-lg font-semibold text-slate-950">Retention and uninstall</h3>
+        <p class="mt-3 leading-7">Snapshot-scoped rows carry <code class="rounded bg-slate-100 px-1 py-0.5 text-sm">created_at</code>. A daily job deletes rows older than 30 days in bounded batches of 1,000, at most 20 batches per run. A 35-day-old row is deleted. A 5-day-old row stays. Uninstall follows Forge’s installation data lifecycle: the app can no longer read that site’s Jira data, and Atlassian-managed deletion plus the same 30-day purge removes stored rows. There is no vendor copy to delete.</p>
+        <h3 class="mt-8 text-lg font-semibold text-slate-950">Sharing</h3>
+        <p class="mt-3 leading-7">Slipstream does not sell data, does not advertise, and does not deliver alerts through Slack, Teams, Discord, email, or webhooks. v1.0 shows the Stage-Gate brief in the Jira page and the issue panel. It does not declare <code class="rounded bg-slate-100 px-1 py-0.5 text-sm">write:jira-work</code> and it does not post Jira comments.</p>
+        <h3 class="mt-8 text-lg font-semibold text-slate-950">GDPR and UK GDPR rights</h3>
+        <p class="mt-3 leading-7">Slipstream does not keep a separate user profile. A customer admin uninstalls the app from Jira administration to end processing for that site. An individual asks their Jira admin to clear or reassign the work item. The next scan overwrites <code class="rounded bg-slate-100 px-1 py-0.5 text-sm">accountId</code> when the assignee changes, and the 30-day purge drops the stored identifier with the row. To access, correct, or object to processing of the stored <code class="rounded bg-slate-100 px-1 py-0.5 text-sm">accountId</code>, contact the address below. The vendor acknowledges privacy and security requests within 24 business hours.</p>
       </section>
-      <section id="security">
-        <h2>Security</h2>
-        <ul>
-          <li>Every SQL statement filters <code>cloud_id</code> from the installation context. A payload cloud id is ignored.</li>
+      <section id="security" class="mt-12">
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Security</h2>
+        <ul class="mt-4 list-disc space-y-2 pl-5 leading-7">
+          <li>Every SQL statement filters <code class="rounded bg-slate-100 px-1 py-0.5 text-sm">cloud_id</code> from the installation context. A payload cloud id is ignored.</li>
           <li>UI resolvers read precomputed Forge SQL. A manual scan checks the clicking user’s Jira browse permission before a job is queued. Issue reads for the scan run as the installed app only after that gate, or from a scheduled or product event.</li>
           <li>Scopes are limited to reading Jira work, the assignee account id on the issue, software issue and sprint fields, and Forge app storage.</li>
           <li>Forge SQL and Forge logs are Atlassian-operated. The app does not ship its own log drain.</li>
           <li>Report a vulnerability to the security contact below. A fix ships as a Forge app version. Customers do not patch a server.</li>
         </ul>
       </section>
-      <section id="support">
-        <h2>Security contact and support</h2>
-        <p>Security inquiries go to <a href="mailto:support@criticalpathworks.com">support@criticalpathworks.com</a>. Critical Path Works Ltd replies within 24 business hours and does not ask the customer to export a database.</p>
-        <p>For general product support, visit <a href="/support.html">Slipstream Support</a>.</p>
-        <p><a href="/slipstream.html">Back to the Slipstream guide</a></p>
+      <section id="support" class="mt-12">
+        <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Security contact and support</h2>
+        <p class="mt-4 leading-7">Security inquiries go to <a href="mailto:support@criticalpathworks.com" class="font-medium text-blue-700 hover:text-blue-800">support@criticalpathworks.com</a>. Critical Path Works Ltd replies within 24 business hours and does not ask the customer to export a database.</p>
+        <p class="mt-4 leading-7">For general product support, visit <a href="/support.html" class="font-medium text-blue-700 hover:text-blue-800">Slipstream Support</a>.</p>
+        <p class="mt-4 leading-7"><a href="/guide.html" class="font-medium text-blue-700 hover:text-blue-800">Back to the Slipstream guide</a></p>
       </section>
     </main>
-    <footer class="legal">
-      <div class="wrap">
-        <p>© 2026 Critical Path Works Ltd · Registered in England and Wales (Company No. 17585654)</p>
-        <p>Registered Office: 77 Lansdowne Road, Newcastle Upon Tyne, United Kingdom, NE12 9BD · <a href="mailto:support@criticalpathworks.com">support@criticalpathworks.com</a> · <a href="/privacy.html">Privacy &amp; Security</a></p>
+    <footer class="border-t border-slate-200 bg-slate-950 text-slate-300">
+      <div class="mx-auto grid max-w-6xl gap-10 px-6 py-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <p class="font-semibold text-white">Critical Path Works</p>
+          <p class="mt-3 text-sm leading-6">Release risk for Jira Cloud, built on Atlassian Forge.</p>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Product</p>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li><a href="/slipstream.html" class="hover:text-white">Slipstream</a></li>
+            <li><a href="/guide.html" class="hover:text-white">Guide</a></li>
+            <li><a href="mailto:support@criticalpathworks.com?subject=Slipstream%20early%20access" class="hover:text-white">Request early access</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Company</p>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li><a href="/privacy.html" class="hover:text-white">Privacy &amp; Security</a></li>
+            <li><a href="/support.html" class="hover:text-white">Support</a></li>
+            <li><a href="mailto:support@criticalpathworks.com" class="hover:text-white">support@criticalpathworks.com</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Legal entity</p>
+          <p class="mt-3 text-sm leading-6">Critical Path Works Ltd<br />Company No. 17585654<br />Registered in England and Wales</p>
+        </div>
+      </div>
+      <div class="border-t border-slate-800">
+        <p class="mx-auto max-w-6xl px-6 py-4 text-xs text-slate-500">© 2026 Critical Path Works Ltd. Atlassian is the merchant of record for Paid subscriptions.</p>
       </div>
     </footer>
   </body>
