@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Slipstream — Release Risk &amp; Dependency Radar</title>
-    <meta name="description" content="Quick-start guide for Slipstream, the Forge release-risk radar for Jira Cloud." />
+    <title>Slipstream — Early-warning release radar for Jira</title>
+    <meta name="description" content="Slipstream shows VPs of Engineering, Engineering Directors, and TPMs which Jira release is at risk, including blockers that were never linked. $4.00 per user per month, or $40 per user per year. Runs on Atlassian." />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="icon" href="/favicon.png" />
   </head>
@@ -42,13 +42,13 @@
           <p class="badge">Runs on Atlassian · Zero External Egress</p>
         </div>
       </div>
-      <h1>Know whether the release date still holds.</h1>
-      <p class="lede">Slipstream is a Jira Cloud app that reads the work already on the site and turns it into a dependency graph, a release forecast, and a ranked risk list.</p>
+      <h1>The release date, before the status chase starts.</h1>
+      <p class="lede">TPMs and release managers spend the week collecting the same update from spreadsheets and from four different Jira boards. Slipstream replaces that chase with one early-warning view that runs 100% on Atlassian.</p>
       <ul class="intro">
-        <li>It uncovers explicit and implicit cross-project dependencies from Fix Versions and issue mentions, and it flags <strong>FLOAT 0</strong> critical-path bottlenecks and dependency cycles.</li>
-        <li>It generates confidence-weighted <strong>PERT Fix Version forecasts</strong> so release managers can see delivery odds against the target date.</li>
-        <li>It ranks blockers with <strong>FMEA Risk Priority Numbers (S × O × D)</strong>, paired with AI-assisted remediation briefs.</li>
-        <li>An in-memory <strong>What-If Simulator</strong> models duration delays, dependency removals, and target-date shifts without changing live Jira data.</li>
+        <li><strong>The pain.</strong> The blocker that moves a date is rarely on the board you are looking at. It sits in another project, often only as a comment or a pull request name, and it shows up in the Monday meeting.</li>
+        <li><strong>The radar.</strong> Slipstream reads the Jira work you already have and catches those unlinked cross-project blockers before they blow the date. It also reads the Blocks links your teams did keep.</li>
+        <li><strong>The forecast.</strong> For each Fix Version with a release date, leaders see the chance of landing it, the longest chain of work, and what changes if one item slips. A version with no date is marked No date, not healthy.</li>
+        <li><strong>The ROI.</strong> Cross-project release forecasting without forcing a $10-plus-per-seat Jira Premium upgrade across the company. Paid is $4.00 per user per month, or $40 per user per year. Jira data does not leave Atlassian.</li>
       </ul>
     </div>
     <main class="wrap">
@@ -59,22 +59,22 @@
           <article class="step">
             <span>01</span>
             <h3>Install</h3>
-            <p>A Jira admin installs Slipstream from the Atlassian Marketplace. Atlassian is the merchant of record. Paid is about $2.00 per Jira seat per month after the 30-day Evaluation.</p>
+            <p>A Jira admin installs Slipstream from the Atlassian Marketplace. Atlassian is the merchant of record. After the 30-day Evaluation, Paid is $4.00 per user per month, or $40 per user per year.</p>
           </article>
           <article class="step">
             <span>02</span>
             <h3>Use a Fix Version</h3>
-            <p>Put the release issues on a Fix Version and set its release date. That date is the PERT target. Issues without a version still appear on the portfolio radar.</p>
+            <p>Put the release issues on a Fix Version and set its release date. That date is what the forecast is judged against. Issues without a version still appear on the portfolio view.</p>
           </article>
           <article class="step">
             <span>03</span>
             <h3>Run the first scan</h3>
-            <p>Open Slipstream from the Jira global or project page and choose Run scan. The page returns a job id. The graph, forecasts, and FMEA scores are read back from Forge SQL after the scan finishes.</p>
+            <p>Open Slipstream from the Jira Apps menu or the project sidebar and choose Run scan. The page updates when the scan finishes. No spreadsheet and no setup form.</p>
           </article>
           <article class="step">
             <span>04</span>
             <h3>Read the gate</h3>
-            <p>The header shows GO, CONDITIONAL, or HOLD, plus PERT confidence and critical-path days. Engineers also see the same risk on the issue panel inside the ticket.</p>
+            <p>The header shows On track, Watch, Hold, or No date, together with the chance of hitting the date and the length of the longest chain. The same warning appears on the Jira issue, so the engineer in the ticket sees it too.</p>
           </article>
         </div>
         <table>
@@ -85,7 +85,7 @@
           <tbody>
             <tr><td>Projects</td><td>Up to 2 Jira projects</td><td>Full portfolio, no project cap</td></tr>
             <tr><td>Scans</td><td>1 scheduled scan each 24 hours and 1 manual scan each 24 hours</td><td>Hourly scheduled scans and event-driven scans</td></tr>
-            <tr><td>Model briefs</td><td>Off. Deterministic summary only</td><td>Top 5 highest-RPN chains via Forge <code>@forge/llm</code></td></tr>
+            <tr><td>Written briefs</td><td>A plain summary of the release. No model.</td><td>A short brief on the five highest-risk chains. The model runs inside Atlassian.</td></tr>
             <tr><td>Data leaving Atlassian</td><td>None</td><td>None. The model runs inside Forge</td></tr>
           </tbody>
         </table>
@@ -94,56 +94,60 @@
         <h2>Reading the Release Radar</h2>
         <div class="gates">
           <article class="gate gate-go">
-            <h3>GO</h3>
-            <p>No unresolved cycle, release confidence at 80% or above when a target date exists, and no open High or Critical RPN.</p>
+            <h3>On track</h3>
+            <p>The screen shows GO. The release has a date, the chance of hitting it is 80% or better, nothing is stuck in a loop, and no open item is in the high-risk band.</p>
           </article>
           <article class="gate gate-watch">
-            <h3>CONDITIONAL</h3>
-            <p>Confidence from 50% up to 80%, or any open risk at RPN 150 or above. High is 150–249. Critical is 250 and above.</p>
+            <h3>Watch</h3>
+            <p>The screen shows CONDITIONAL. The chance of hitting the date is from 50% up to 80%, or an open item is high risk. High risk starts at a score of 150. Critical starts at 250.</p>
           </article>
           <article class="gate gate-hold">
-            <h3>HOLD</h3>
-            <p>An unresolved cycle remains, or release confidence is below 50%.</p>
+            <h3>Hold</h3>
+            <p>The screen shows HOLD. Work is still looping on itself, or the chance of hitting the date is below 50%.</p>
+          </article>
+          <article class="gate gate-watch">
+            <h3>No date</h3>
+            <p>The screen shows NO DATE. A Fix Version has no release date, so Slipstream will not call the release healthy. Set the date to get a delivery chance.</p>
           </article>
         </div>
-        <h3>Fix Version forecasts</h3>
-        <p>Each card is one stored Fix Version. The title is prefixed with the project key, so two versions that share a name stay distinct, for example <strong>BILL · Slipstream Sandbox Train</strong>. The card shows the target date, expected days ± standard deviation, the PERT confidence percentage, and the projected finish. A missing target date shows “No target date” instead of a percentage.</p>
-        <h3>Critical path and dependencies</h3>
-        <p><strong>FLOAT 0</strong> marks an issue on the critical path. Total float and free float are both shown. Explicit links and inferred links use separate badges:</p>
+        <h3>Release forecasts</h3>
+        <p>Each card is one Fix Version. The project key stays in the title, so two versions with the same name stay distinct, for example <strong>BILL · Slipstream Sandbox Train</strong>. The card shows the target date, how long the work is expected to take, the chance of hitting the date, and the projected finish. A missing date does not show a percentage.</p>
+        <h3>What counts as a blocker</h3>
+        <p>An item with no slack is on the longest chain. Slipstream also shows how much room the other items have. It treats these signals as dependencies:</p>
         <ul>
-          <li>Explicit Blocks link — 100% confidence</li>
-          <li>Cross-project epic parent or child — 90% confidence</li>
-          <li>Branch, pull request, or commit name written in a comment or description — 75% confidence</li>
-          <li>Plain issue-key mention — 70% confidence</li>
-          <li>Shared Fix Version — 60% confidence</li>
+          <li>A Blocks link — treated as certain</li>
+          <li>A parent or child epic that crosses projects — strong</li>
+          <li>A branch, pull request, or commit name written in a comment or description — the implicit case leaders usually miss</li>
+          <li>A plain issue key written in the text — weaker, and shown as such</li>
+          <li>The same Fix Version name in two projects — a release anchor, not a hand-drawn link</li>
         </ul>
-        <p>A cycle is broken before the schedule is calculated. The removed edge is the lowest-confidence link, and the affected issues show a cycle alert. Detection for that anomaly is 10.</p>
-        <p class="note">Unestimated default means story points, time tracking, and dates were all missing, so the duration used the issue-type default. The forecast warning counts how many items used that default.</p>
+        <p>If work loops back on itself, Slipstream breaks the weakest link, shows which issues were in the loop, and does not pretend the loop is a schedule.</p>
+        <p class="note">When an item has no story points, no time estimate, and no dates, Slipstream uses a plain default for that issue type and says so. A release made mostly of defaults is not called on track.</p>
       </section>
       <section id="fmea">
-        <h2>FMEA risk scoring and the Jira issue panel</h2>
-        <p>Every open issue receives <strong>RPN = Severity × Occurrence × Detection</strong>. Each factor is an integer from 1 to 10, so open RPN runs from 1 to 1,000. Done issues score 0 and stay off the top-risk board.</p>
+        <h2>Why an item is a release risk</h2>
+        <p>Each open item gets one risk score from three questions: how badly it can move the release, how likely that is, and how easy it is to miss. Finished items drop off the list.</p>
         <div class="cards">
           <article class="card">
-            <h3>Severity, Occurrence, Detection</h3>
-            <p>Severity reflects how much the issue can move the release. Occurrence rises with missing ownership, sprint carry-over, and schedule pressure. Detection rises when the estimate is weak, the link is implicit, or a cycle was broken. The radar shows S, O, and D next to the RPN.</p>
+            <h3>What raises the score</h3>
+            <p>Impact rises when the item sits on the longest chain or blocks work in another project. Likelihood rises when nobody owns it or it has already rolled a sprint. It is easier to miss when the only evidence is a comment, or when nobody estimated it. The page shows the three parts next to the score.</p>
           </article>
           <article class="card">
-            <h3>Issue panel</h3>
-            <p>Open any Jira issue and read the Slipstream panel. It shows the summary, numeric float with FLOAT 0 highlighted, upstream and implicit-upstream counts, downstream blast radius, the S / O / D breakdown, the owner role, and both the model brief and the deterministic brief when they are stored. Display names and email addresses are not shown.</p>
+            <h3>Inside the Jira ticket</h3>
+            <p>Open any issue and read the Slipstream panel. It shows whether the item is on the longest chain, what is blocking it, what it blocks, and the short brief. Names and email addresses are not shown.</p>
           </article>
         </div>
       </section>
       <section id="what-if">
-        <h2>What-If simulator and release brief</h2>
+        <h2>Ask what happens if it slips</h2>
         <div class="cards">
           <article class="card">
-            <h3>In-memory scenarios</h3>
-            <p>Add delay days, remove a dependency, or shift a Fix Version target. Slipstream replays the schedule on the snapshot already loaded in the page. The simulation does not write Forge SQL and does not edit the Jira issues.</p>
+            <h3>A question, not a new plan</h3>
+            <p>Add delay, remove a dependency, or move the release date. Slipstream answers from the scan already on the page. It does not change Jira and it does not save a second plan.</p>
           </article>
           <article class="card">
-            <h3>Copy Release Brief</h3>
-            <p>Copy Release Brief builds a Markdown note with the stage-gate, readiness, confidence, critical path, cycles, and top risks. Account ids and email addresses are left out, so the note can be pasted into a release conversation.</p>
+            <h3>A note for the release review</h3>
+            <p>Copy Release Brief produces a short note: the call, the chance of hitting the date, the longest chain, and the top risks. It leaves out account ids and email addresses, so it can go into the review.</p>
           </article>
         </div>
       </section>
