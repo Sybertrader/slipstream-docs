@@ -7,6 +7,20 @@
     <meta name="description" content="Slipstream finds unlinked cross-project blockers in Jira, scores the release, and shows a Go, Conditional, Hold, or No date call. $4.00 per user per month, or $40 per user per year. Runs on Atlassian." />
     <link rel="stylesheet" href="/assets/site.css" />
     <link rel="icon" href="/favicon.png" />
+    <style>
+      button.shot { display: block; width: 100%; margin: 0; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; text-align: inherit; cursor: zoom-in; }
+      button.shot img { cursor: zoom-in; transition: border-color 160ms ease, box-shadow 160ms ease; }
+      button.shot:hover img, button.shot:focus-visible img { border-color: #94a3b8; box-shadow: 0 10px 28px rgba(15, 23, 42, 0.14); }
+      button.shot:focus-visible { outline: 2px solid #1d4ed8; outline-offset: 3px; }
+      figure.shot-figure { margin: 0; }
+      .shot-caption { margin-top: 0.5rem; text-align: center; font-size: 0.75rem; line-height: 1rem; color: #64748b; }
+      .shot-lightbox { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 4rem 1.25rem 1.5rem; background: rgba(15, 23, 42, 0.86); }
+      .shot-lightbox[hidden] { display: none; }
+      .shot-lightbox img { max-width: min(72rem, 100%); max-height: calc(100vh - 6rem); border-radius: 0.75rem; background: #fff; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45); }
+      .shot-lightbox-close { position: absolute; top: 1rem; right: 1rem; width: 2.5rem; height: 2.5rem; border: 0; border-radius: 999px; background: rgba(255, 255, 255, 0.14); color: #fff; font-size: 1.75rem; line-height: 1; cursor: pointer; }
+      .shot-lightbox-close:hover { background: rgba(255, 255, 255, 0.24); }
+      .shot-lightbox-close:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+    </style>
   </head>
   <body class="bg-white text-slate-900 antialiased">
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-3 focus:py-2">Skip to content</a>
@@ -38,7 +52,9 @@
         <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600">A release slips when a blocker lives in another project and was never drawn as a link. Slipstream surfaces that chain, the chance of hitting the Fix Version date, and a gate a VP of Engineering can read in one pass.</p>
       </section>
       <section class="mx-auto max-w-6xl px-6 pb-20">
-        <img src="/assets/hero-screenshot.png" alt="Slipstream header with a Conditional gate, readiness 80, 100 percent PERT confidence, a 31-day critical path, and a Fix Version forecast." class="w-full rounded-2xl border border-slate-200 bg-slate-50 shadow-sm" />
+        <button type="button" class="shot" aria-label="Enlarge screenshot: Slipstream header with a Conditional gate, readiness 80, 100 percent PERT confidence, a 23-day critical path, and a Fix Version forecast.">
+          <img src="/assets/radar-clean.png" alt="Slipstream header with a Conditional gate, readiness 80, 100 percent PERT confidence, a 23-day critical path, and a Fix Version forecast." class="w-full cursor-zoom-in rounded-2xl border border-slate-200 bg-slate-50 shadow-sm" />
+        </button>
       </section>
 
       <section class="border-t border-slate-200">
@@ -48,13 +64,23 @@
             <h2 class="mt-3 text-3xl font-semibold tracking-tight">Catch the dependencies nobody linked.</h2>
             <p class="mt-4 leading-7 text-slate-600">Teams keep Blocks links when they remember. The date-moving dependency is often a branch name, a pull request, or an issue key written into a comment. Slipstream reads those signals, marks them as implicit, and shows the confidence of each edge. A shared Fix Version across two projects is treated as a release anchor, not as a hand-drawn link.</p>
           </div>
-          <img src="/assets/feature-dependencies.png" alt="Dependency map filtered to implicit cross-project links, with dashed edges and an evidence column showing Fix Version and issue mention." class="w-full rounded-xl border border-slate-200" />
+          <figure class="shot-figure">
+            <button type="button" class="shot" aria-label="Enlarge screenshot: Dependency map filtered to implicit cross-project links, with dashed edges and an evidence column showing Fix Version and issue mention.">
+              <img src="/assets/feature-dependencies.png" alt="Dependency map filtered to implicit cross-project links, with dashed edges and an evidence column showing Fix Version and issue mention." class="w-full cursor-zoom-in rounded-xl border border-slate-200" />
+            </button>
+            <figcaption class="shot-caption">Click image to inspect full resolution</figcaption>
+          </figure>
         </div>
       </section>
 
       <section class="border-t border-slate-100 bg-slate-50">
         <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 lg:grid-cols-2">
-          <img src="/assets/feature-gates.png" alt="Conditional release gate with readiness, PERT confidence, critical-path length, and a Fix Version forecast that flags a cycle." class="w-full rounded-xl border border-slate-200 bg-white lg:order-1" />
+          <figure class="shot-figure lg:order-1">
+            <button type="button" class="shot" aria-label="Enlarge screenshot: Slipstream release gate badge inside a Jira issue">
+              <img src="/assets/jira-issue-panel.png" alt="Slipstream release gate badge inside a Jira issue" class="w-full cursor-zoom-in rounded-xl border border-slate-200 bg-white" />
+            </button>
+            <figcaption class="shot-caption">Click image to inspect full resolution</figcaption>
+          </figure>
           <div class="lg:order-2">
             <p class="text-sm font-medium text-blue-700">02</p>
             <h2 class="mt-3 text-3xl font-semibold tracking-tight">A release gate with four answers.</h2>
@@ -71,7 +97,12 @@
             <h2 class="mt-3 text-3xl font-semibold tracking-tight">See the FLOAT 0 chain.</h2>
             <p class="mt-4 leading-7 text-slate-600">The critical path is the longest chain of remaining work. Items with no slack are marked FLOAT 0. Slipstream ranks the open items on that chain by release risk, shows who is unassigned, and says when an estimate fell back to a default. Leaders can ask what happens if one item slips. The answer stays in memory and does not rewrite Jira.</p>
           </div>
-          <img src="/assets/feature-critical-path.png" alt="Top release risks with FLOAT 0 marked on the critical-path issues and a short brief beside each score." class="w-full rounded-xl border border-slate-200" />
+          <figure class="shot-figure">
+            <button type="button" class="shot" aria-label="Enlarge screenshot: Top release risks with FLOAT 0 marked on the critical-path issues and a short brief beside each score.">
+              <img src="/assets/feature-critical-path.png" alt="Top release risks with FLOAT 0 marked on the critical-path issues and a short brief beside each score." class="w-full cursor-zoom-in rounded-xl border border-slate-200" />
+            </button>
+            <figcaption class="shot-caption">Click image to inspect full resolution</figcaption>
+          </figure>
         </div>
       </section>
 
@@ -127,5 +158,46 @@
         <p class="mx-auto max-w-6xl px-6 py-4 text-xs text-slate-500">© 2026 Critical Path Works Ltd. Atlassian is the merchant of record for Paid subscriptions.</p>
       </div>
     </footer>
+    <div id="shot-lightbox" class="shot-lightbox" hidden>
+      <button type="button" class="shot-lightbox-close" aria-label="Close">×</button>
+      <img alt="" />
+    </div>
+    <script>
+      (function () {
+        var root = document.getElementById("shot-lightbox");
+        if (!root) return;
+        var full = root.querySelector("img");
+        var closer = root.querySelector(".shot-lightbox-close");
+        var last = null;
+        function open(src, alt, trigger) {
+          full.src = src;
+          full.alt = alt || "Screenshot";
+          last = trigger;
+          root.hidden = false;
+          document.body.style.overflow = "hidden";
+          closer.focus();
+        }
+        function close() {
+          if (root.hidden) return;
+          root.hidden = true;
+          full.removeAttribute("src");
+          document.body.style.overflow = "";
+          if (last) last.focus();
+        }
+        document.querySelectorAll("button.shot").forEach(function (button) {
+          button.addEventListener("click", function () {
+            var picture = button.querySelector("img");
+            if (!picture) return;
+            open(picture.currentSrc || picture.src, picture.alt, button);
+          });
+        });
+        root.addEventListener("click", function (event) {
+          if (event.target === root || event.target === closer) close();
+        });
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") close();
+        });
+      })();
+    </script>
   </body>
 </html>

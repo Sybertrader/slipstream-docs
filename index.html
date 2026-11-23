@@ -7,6 +7,18 @@
     <meta name="description" content="Slipstream finds the cross-project Jira blocker nobody linked, including the one in a comment or a pull request, and shows whether the release date still holds. $4.00 per user per month, or $40 per user per year. Runs on Atlassian." />
     <link rel="stylesheet" href="/assets/site.css" />
     <link rel="icon" href="/favicon.png" />
+    <style>
+      button.shot { display: block; width: 100%; margin: 0; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; text-align: inherit; cursor: zoom-in; }
+      button.shot img { cursor: zoom-in; transition: border-color 160ms ease, box-shadow 160ms ease; }
+      button.shot:hover img, button.shot:focus-visible img { border-color: #94a3b8; box-shadow: 0 10px 28px rgba(15, 23, 42, 0.14); }
+      button.shot:focus-visible { outline: 2px solid #1d4ed8; outline-offset: 3px; }
+      .shot-lightbox { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 4rem 1.25rem 1.5rem; background: rgba(15, 23, 42, 0.86); }
+      .shot-lightbox[hidden] { display: none; }
+      .shot-lightbox img { max-width: min(72rem, 100%); max-height: calc(100vh - 6rem); border-radius: 0.75rem; background: #fff; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45); }
+      .shot-lightbox-close { position: absolute; top: 1rem; right: 1rem; width: 2.5rem; height: 2.5rem; border: 0; border-radius: 999px; background: rgba(255, 255, 255, 0.14); color: #fff; font-size: 1.75rem; line-height: 1; cursor: pointer; }
+      .shot-lightbox-close:hover { background: rgba(255, 255, 255, 0.24); }
+      .shot-lightbox-close:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+    </style>
   </head>
   <body class="bg-white text-slate-900 antialiased">
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-3 focus:py-2">Skip to content</a>
@@ -34,7 +46,7 @@
     <main id="main">
       <section class="mx-auto grid max-w-6xl items-center gap-12 px-6 pb-16 pt-16 lg:grid-cols-2 lg:pt-20">
         <div>
-          <p class="text-sm font-medium text-blue-700">For release leaders on Jira</p>
+          <p class="text-sm font-medium text-blue-700">For release leaders on Jira · 100% Atlassian Forge · Zero Data Egress</p>
           <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl sm:leading-tight">See which other team is about to move your date.</h1>
           <p class="mt-6 text-lg leading-8 text-slate-600">Slipstream finds the cross-project blocker nobody linked, including the one written in a comment or a pull request. You see the longest chain, and whether the release date still holds. The work never leaves Atlassian.</p>
           <div class="mt-8 flex flex-wrap gap-3">
@@ -43,7 +55,9 @@
           </div>
           <p class="mt-4 text-sm text-slate-500">Free for up to 10 Jira users. Paid is $4.00 per user per month, or $40 per user per year.</p>
         </div>
-        <img src="/assets/hero-screenshot.png" alt="Slipstream inside Jira, showing delivery confidence, the length of the critical path, and a Fix Version forecast." class="w-full rounded-2xl border border-slate-200 bg-slate-50 shadow-sm" />
+        <button type="button" class="shot" aria-label="Enlarge screenshot: Slipstream inside Jira, showing delivery confidence, the length of the critical path, and a Fix Version forecast.">
+          <img src="/assets/radar-clean.png" alt="Slipstream inside Jira, showing delivery confidence, the length of the critical path, and a Fix Version forecast." class="w-full cursor-zoom-in rounded-2xl border border-slate-200 bg-slate-50 shadow-sm" />
+        </button>
       </section>
 
       <section class="border-y border-slate-200 bg-slate-50" aria-label="What the week costs now">
@@ -68,21 +82,27 @@
         <h2 class="mt-2 max-w-2xl text-3xl font-semibold tracking-tight">Three answers, from the Jira work you already have.</h2>
         <div class="mt-12 grid gap-8 lg:grid-cols-3">
           <article class="overflow-hidden rounded-2xl border border-slate-200">
-            <img src="/assets/feature-dependencies.png" alt="A map of implicit cross-project dependencies, including links found in issue text and shared Fix Versions." class="w-full border-b border-slate-200 bg-slate-50" />
+            <button type="button" class="shot" aria-label="Enlarge screenshot: A map of implicit cross-project dependencies, including links found in issue text and shared Fix Versions.">
+              <img src="/assets/feature-dependencies.png" alt="A map of implicit cross-project dependencies, including links found in issue text and shared Fix Versions." class="w-full cursor-zoom-in border-b border-slate-200 bg-slate-50" />
+            </button>
             <div class="p-6">
               <h3 class="text-base font-semibold text-slate-950">The blocker nobody linked</h3>
               <p class="mt-2 text-sm leading-6 text-slate-600">Blocks links stay when a team remembered them. Slipstream also reads branch names, pull requests, and issue keys written in comments, and marks how sure each one is.</p>
             </div>
           </article>
           <article class="overflow-hidden rounded-2xl border border-slate-200">
-            <img src="/assets/feature-gates.png" alt="A Fix Version forecast with a target date, expected duration, and delivery confidence." class="w-full border-b border-slate-200 bg-slate-50" />
+            <button type="button" class="shot" aria-label="Enlarge screenshot: A Fix Version forecast with a target date, expected duration, and delivery confidence.">
+              <img src="/assets/radar-clean.png" alt="A Fix Version forecast with a target date, expected duration, and delivery confidence." class="w-full cursor-zoom-in border-b border-slate-200 bg-slate-50" />
+            </button>
             <div class="p-6">
               <h3 class="text-base font-semibold text-slate-950">Whether the date still holds</h3>
               <p class="mt-2 text-sm leading-6 text-slate-600">Each Fix Version with a release date gets a delivery chance and a projected finish. A version with no date is called out, so a missing date is never treated as healthy.</p>
             </div>
           </article>
           <article class="overflow-hidden rounded-2xl border border-slate-200">
-            <img src="/assets/feature-critical-path.png" alt="Ranked release risks, with items that have no slack marked on the longest chain." class="w-full border-b border-slate-200 bg-slate-50" />
+            <button type="button" class="shot" aria-label="Enlarge screenshot: Ranked release risks, with items that have no slack marked on the longest chain.">
+              <img src="/assets/feature-critical-path.png" alt="Ranked release risks, with items that have no slack marked on the longest chain." class="w-full cursor-zoom-in border-b border-slate-200 bg-slate-50" />
+            </button>
             <div class="p-6">
               <h3 class="text-base font-semibold text-slate-950">The chain with no slack</h3>
               <p class="mt-2 text-sm leading-6 text-slate-600">The longest chain of remaining work is listed and ranked. You can ask what happens if one item slips. The answer stays on the page and does not rewrite Jira.</p>
@@ -103,7 +123,7 @@
           <ul class="space-y-4 text-sm leading-6 text-slate-300">
             <li class="rounded-xl border border-slate-800 bg-slate-900 p-5"><span class="block font-medium text-white">Free</span> Up to 10 Jira users, on up to 2 projects. One scheduled scan and one manual scan a day.</li>
             <li class="rounded-xl border border-slate-800 bg-slate-900 p-5"><span class="block font-medium text-white">Paid and Evaluation</span> The full portfolio, hourly scans, and a short brief on the five highest-risk chains. The brief runs inside Forge.</li>
-            <li class="rounded-xl border border-slate-800 bg-slate-900 p-5"><span class="block font-medium text-white">Security</span> BigPicture stores project data on Appfire infrastructure. Structure by Tempo processes Jira-derived data outside Atlassian. Slipstream has no vendor server. The scan stays in Atlassian.</li>
+            <li class="rounded-xl border border-slate-800 bg-slate-900 p-5"><span class="block font-medium text-white">Security</span> Traditional Connect apps route Jira data through external vendor servers. Slipstream has no vendor server—the scan stays 100% inside Atlassian.</li>
           </ul>
         </div>
       </section>
@@ -145,5 +165,46 @@
         <p class="mx-auto max-w-6xl px-6 py-4 text-xs text-slate-500">© 2026 Critical Path Works Ltd. Atlassian is the merchant of record for Paid subscriptions.</p>
       </div>
     </footer>
+    <div id="shot-lightbox" class="shot-lightbox" hidden>
+      <button type="button" class="shot-lightbox-close" aria-label="Close">×</button>
+      <img alt="" />
+    </div>
+    <script>
+      (function () {
+        var root = document.getElementById("shot-lightbox");
+        if (!root) return;
+        var full = root.querySelector("img");
+        var closer = root.querySelector(".shot-lightbox-close");
+        var last = null;
+        function open(src, alt, trigger) {
+          full.src = src;
+          full.alt = alt || "Screenshot";
+          last = trigger;
+          root.hidden = false;
+          document.body.style.overflow = "hidden";
+          closer.focus();
+        }
+        function close() {
+          if (root.hidden) return;
+          root.hidden = true;
+          full.removeAttribute("src");
+          document.body.style.overflow = "";
+          if (last) last.focus();
+        }
+        document.querySelectorAll("button.shot").forEach(function (button) {
+          button.addEventListener("click", function () {
+            var picture = button.querySelector("img");
+            if (!picture) return;
+            open(picture.currentSrc || picture.src, picture.alt, button);
+          });
+        });
+        root.addEventListener("click", function (event) {
+          if (event.target === root || event.target === closer) close();
+        });
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") close();
+        });
+      })();
+    </script>
   </body>
 </html>
