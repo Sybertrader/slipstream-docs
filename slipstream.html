@@ -67,12 +67,12 @@
               {
                 "@type": "Question",
                 "name": "Does the app count seats?",
-                "acceptedAnswer": { "@type": "Answer", "text": "No. An active Paid licence or an active Evaluation unlocks the paid features at any seat count." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Free on the Atlassian Marketplace is for up to 10 users. Inside the app, Free is limited to 2 projects. An active Paid licence or Evaluation has no project cap and keeps the paid features at any seat count." }
               },
               {
                 "@type": "Question",
                 "name": "What happens when the Evaluation ends without a licence?",
-                "acceptedAnswer": { "@type": "Answer", "text": "A missing, inactive, or lapsed licence means Free: at most 2 projects, one scheduled and one manual scan per 24 hours, and a deterministic summary." }
+                "acceptedAnswer": { "@type": "Answer", "text": "A missing, inactive, or lapsed licence means Free: up to 10 Marketplace users, at most 2 projects inside the app, one scheduled and one manual scan per 24 hours, and a deterministic summary." }
               },
               {
                 "@type": "Question",
@@ -248,10 +248,11 @@
           <div class="mt-10 grid gap-6 md:grid-cols-2">
             <div class="flex flex-col rounded-2xl border border-slate-800 bg-slate-900 p-8">
               <h3 class="text-lg font-semibold">Free, or an expired Evaluation</h3>
-              <p class="mt-3 text-slate-300">A missing, inactive, or lapsed licence. The app does not count seats.</p>
+              <p class="mt-3 text-slate-300">A missing, inactive, or lapsed licence.</p>
               <ul class="mt-6 space-y-3 text-base leading-7 text-slate-300">
+                <li>Up to 10 users on the Marketplace.</li>
+                <li>At most 2 projects inside the app.</li>
                 <li>Model brief off. Deterministic summary only.</li>
-                <li>At most 2 projects.</li>
                 <li>1 scheduled scan and 1 manual scan per 24 hours.</li>
                 <li>Issue and link events are ignored.</li>
                 <li>What-If in memory, on the loaded snapshot.</li>
@@ -290,7 +291,8 @@
               </thead>
               <tbody>
                 <tr class="border-b border-slate-800"><th scope="row" class="px-4 py-3 font-medium">Model brief</th><td class="px-4 py-3">Off. Deterministic summary only</td><td class="px-4 py-3">Brief on the top 5 highest-RPN chains, run inside Forge</td></tr>
-                <tr class="border-b border-slate-800"><th scope="row" class="px-4 py-3 font-medium">Projects</th><td class="px-4 py-3">At most 2</td><td class="px-4 py-3">No cap</td></tr>
+                <tr class="border-b border-slate-800"><th scope="row" class="px-4 py-3 font-medium">Marketplace users</th><td class="px-4 py-3">Up to 10</td><td class="px-4 py-3">Any seat count</td></tr>
+                <tr class="border-b border-slate-800"><th scope="row" class="px-4 py-3 font-medium">Projects inside the app</th><td class="px-4 py-3">At most 2</td><td class="px-4 py-3">No cap</td></tr>
                 <tr class="border-b border-slate-800"><th scope="row" class="px-4 py-3 font-medium">Scheduled scans</th><td class="px-4 py-3">1 per 24 hours</td><td class="px-4 py-3">Hourly</td></tr>
                 <tr class="border-b border-slate-800"><th scope="row" class="px-4 py-3 font-medium">Manual scans</th><td class="px-4 py-3">1 per 24 hours</td><td class="px-4 py-3">Uncapped</td></tr>
                 <tr class="border-b border-slate-800"><th scope="row" class="px-4 py-3 font-medium">Issue and link events</th><td class="px-4 py-3">Ignored</td><td class="px-4 py-3">Can start a scan</td></tr>
@@ -305,11 +307,11 @@
             <div class="mt-4 divide-y divide-slate-800 border-y border-slate-800">
               <details class="py-4">
                 <summary class="cursor-pointer text-sm font-medium">Does the app count seats?</summary>
-                <p class="mt-3 text-sm leading-6 text-slate-300">No. An active Paid licence or an active Evaluation unlocks the paid features at any seat count.</p>
+                <p class="mt-3 text-sm leading-6 text-slate-300">Free on the Atlassian Marketplace is for up to 10 users. Inside the app, Free is limited to 2 projects. An active Paid licence or Evaluation has no project cap and keeps the paid features at any seat count.</p>
               </details>
               <details class="py-4">
                 <summary class="cursor-pointer text-sm font-medium">What happens when the Evaluation ends without a licence?</summary>
-                <p class="mt-3 text-sm leading-6 text-slate-300">The site drops to Free: at most 2 projects, one scheduled and one manual scan per 24 hours, and a deterministic summary.</p>
+                <p class="mt-3 text-sm leading-6 text-slate-300">The site drops to Free: up to 10 Marketplace users, at most 2 projects inside the app, one scheduled and one manual scan per 24 hours, and a deterministic summary.</p>
               </details>
               <details class="py-4">
                 <summary class="cursor-pointer text-sm font-medium">Who bills us?</summary>
