@@ -1,46 +1,126 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Slipstream — The Dependency Radar for Jira</title>
-    <meta name="description" content="Slipstream finds unlinked cross-project blockers in Jira, scores the release, and shows a Go, Conditional, Hold, or No date call. $4.00 per user per month, or $40 per user per year. Runs on Atlassian." />
+    <title>Release Risk &amp; Dependency Radar — Slipstream</title>
+    <meta name="description" content="Slipstream is the Jira dependency and Fix Version forecast for release risk. Critical path, PERT confidence, and a gate call, without a Premium upgrade." />
+    <link rel="canonical" href="https://criticalpathworks.com/slipstream.html" />
+    <meta property="og:title" content="Release Risk &amp; Dependency Radar — Slipstream" />
+    <meta property="og:description" content="Slipstream is the Jira dependency and Fix Version forecast for release risk. Critical path, PERT confidence, and a gate call, without a Premium upgrade." />
+    <meta property="og:url" content="https://criticalpathworks.com/slipstream.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://criticalpathworks.com/assets/og-radar.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Release Risk &amp; Dependency Radar — Slipstream" />
+    <meta name="twitter:description" content="Slipstream is the Jira dependency and Fix Version forecast for release risk. Critical path, PERT confidence, and a gate call, without a Premium upgrade." />
+    <meta name="twitter:image" content="https://criticalpathworks.com/assets/og-radar.jpg" />
     <link rel="stylesheet" href="/assets/site.css" />
-    <link rel="icon" href="/favicon.png" />
-    <style>
-      button.shot { display: block; width: 100%; margin: 0; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; text-align: inherit; cursor: zoom-in; }
-      button.shot img { cursor: zoom-in; transition: border-color 160ms ease, box-shadow 160ms ease; }
-      button.shot:hover img, button.shot:focus-visible img { border-color: #94a3b8; box-shadow: 0 10px 28px rgba(15, 23, 42, 0.14); }
-      button.shot:focus-visible { outline: 2px solid #1d4ed8; outline-offset: 3px; }
-      figure.shot-figure { margin: 0; }
-      .shot-caption { margin-top: 0.5rem; text-align: center; font-size: 0.75rem; line-height: 1rem; color: #64748b; }
-      .shot-lightbox { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 4rem 1.25rem 1.5rem; background: rgba(15, 23, 42, 0.86); }
-      .shot-lightbox[hidden] { display: none; }
-      .shot-lightbox img { max-width: min(72rem, 100%); max-height: calc(100vh - 6rem); border-radius: 0.75rem; background: #fff; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45); }
-      .shot-lightbox-close { position: absolute; top: 1rem; right: 1rem; width: 2.5rem; height: 2.5rem; border: 0; border-radius: 999px; background: rgba(255, 255, 255, 0.14); color: #fff; font-size: 1.75rem; line-height: 1; cursor: pointer; }
-      .shot-lightbox-close:hover { background: rgba(255, 255, 255, 0.24); }
-      .shot-lightbox-close:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
-    </style>
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "Critical Path Works Ltd",
+            "legalName": "Critical Path Works Ltd",
+            "url": "https://criticalpathworks.com/",
+            "email": "support@criticalpathworks.com",
+            "identifier": "17585654"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "Slipstream",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Jira Cloud (Atlassian Forge)",
+            "offers": [
+              {
+                "@type": "Offer",
+                "price": "4.00",
+                "priceCurrency": "USD",
+                "priceSpecification": {
+                  "@type": "UnitPriceSpecification",
+                  "price": "4.00",
+                  "priceCurrency": "USD",
+                  "unitText": "user per month"
+                }
+              },
+              {
+                "@type": "Offer",
+                "price": "40.00",
+                "priceCurrency": "USD",
+                "priceSpecification": {
+                  "@type": "UnitPriceSpecification",
+                  "price": "40.00",
+                  "priceCurrency": "USD",
+                  "unitText": "user per year"
+                }
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Does the app count seats?",
+                "acceptedAnswer": { "@type": "Answer", "text": "No. An active Paid licence or an active Evaluation unlocks the paid features at any seat count." }
+              },
+              {
+                "@type": "Question",
+                "name": "What happens when the Evaluation ends without a licence?",
+                "acceptedAnswer": { "@type": "Answer", "text": "A missing, inactive, or lapsed licence means Free: at most 2 projects, one scheduled and one manual scan per 24 hours, and a deterministic summary." }
+              },
+              {
+                "@type": "Question",
+                "name": "Who bills us?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Atlassian bills Paid subscriptions. Atlassian is the merchant of record." }
+              },
+              {
+                "@type": "Question",
+                "name": "Do volume discounts apply?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Marketplace volume discounts, if they are set in the Partner Portal, apply on top of the $4.00 list price. The app does not apply them." }
+              },
+              {
+                "@type": "Question",
+                "name": "Does Free call a model?",
+                "acceptedAnswer": { "@type": "Answer", "text": "No. Free and expired installs make zero model calls." }
+              },
+              {
+                "@type": "Question",
+                "name": "Does it write to Jira?",
+                "acceptedAnswer": { "@type": "Answer", "text": "No. Slipstream is read-only. It does not post Jira comments, and What-If does not write to Jira or to Forge SQL." }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body class="bg-white text-slate-900 antialiased">
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-3 focus:py-2">Skip to content</a>
     <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
-      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
+      <div class="relative mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
         <a href="/" class="flex items-center gap-3">
-          <img src="/assets/cpw-mark.png" alt="" class="h-9 w-9" width="36" height="36" />
+          <img src="/assets/cpw-mark-72.png" alt="" class="h-9 w-9" width="72" height="72" />
           <span class="text-sm font-semibold tracking-tight">Critical Path Works</span>
         </a>
-        <nav class="hidden items-center gap-8 text-sm text-slate-600 md:flex" aria-label="Primary">
+        <nav class="hidden items-center gap-6 text-sm text-slate-600 md:flex" aria-label="Primary">
           <a href="/slipstream.html" class="text-slate-900" aria-current="page">Product</a>
           <a href="/guide.html" class="hover:text-slate-900">Guide</a>
-          <a href="/support.html#early-access" class="rounded-md bg-blue-700 px-4 py-2 font-medium text-white hover:bg-blue-800">Request Early Access</a>
+          <a href="/privacy.html#security" class="hover:text-slate-900">Security</a>
+          <a href="/support.html#early-access" data-install class="inline-flex min-h-8 items-center rounded-md bg-blue-700 px-4 py-2 font-medium text-white hover:bg-blue-800">Request early access</a>
         </nav>
-        <details class="relative md:hidden">
-          <summary class="cursor-pointer list-none rounded-md border border-slate-300 px-3 py-2 text-sm font-medium">Menu</summary>
-          <div class="absolute right-0 mt-2 flex w-56 flex-col gap-3 rounded-lg border border-slate-200 bg-white p-4 text-sm shadow-lg">
-            <a href="/slipstream.html">Product</a>
-            <a href="/guide.html">Guide</a>
-            <a href="/support.html#early-access" class="rounded-md bg-blue-700 px-3 py-2 text-center font-medium text-white">Request Early Access</a>
+        <details class="nav-menu md:hidden">
+          <summary aria-label="Menu" class="inline-flex min-h-11 cursor-pointer list-none items-center rounded-md border border-slate-300 px-3 py-2 text-sm font-medium">Menu</summary>
+          <div class="absolute inset-x-0 top-full z-50 border-b border-slate-200 bg-white px-6 py-4 text-sm shadow-lg">
+            <a href="/slipstream.html" class="flex min-h-11 items-center">Product</a>
+            <a href="/guide.html" class="flex min-h-11 items-center">Guide</a>
+            <a href="/privacy.html#security" class="flex min-h-11 items-center">Security</a>
+            <a href="/support.html#early-access" data-install class="mt-2 inline-flex min-h-11 w-full items-center justify-center rounded-md bg-blue-700 px-3 py-2 font-medium text-white">Request early access</a>
           </div>
         </details>
       </div>
@@ -48,81 +128,206 @@
     <main id="main">
       <section class="mx-auto max-w-6xl px-6 pb-8 pt-16">
         <p class="text-sm font-medium text-blue-700">Slipstream for Jira Cloud</p>
-        <h1 class="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">Slipstream: The Dependency Radar for Jira.</h1>
-        <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600">A release slips when a blocker lives in another project and was never drawn as a link. Slipstream surfaces that chain, the chance of hitting the Fix Version date, and a gate a VP of Engineering can read in one pass.</p>
-      </section>
-      <section class="mx-auto max-w-6xl px-6 pb-20">
-        <button type="button" class="shot" aria-label="Enlarge screenshot: Slipstream header with a Conditional gate, readiness 80, 100 percent PERT confidence, a 23-day critical path, and a Fix Version forecast.">
-          <img src="/assets/radar-clean.png" alt="Slipstream header with a Conditional gate, readiness 80, 100 percent PERT confidence, a 23-day critical path, and a Fix Version forecast." class="w-full cursor-zoom-in rounded-2xl border border-slate-200 bg-slate-50 shadow-sm" />
-        </button>
+        <h1 class="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">Slipstream — Release Risk &amp; Dependency Radar for Jira Cloud</h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600">Slipstream scores whether a Fix Version date still holds.</p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="/support.html#early-access" data-install class="inline-flex min-h-11 w-full items-center justify-center rounded-md bg-blue-700 px-5 py-3 text-sm font-medium text-white hover:bg-blue-800 sm:w-auto">Request early access</a>
+          <a href="#pricing" class="inline-flex min-h-11 w-full items-center justify-center rounded-md border border-slate-300 px-5 py-3 text-sm font-medium text-slate-800 hover:bg-slate-50 sm:w-auto">See pricing</a>
+        </div>
+        <p class="mt-10 text-xs text-slate-600 md:hidden">Scroll sideways to read the screenshot.</p>
+        <div class="mt-2 max-w-full overflow-x-auto" tabindex="0">
+          <button type="button" class="shot w-[960px] max-w-none md:w-full" aria-label="Enlarge screenshot: Conditional gate with readiness, PERT confidence, and critical-path length.">
+            <img src="/assets/radar-gate.png" width="2140" height="360" alt="Conditional gate with readiness 80, 100 percent PERT confidence, a 23-day critical path, and a paid licence." class="w-[960px] max-w-none rounded-2xl border border-slate-200 bg-slate-50 shadow-sm md:w-full" fetchpriority="high" decoding="async" />
+          </button>
+        </div>
       </section>
 
       <section class="border-t border-slate-200">
-        <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 lg:grid-cols-2">
+        <div class="mx-auto grid max-w-6xl gap-8 px-6 py-16 lg:py-24">
           <div>
             <p class="text-sm font-medium text-blue-700">01</p>
             <h2 class="mt-3 text-3xl font-semibold tracking-tight">Catch the dependencies nobody linked.</h2>
-            <p class="mt-4 leading-7 text-slate-600">Teams keep Blocks links when they remember. The date-moving dependency is often a branch name, a pull request, or an issue key written into a comment. Slipstream reads those signals, marks them as implicit, and shows the confidence of each edge. A shared Fix Version across two projects is treated as a release anchor, not as a hand-drawn link.</p>
+            <p class="mt-4 leading-7 text-slate-600">Teams keep Blocks links when they remember. The date-moving dependency is often an issue key, or a branch, pull-request, or commit name, written into a Jira comment or description. Slipstream reads that text, marks the link as implicit, and shows how sure it is. A shared Fix Version across two projects is a release anchor, not a hand-drawn link.</p>
+            <p class="mt-4 leading-7 text-slate-600">No repository connection. Slipstream does not call Jira’s development-information API and does not read source code.</p>
+            <ul class="mt-4 space-y-1 text-sm leading-6 text-slate-600">
+              <li>1.00 Blocks link</li>
+              <li>0.90 parent or epic, same project or another project</li>
+              <li>0.75 issue key inside a branch, pull-request, or commit phrase in a comment or description</li>
+              <li>0.70 plain issue-key mention</li>
+              <li>0.60 shared Fix Version across two projects</li>
+            </ul>
+            <p class="mt-4"><a href="/guide.html#dependencies" class="inline-flex min-h-11 items-center font-medium text-blue-700 hover:text-blue-800">See the full dependency rules</a></p>
+            <p class="mt-2"><a href="/support.html#early-access" data-install class="inline-flex min-h-11 items-center font-medium text-blue-700 hover:text-blue-800">Request early access</a></p>
           </div>
-          <figure class="shot-figure">
-            <button type="button" class="shot" aria-label="Enlarge screenshot: Dependency map filtered to implicit cross-project links, with dashed edges and an evidence column showing Fix Version and issue mention.">
-              <img src="/assets/feature-dependencies.png" alt="Dependency map filtered to implicit cross-project links, with dashed edges and an evidence column showing Fix Version and issue mention." class="w-full cursor-zoom-in rounded-xl border border-slate-200" />
+          <div class="max-w-full overflow-x-auto" tabindex="0">
+            <button type="button" class="shot w-[960px] max-w-none md:w-full" aria-label="Enlarge screenshot: Dependency map filtered to implicit cross-project links.">
+              <img src="/assets/feature-dependencies.png" width="1024" height="500" alt="Dependency map filtered to implicit cross-project links, with dashed edges and an evidence column." class="w-[960px] max-w-none rounded-xl border border-slate-200 md:w-full" loading="lazy" decoding="async" />
             </button>
-            <figcaption class="shot-caption">Click image to inspect full resolution</figcaption>
-          </figure>
+          </div>
         </div>
       </section>
 
       <section class="border-t border-slate-100 bg-slate-50">
-        <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 lg:grid-cols-2">
-          <figure class="shot-figure lg:order-1">
-            <button type="button" class="shot" aria-label="Enlarge screenshot: Slipstream release gate badge inside a Jira issue">
-              <img src="/assets/jira-issue-panel.png" alt="Slipstream release gate badge inside a Jira issue" class="w-full cursor-zoom-in rounded-xl border border-slate-200 bg-white" />
-            </button>
-            <figcaption class="shot-caption">Click image to inspect full resolution</figcaption>
-          </figure>
-          <div class="lg:order-2">
-            <p class="text-sm font-medium text-blue-700">02</p>
-            <h2 class="mt-3 text-3xl font-semibold tracking-tight">A release gate with four answers.</h2>
-            <p class="mt-4 leading-7 text-slate-600">Every scan ends in GO, CONDITIONAL, HOLD, or NO DATE. GO requires a dated Fix Version and a delivery chance of 80% or better, with no cycle and no high-risk open item. HOLD is a cycle, or a chance below 50%. A version with no release date is NO DATE, so a missing date is never called healthy.</p>
-            <p class="mt-4 text-sm text-slate-500">The same call appears on the Jira issue, so the engineer in the ticket sees it too. <a href="/guide.html#gates" class="font-medium text-blue-700 hover:text-blue-800">Read the gate rules</a>.</p>
-          </div>
+        <div class="mx-auto max-w-6xl px-6 py-20">
+          <p class="text-sm font-medium text-blue-700">02</p>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight">A release gate with four answers.</h2>
+          <p class="mt-4 max-w-3xl leading-7 text-slate-600">The call is chosen in this order. HOLD if any cycle remains, or confidence is below 50%. NO DATE if confidence is empty, or an undated Fix Version would otherwise be GO. CONDITIONAL if confidence is from 50% up to but not including 80%, or any high-RPN item is still open. GO only when confidence is at least 80%, there is no cycle, no open high-RPN item, and no undated Fix Version.</p>
+          <p class="mt-4 max-w-3xl leading-7 text-slate-600">Readiness starts at 100. It loses 40 for any unresolved cycle, 30 if confidence is below 50%, 15 if confidence is from 50% up to 80%, 15 for a missing date or confidence, and 10 per high-RPN issue, up to 30.</p>
+          <p class="mt-4 max-w-3xl text-sm leading-6 text-slate-600">The brief is shown on the Slipstream page and in the issue panel. v1.0 does not post a Jira comment and does not publish a Confluence page. <a href="/guide.html#gates" class="font-medium text-blue-700 hover:text-blue-800">Read the gate rules</a>.</p>
+          <a href="/support.html#early-access" data-install class="mt-8 inline-flex min-h-11 w-full items-center justify-center rounded-md bg-blue-700 px-5 py-3 text-sm font-medium text-white hover:bg-blue-800 sm:w-auto">Request early access</a>
         </div>
       </section>
 
       <section class="border-t border-slate-200">
-        <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 lg:grid-cols-2">
+        <div class="mx-auto grid max-w-6xl gap-8 px-6 py-16 lg:py-24">
           <div>
             <p class="text-sm font-medium text-blue-700">03</p>
             <h2 class="mt-3 text-3xl font-semibold tracking-tight">See the FLOAT 0 chain.</h2>
-            <p class="mt-4 leading-7 text-slate-600">The critical path is the longest chain of remaining work. Items with no slack are marked FLOAT 0. Slipstream ranks the open items on that chain by release risk, shows who is unassigned, and says when an estimate fell back to a default. Leaders can ask what happens if one item slips. The answer stays in memory and does not rewrite Jira.</p>
+            <p class="mt-4 leading-7 text-slate-600">The critical path is the longest chain of remaining work. Items with no slack are marked FLOAT 0. Each open issue gets a Risk Priority Number: Severity × Occurrence × Detection, each from 1 to 10. High starts at 150. Critical starts at 250.</p>
+            <p class="mt-4 leading-7 text-slate-600">A critical, cross-project, unassigned item with 2 sprint carry-overs, 8 stale days, implicit-only edges, and 5 downstream issues across 2 projects scores S10 × O7 × D9 = RPN 630, Critical.</p>
+            <p class="mt-4 leading-7 text-slate-600">What-If delays an item, or several items on Paid and Evaluation, or removes a dependency. It reruns the maths in memory. It never writes to Forge SQL or to Jira.</p>
+            <p class="mt-4"><a href="/support.html#early-access" data-install class="inline-flex min-h-11 items-center font-medium text-blue-700 hover:text-blue-800">Request early access</a></p>
           </div>
-          <figure class="shot-figure">
-            <button type="button" class="shot" aria-label="Enlarge screenshot: Top release risks with FLOAT 0 marked on the critical-path issues and a short brief beside each score.">
-              <img src="/assets/feature-critical-path.png" alt="Top release risks with FLOAT 0 marked on the critical-path issues and a short brief beside each score." class="w-full cursor-zoom-in rounded-xl border border-slate-200" />
+          <div class="max-w-full overflow-x-auto" tabindex="0">
+            <button type="button" class="shot w-[960px] max-w-none md:w-full" aria-label="Enlarge screenshot: Top release risks with FLOAT 0 marked on the critical path.">
+              <img src="/assets/feature-critical-path.png" width="1024" height="500" alt="Top release risks with FLOAT 0 marked on the critical-path issues." class="w-[960px] max-w-none rounded-xl border border-slate-200 md:w-full" loading="lazy" decoding="async" />
             </button>
-            <figcaption class="shot-caption">Click image to inspect full resolution</figcaption>
-          </figure>
+          </div>
         </div>
       </section>
 
-      <section id="pricing" class="border-t border-slate-200 bg-slate-950 text-white">
-        <div class="mx-auto grid max-w-6xl gap-12 px-6 py-20 lg:grid-cols-2 lg:items-center">
-          <div>
-            <p class="text-sm font-medium text-blue-300">Pricing</p>
-            <h2 class="mt-3 text-3xl font-semibold tracking-tight">Cross-project forecasting without a Premium upgrade.</h2>
-            <p class="mt-4 leading-7 text-slate-300">Jira Plans comes with Premium and Enterprise. Premium’s October 2026 list price is $19.60 per user per month for the first 100 users, and the upgrade covers the whole company. Plans draws the links people already created. Slipstream also reads the comment, the branch name, and the pull request, and it runs on the Jira edition you already have. Atlassian bills the customer.</p>
-            <a href="mailto:support@criticalpathworks.com?subject=Slipstream%20design%20partner%20access" class="mt-8 inline-block rounded-md bg-white px-5 py-3 text-sm font-medium text-slate-950 hover:bg-slate-100">Request design-partner access</a>
+      <section class="border-t border-slate-200 bg-slate-50">
+        <div class="mx-auto max-w-6xl px-6 py-20">
+          <p class="text-sm font-medium text-blue-700">04</p>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight">Where it appears in Jira</h2>
+          <ul class="mt-6 max-w-3xl list-disc space-y-3 pl-5 leading-7 text-slate-600">
+            <li>Global page and project page, titled Slipstream: radar, dependency map, Fix Version forecasts, and What-If.</li>
+            <li>Issue panel, titled Slipstream: the gate and a blocker warning inside the work item. On Paid and Evaluation, the panel also shows the stored brief when a model ran.</li>
+          </ul>
+          <p class="mt-6 leading-7 text-slate-600">Install, open Slipstream, run a scan. No CSV, token, or setup form. A scan runs asynchronously and can take up to 900 seconds.</p>
+        </div>
+      </section>
+
+      <section id="compare" class="scroll-mt-24 border-t border-slate-200">
+        <div class="mx-auto max-w-6xl px-6 py-20">
+          <h2 class="text-3xl font-semibold tracking-tight">Jira Cloud, Jira Plans, and Slipstream</h2>
+          <p class="mt-4 max-w-3xl leading-7 text-slate-600">Slipstream is a release-risk radar. It answers whether this Fix Version date will hold, and which hidden blocker can move it. It is not a Gantt chart or a capacity planner.</p>
+          <p class="mt-8 text-xs text-slate-600 sm:hidden">Scroll sideways for the full table.</p>
+          <div class="mt-2 overflow-x-auto rounded-xl border border-slate-200" tabindex="0" role="region" aria-label="Comparison of Jira Cloud, Jira Plans, and Slipstream">
+            <table class="w-full min-w-[40rem] border-collapse text-left text-sm">
+              <caption class="sr-only">What Slipstream adds beside Jira Cloud without Premium, and beside Jira Plans</caption>
+              <thead>
+                <tr class="border-b border-slate-200 text-slate-600">
+                  <th scope="col" class="px-4 py-3 font-medium">Question</th>
+                  <th scope="col" class="px-4 py-3 font-medium">Jira Cloud without Premium</th>
+                  <th scope="col" class="px-4 py-3 font-medium">Jira Plans (Premium or Enterprise)</th>
+                  <th scope="col" class="px-4 py-3 font-medium">Slipstream</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-slate-100"><th scope="row" class="px-4 py-3 font-medium">Implicit dependencies from comment and description text, with a confidence</th><td class="px-4 py-3">—</td><td class="px-4 py-3">Linked dependencies only</td><td class="px-4 py-3">Yes, 0.60 to 1.00</td></tr>
+                <tr class="border-b border-slate-100"><th scope="row" class="px-4 py-3 font-medium">Critical path and float</th><td class="px-4 py-3">—</td><td class="px-4 py-3">—</td><td class="px-4 py-3">Yes. FLOAT 0 marks the longest chain</td></tr>
+                <tr class="border-b border-slate-100"><th scope="row" class="px-4 py-3 font-medium">PERT confidence per Fix Version</th><td class="px-4 py-3">—</td><td class="px-4 py-3">—</td><td class="px-4 py-3">Yes. Empty when the Fix Version has no date</td></tr>
+                <tr class="border-b border-slate-100"><th scope="row" class="px-4 py-3 font-medium">FMEA score per open issue</th><td class="px-4 py-3">—</td><td class="px-4 py-3">—</td><td class="px-4 py-3">Yes. High from 150, Critical from 250</td></tr>
+                <tr class="border-b border-slate-100"><th scope="row" class="px-4 py-3 font-medium">Stage-Gate call</th><td class="px-4 py-3">—</td><td class="px-4 py-3">—</td><td class="px-4 py-3">GO, CONDITIONAL, HOLD, or NO DATE</td></tr>
+                <tr class="border-b border-slate-100"><th scope="row" class="px-4 py-3 font-medium">What-If in memory</th><td class="px-4 py-3">—</td><td class="px-4 py-3">—</td><td class="px-4 py-3">Yes. It does not write to Jira</td></tr>
+                <tr class="border-b border-slate-100"><th scope="row" class="px-4 py-3 font-medium">Read-only, permissions.external empty</th><td class="px-4 py-3">—</td><td class="px-4 py-3">—</td><td class="px-4 py-3">Yes</td></tr>
+                <tr><th scope="row" class="px-4 py-3 font-medium">No Premium or Enterprise upgrade required</th><td class="px-4 py-3">Already on Jira Cloud</td><td class="px-4 py-3">Premium or Enterprise for the whole site</td><td class="px-4 py-3">Yes</td></tr>
+              </tbody>
+            </table>
           </div>
-          <div class="rounded-2xl border border-slate-800 bg-slate-900 p-8">
-            <p class="text-sm text-slate-400">Paid, after the 30-day Evaluation</p>
-            <p class="mt-3 text-4xl font-semibold tracking-tight">$4.00 <span class="text-lg font-normal text-slate-400">per user / month</span></p>
-            <p class="mt-2 text-slate-300">or $40 per user per year</p>
-            <ul class="mt-6 space-y-3 text-sm leading-6 text-slate-300">
-              <li>Free for sites of up to 10 Jira users, on up to 2 projects.</li>
-              <li>Paid and Evaluation: the full portfolio, hourly scans, and a short brief on the five highest-risk chains.</li>
-              <li>The brief runs inside Forge. Jira data does not leave Atlassian.</li>
-            </ul>
+          <p class="mt-4 text-sm text-slate-600">Jira and Jira Plans cells use “—” or “Linked dependencies only” where this site is not stating an Atlassian capability. Based on Atlassian’s public plan descriptions. The month and year of that check are still to be confirmed.</p>
+        </div>
+      </section>
+
+      <section id="pricing" class="scroll-mt-24 border-t border-slate-200 bg-slate-950 text-white">
+        <div class="mx-auto max-w-6xl px-6 py-20">
+          <p class="text-sm font-medium text-blue-300">Pricing</p>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight">Cross-project forecasting without a Premium upgrade.</h2>
+          <p class="mt-4 max-w-3xl leading-7 text-slate-300">Jira Plans comes only with Jira Premium and Enterprise, which are bought for the whole site. Plans works from the links people have already created. Slipstream also reads issue keys written in comments and descriptions, so it catches blockers nobody linked, and it runs on the Jira Cloud edition you already have. Atlassian bills the customer.</p>
+          <div class="mt-10 grid gap-6 md:grid-cols-2">
+            <div class="flex flex-col rounded-2xl border border-slate-800 bg-slate-900 p-8">
+              <h3 class="text-lg font-semibold">Free, or an expired Evaluation</h3>
+              <p class="mt-3 text-slate-300">A missing, inactive, or lapsed licence. The app does not count seats.</p>
+              <ul class="mt-6 space-y-3 text-base leading-7 text-slate-300">
+                <li>Model brief off. Deterministic summary only.</li>
+                <li>At most 2 projects.</li>
+                <li>1 scheduled scan and 1 manual scan per 24 hours.</li>
+                <li>Issue and link events are ignored.</li>
+                <li>What-If in memory, on the loaded snapshot.</li>
+                <li>Trial ROI counts off.</li>
+                <li>Issue panel: blocker warning.</li>
+              </ul>
+              <a href="/support.html#early-access" data-install class="mt-auto inline-flex min-h-11 w-full items-center justify-center rounded-md border border-slate-500 px-5 py-3 pt-6 text-sm font-medium text-white hover:bg-slate-800">Request early access</a>
+            </div>
+            <div class="flex flex-col rounded-2xl border border-slate-800 bg-slate-900 p-8 ring-2 ring-blue-500">
+              <p class="text-sm font-medium text-blue-300">30-day Evaluation first</p>
+              <h3 class="mt-2 text-lg font-semibold">Paid and 30-day Evaluation</h3>
+              <p class="mt-3 text-4xl font-semibold tracking-tight">$4.00 <span class="text-lg font-normal text-slate-300">per user / month</span></p>
+              <p class="mt-2 text-slate-300">or $40 per user per year. Atlassian bills the customer.</p>
+              <ul class="mt-6 space-y-3 text-base leading-7 text-slate-300">
+                <li>Brief on the top 5 highest-RPN chains, run inside Forge.</li>
+                <li>No project cap.</li>
+                <li>Hourly scheduled scans. Manual scans are uncapped.</li>
+                <li>Issue and link events can start a scan.</li>
+                <li>What-If in memory, including multi-node delays.</li>
+                <li>Trial ROI counts on, from stored snapshots.</li>
+                <li>Issue panel: the same blocker warning, plus the stored brief when a model ran.</li>
+              </ul>
+              <a href="/support.html#early-access" data-install class="mt-auto inline-flex min-h-11 w-full items-center justify-center rounded-md bg-white px-5 py-3 text-sm font-medium text-slate-950 hover:bg-slate-100">Request early access</a>
+            </div>
+          </div>
+          <p class="mt-10 text-xs text-slate-300 sm:hidden">Scroll sideways for the full table.</p>
+          <div class="mt-2 overflow-x-auto rounded-xl border border-slate-800" tabindex="0" role="region" aria-label="Free vs Paid comparison">
+            <table class="w-full min-w-[36rem] border-collapse text-left text-sm">
+              <caption class="sr-only">Free or expired Evaluation compared with Paid and the 30-day Evaluation</caption>
+              <thead>
+                <tr class="border-b border-slate-800 text-slate-300">
+                  <th scope="col" class="px-4 py-3 font-medium">Capability</th>
+                  <th scope="col" class="px-4 py-3 font-medium">Free or expired Evaluation</th>
+                  <th scope="col" class="px-4 py-3 font-medium">Paid and 30-day Evaluation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-slate-800"><th scope="row" class="px-4 py-3 font-medium">Model brief</th><td class="px-4 py-3">Off. Deterministic summary only</td><td class="px-4 py-3">Brief on the top 5 highest-RPN chains, run inside Forge</td></tr>
+                <tr class="border-b border-slate-800"><th scope="row" class="px-4 py-3 font-medium">Projects</th><td class="px-4 py-3">At most 2</td><td class="px-4 py-3">No cap</td></tr>
+                <tr class="border-b border-slate-800"><th scope="row" class="px-4 py-3 font-medium">Scheduled scans</th><td class="px-4 py-3">1 per 24 hours</td><td class="px-4 py-3">Hourly</td></tr>
+                <tr class="border-b border-slate-800"><th scope="row" class="px-4 py-3 font-medium">Manual scans</th><td class="px-4 py-3">1 per 24 hours</td><td class="px-4 py-3">Uncapped</td></tr>
+                <tr class="border-b border-slate-800"><th scope="row" class="px-4 py-3 font-medium">Issue and link events</th><td class="px-4 py-3">Ignored</td><td class="px-4 py-3">Can start a scan</td></tr>
+                <tr class="border-b border-slate-800"><th scope="row" class="px-4 py-3 font-medium">What-If</th><td class="px-4 py-3">In memory, on the loaded snapshot</td><td class="px-4 py-3">Same, including multi-node delays</td></tr>
+                <tr class="border-b border-slate-800"><th scope="row" class="px-4 py-3 font-medium">Trial ROI counts</th><td class="px-4 py-3">Off</td><td class="px-4 py-3">On, from stored snapshots</td></tr>
+                <tr><th scope="row" class="px-4 py-3 font-medium">Issue panel</th><td class="px-4 py-3">Blocker warning</td><td class="px-4 py-3">Same, plus the stored brief when a model ran</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="mt-12 max-w-3xl">
+            <h3 class="text-xl font-semibold">Pricing questions</h3>
+            <div class="mt-4 divide-y divide-slate-800 border-y border-slate-800">
+              <details class="py-4">
+                <summary class="cursor-pointer text-sm font-medium">Does the app count seats?</summary>
+                <p class="mt-3 text-sm leading-6 text-slate-300">No. An active Paid licence or an active Evaluation unlocks the paid features at any seat count.</p>
+              </details>
+              <details class="py-4">
+                <summary class="cursor-pointer text-sm font-medium">What happens when the Evaluation ends without a licence?</summary>
+                <p class="mt-3 text-sm leading-6 text-slate-300">The site drops to Free: at most 2 projects, one scheduled and one manual scan per 24 hours, and a deterministic summary.</p>
+              </details>
+              <details class="py-4">
+                <summary class="cursor-pointer text-sm font-medium">Who bills us?</summary>
+                <p class="mt-3 text-sm leading-6 text-slate-300">Atlassian. Atlassian is the merchant of record for Paid subscriptions.</p>
+              </details>
+              <details class="py-4">
+                <summary class="cursor-pointer text-sm font-medium">Do volume discounts apply?</summary>
+                <p class="mt-3 text-sm leading-6 text-slate-300">Marketplace volume discounts, if they are set in the Partner Portal, apply on top of the $4.00 list price. The app does not apply them.</p>
+              </details>
+              <details class="py-4">
+                <summary class="cursor-pointer text-sm font-medium">Does Free call a model?</summary>
+                <p class="mt-3 text-sm leading-6 text-slate-300">No. Free and expired installs make zero model calls. The model never computes the graph, the path, the confidence, or the RPN.</p>
+              </details>
+              <details class="py-4">
+                <summary class="cursor-pointer text-sm font-medium">Does it write to Jira?</summary>
+                <p class="mt-3 text-sm leading-6 text-slate-300">No. It is read-only. v1.0 does not post Jira comments. What-If does not write to Forge SQL or to Jira.</p>
+              </details>
+            </div>
           </div>
         </div>
       </section>
@@ -134,70 +339,36 @@
           <p class="mt-3 text-sm leading-6">Release risk for Jira Cloud, built on Atlassian Forge.</p>
         </div>
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Product</p>
-          <ul class="mt-3 space-y-2 text-sm">
-            <li><a href="/slipstream.html" class="hover:text-white">Slipstream</a></li>
-            <li><a href="/guide.html" class="hover:text-white">Guide</a></li>
-            <li><a href="/support.html#early-access" class="hover:text-white">Request early access</a></li>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-300">Product</p>
+          <ul class="mt-3 space-y-1 text-sm">
+            <li><a href="/slipstream.html" class="inline-flex min-h-11 items-center hover:text-white">Slipstream</a></li>
+            <li><a href="/guide.html" class="inline-flex min-h-11 items-center hover:text-white">Guide</a></li>
+            <li><a href="/support.html#early-access" data-install class="inline-flex min-h-11 items-center hover:text-white">Request early access</a></li>
           </ul>
         </div>
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Company</p>
-          <ul class="mt-3 space-y-2 text-sm">
-            <li><a href="/privacy.html" class="hover:text-white">Privacy &amp; Security</a></li>
-            <li><a href="/support.html" class="hover:text-white">Support</a></li>
-            <li><a href="mailto:support@criticalpathworks.com" class="hover:text-white">support@criticalpathworks.com</a></li>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-300">Company</p>
+          <ul class="mt-3 space-y-1 text-sm">
+            <li><a href="/privacy.html" class="inline-flex min-h-11 items-center hover:text-white">Privacy and security</a></li>
+            <li><a href="/privacy.html#security" class="inline-flex min-h-11 items-center hover:text-white">Security</a></li>
+            <li><a href="/support.html" class="inline-flex min-h-11 items-center hover:text-white">Support</a></li>
+            <li><a href="mailto:support@criticalpathworks.com" class="inline-flex min-h-11 items-center hover:text-white">support@criticalpathworks.com</a></li>
           </ul>
         </div>
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Legal entity</p>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-300">Legal entity</p>
           <p class="mt-3 text-sm leading-6">Critical Path Works Ltd<br />Company No. 17585654<br />Registered in England and Wales</p>
         </div>
       </div>
       <div class="border-t border-slate-800">
-        <p class="mx-auto max-w-6xl px-6 py-4 text-xs text-slate-500">© 2026 Critical Path Works Ltd. Atlassian is the merchant of record for Paid subscriptions.</p>
+        <p class="mx-auto max-w-6xl px-6 py-4 text-sm text-slate-400">© 2026 Critical Path Works Ltd. Atlassian is the merchant of record for Paid subscriptions.</p>
       </div>
     </footer>
-    <div id="shot-lightbox" class="shot-lightbox" hidden>
+    <div id="shot-lightbox" class="shot-lightbox" hidden role="dialog" aria-modal="true" aria-labelledby="shot-lightbox-title">
+      <p id="shot-lightbox-title" class="sr-only">Screenshot</p>
       <button type="button" class="shot-lightbox-close" aria-label="Close">×</button>
       <img alt="" />
     </div>
-    <script>
-      (function () {
-        var root = document.getElementById("shot-lightbox");
-        if (!root) return;
-        var full = root.querySelector("img");
-        var closer = root.querySelector(".shot-lightbox-close");
-        var last = null;
-        function open(src, alt, trigger) {
-          full.src = src;
-          full.alt = alt || "Screenshot";
-          last = trigger;
-          root.hidden = false;
-          document.body.style.overflow = "hidden";
-          closer.focus();
-        }
-        function close() {
-          if (root.hidden) return;
-          root.hidden = true;
-          full.removeAttribute("src");
-          document.body.style.overflow = "";
-          if (last) last.focus();
-        }
-        document.querySelectorAll("button.shot").forEach(function (button) {
-          button.addEventListener("click", function () {
-            var picture = button.querySelector("img");
-            if (!picture) return;
-            open(picture.currentSrc || picture.src, picture.alt, button);
-          });
-        });
-        root.addEventListener("click", function (event) {
-          if (event.target === root || event.target === closer) close();
-        });
-        document.addEventListener("keydown", function (event) {
-          if (event.key === "Escape") close();
-        });
-      })();
-    </script>
+    <script src="/assets/site.js" defer></script>
   </body>
 </html>

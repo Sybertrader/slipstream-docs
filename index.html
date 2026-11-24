@@ -1,137 +1,219 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Slipstream — See the release slip before the status meeting</title>
-    <meta name="description" content="Slipstream finds the cross-project Jira blocker nobody linked, including the one in a comment or a pull request, and shows whether the release date still holds. $4.00 per user per month, or $40 per user per year. Runs on Atlassian." />
+    <title>Jira release risk radar — Slipstream</title>
+    <meta name="description" content="Slipstream scores whether a Jira Fix Version date still holds. It finds blockers written as issue keys in comments, plus the critical path and a gate call." />
+    <link rel="canonical" href="https://criticalpathworks.com/" />
+    <meta property="og:title" content="Jira release risk radar — Slipstream" />
+    <meta property="og:description" content="Slipstream scores whether a Jira Fix Version date still holds. It finds blockers written as issue keys in comments, plus the critical path and a gate call." />
+    <meta property="og:url" content="https://criticalpathworks.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://criticalpathworks.com/assets/og-radar.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Jira release risk radar — Slipstream" />
+    <meta name="twitter:description" content="Slipstream scores whether a Jira Fix Version date still holds. It finds blockers written as issue keys in comments, plus the critical path and a gate call." />
+    <meta name="twitter:image" content="https://criticalpathworks.com/assets/og-radar.jpg" />
     <link rel="stylesheet" href="/assets/site.css" />
-    <link rel="icon" href="/favicon.png" />
-    <style>
-      button.shot { display: block; width: 100%; margin: 0; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; text-align: inherit; cursor: zoom-in; }
-      button.shot img { cursor: zoom-in; transition: border-color 160ms ease, box-shadow 160ms ease; }
-      button.shot:hover img, button.shot:focus-visible img { border-color: #94a3b8; box-shadow: 0 10px 28px rgba(15, 23, 42, 0.14); }
-      button.shot:focus-visible { outline: 2px solid #1d4ed8; outline-offset: 3px; }
-      .shot-lightbox { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 4rem 1.25rem 1.5rem; background: rgba(15, 23, 42, 0.86); }
-      .shot-lightbox[hidden] { display: none; }
-      .shot-lightbox img { max-width: min(72rem, 100%); max-height: calc(100vh - 6rem); border-radius: 0.75rem; background: #fff; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45); }
-      .shot-lightbox-close { position: absolute; top: 1rem; right: 1rem; width: 2.5rem; height: 2.5rem; border: 0; border-radius: 999px; background: rgba(255, 255, 255, 0.14); color: #fff; font-size: 1.75rem; line-height: 1; cursor: pointer; }
-      .shot-lightbox-close:hover { background: rgba(255, 255, 255, 0.24); }
-      .shot-lightbox-close:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
-    </style>
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "name": "Critical Path Works Ltd",
+            "legalName": "Critical Path Works Ltd",
+            "url": "https://criticalpathworks.com/",
+            "email": "support@criticalpathworks.com",
+            "identifier": "17585654"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "Slipstream",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Jira Cloud (Atlassian Forge)",
+            "offers": [
+              {
+                "@type": "Offer",
+                "price": "4.00",
+                "priceCurrency": "USD",
+                "description": "Per user per month, after a 30-day Evaluation",
+                "priceSpecification": {
+                  "@type": "UnitPriceSpecification",
+                  "price": "4.00",
+                  "priceCurrency": "USD",
+                  "unitText": "user per month"
+                }
+              },
+              {
+                "@type": "Offer",
+                "price": "40.00",
+                "priceCurrency": "USD",
+                "description": "Per user per year, after a 30-day Evaluation",
+                "priceSpecification": {
+                  "@type": "UnitPriceSpecification",
+                  "price": "40.00",
+                  "priceCurrency": "USD",
+                  "unitText": "user per year"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body class="bg-white text-slate-900 antialiased">
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-3 focus:py-2">Skip to content</a>
     <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
-      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
+      <div class="relative mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
         <a href="/" class="flex items-center gap-3">
-          <img src="/assets/cpw-mark.png" alt="" class="h-9 w-9" width="36" height="36" />
+          <img src="/assets/cpw-mark-72.png" alt="" class="h-9 w-9" width="72" height="72" />
           <span class="text-sm font-semibold tracking-tight">Critical Path Works</span>
         </a>
-        <nav class="hidden items-center gap-8 text-sm text-slate-600 md:flex" aria-label="Primary">
+        <nav class="hidden items-center gap-6 text-sm text-slate-600 md:flex" aria-label="Primary">
           <a href="/slipstream.html" class="hover:text-slate-900">Product</a>
           <a href="/guide.html" class="hover:text-slate-900">Guide</a>
-          <a href="/support.html#early-access" class="rounded-md bg-blue-700 px-4 py-2 font-medium text-white hover:bg-blue-800">Request Early Access</a>
+          <a href="/privacy.html#security" class="hover:text-slate-900">Security</a>
+          <a href="/support.html#early-access" data-install class="inline-flex min-h-8 items-center rounded-md bg-blue-700 px-4 py-2 font-medium text-white hover:bg-blue-800">Request early access</a>
         </nav>
-        <details class="relative md:hidden">
-          <summary class="cursor-pointer list-none rounded-md border border-slate-300 px-3 py-2 text-sm font-medium">Menu</summary>
-          <div class="absolute right-0 mt-2 flex w-56 flex-col gap-3 rounded-lg border border-slate-200 bg-white p-4 text-sm shadow-lg">
-            <a href="/slipstream.html">Product</a>
-            <a href="/guide.html">Guide</a>
-            <a href="/support.html#early-access" class="rounded-md bg-blue-700 px-3 py-2 text-center font-medium text-white">Request Early Access</a>
+        <details class="nav-menu md:hidden">
+          <summary aria-label="Menu" class="inline-flex min-h-11 cursor-pointer list-none items-center rounded-md border border-slate-300 px-3 py-2 text-sm font-medium">Menu</summary>
+          <div class="absolute inset-x-0 top-full z-50 border-b border-slate-200 bg-white px-6 py-4 text-sm shadow-lg">
+            <a href="/slipstream.html" class="flex min-h-11 items-center">Product</a>
+            <a href="/guide.html" class="flex min-h-11 items-center">Guide</a>
+            <a href="/privacy.html#security" class="flex min-h-11 items-center">Security</a>
+            <a href="/support.html#early-access" data-install class="mt-2 inline-flex min-h-11 w-full items-center justify-center rounded-md bg-blue-700 px-3 py-2 text-center font-medium text-white">Request early access</a>
           </div>
         </details>
       </div>
     </header>
     <main id="main">
-      <section class="mx-auto grid max-w-6xl items-center gap-12 px-6 pb-16 pt-16 lg:grid-cols-2 lg:pt-20">
-        <div>
-          <p class="text-sm font-medium text-blue-700">For release leaders on Jira · 100% Atlassian Forge · Zero Data Egress</p>
-          <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl sm:leading-tight">See which other team is about to move your date.</h1>
-          <p class="mt-6 text-lg leading-8 text-slate-600">Slipstream finds the cross-project blocker nobody linked, including the one written in a comment or a pull request. You see the longest chain, and whether the release date still holds. The work never leaves Atlassian.</p>
-          <div class="mt-8 flex flex-wrap gap-3">
-            <a href="/support.html#early-access" class="rounded-md bg-blue-700 px-5 py-3 text-sm font-medium text-white hover:bg-blue-800">Request Early Access</a>
-            <a href="/slipstream.html" class="rounded-md border border-slate-300 px-5 py-3 text-sm font-medium text-slate-800 hover:bg-slate-50">See the product</a>
+      <section class="mx-auto max-w-6xl px-6 py-16 lg:py-24">
+        <p class="text-sm font-medium text-blue-700">For release leaders on Jira · 100% Atlassian Forge · Zero data egress</p>
+        <h1 class="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-slate-950 lg:text-5xl lg:leading-tight">See which other team is about to move your date.</h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600">Slipstream finds the cross-project blocker nobody linked, including the one that only appears as an issue key in a comment or description. You see the longest chain, whether the release date still holds, and a GO, CONDITIONAL, HOLD or NO DATE call for each Fix Version.</p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <a href="/support.html#early-access" data-install class="inline-flex min-h-11 w-full items-center justify-center rounded-md bg-blue-700 px-5 py-3 text-sm font-medium text-white hover:bg-blue-800 sm:w-auto">Request early access</a>
+          <a href="/slipstream.html" class="inline-flex min-h-11 w-full items-center justify-center rounded-md border border-slate-300 px-5 py-3 text-sm font-medium text-slate-800 hover:bg-slate-50 sm:w-auto">See how it works</a>
+        </div>
+        <p class="mt-4 max-w-2xl text-sm leading-6 text-slate-600">30-day Evaluation · then $4.00/user/month or $40/user/year · billed by Atlassian · Runs on Atlassian: Jira data never leaves Atlassian</p>
+        <p class="mt-10 text-xs text-slate-600 md:hidden">Scroll sideways to read the screenshot.</p>
+        <div class="mt-2 max-w-full overflow-x-auto md:mt-10" tabindex="0">
+          <button type="button" class="shot w-[960px] max-w-none md:w-full" aria-label="Enlarge screenshot: Conditional gate with readiness, PERT confidence, critical-path length, and licence.">
+            <img src="/assets/radar-gate.png" width="2140" height="360" alt="Conditional gate with readiness 80, 100 percent PERT confidence, a 23-day critical path, and a paid licence." class="w-[960px] max-w-none rounded-2xl border border-slate-200 bg-slate-50 shadow-sm md:w-full" fetchpriority="high" decoding="async" />
+          </button>
+        </div>
+      </section>
+
+      <section class="border-y border-slate-200 bg-slate-50">
+        <div class="mx-auto max-w-6xl px-6 py-16 lg:py-24">
+          <h2 class="text-3xl font-semibold tracking-tight">What the week costs now</h2>
+          <div class="mt-8 grid gap-8 md:grid-cols-3">
+            <div>
+              <h3 class="text-base font-semibold text-slate-950">The weekly chase</h3>
+              <p class="mt-2 text-base leading-7 text-slate-600">Release managers, technical programme managers, and engineering directors spend hours in spreadsheets and status meetings answering one question: will this date hold?</p>
+            </div>
+            <div>
+              <h3 class="text-base font-semibold text-slate-950">The missing link</h3>
+              <p class="mt-2 text-base leading-7 text-slate-600">Across several squads and one shared release, the blocker sits in another team’s project, often written only as an issue key in a comment.</p>
+            </div>
+            <div>
+              <h3 class="text-base font-semibold text-slate-950">The expensive workaround</h3>
+              <p class="mt-2 text-base leading-7 text-slate-600">Jira Plans is included only with Jira Premium and Enterprise, and those plans are bought for the whole site. Plans works from dependencies people have already linked.</p>
+            </div>
           </div>
-          <p class="mt-4 text-sm text-slate-500">Free for up to 10 Jira users. Paid is $4.00 per user per month, or $40 per user per year.</p>
-        </div>
-        <button type="button" class="shot" aria-label="Enlarge screenshot: Slipstream inside Jira, showing delivery confidence, the length of the critical path, and a Fix Version forecast.">
-          <img src="/assets/radar-clean.png" alt="Slipstream inside Jira, showing delivery confidence, the length of the critical path, and a Fix Version forecast." class="w-full cursor-zoom-in rounded-2xl border border-slate-200 bg-slate-50 shadow-sm" />
-        </button>
-      </section>
-
-      <section class="border-y border-slate-200 bg-slate-50" aria-label="What the week costs now">
-        <div class="mx-auto grid max-w-6xl gap-8 px-6 py-14 md:grid-cols-3">
-          <article>
-            <h2 class="text-sm font-semibold text-slate-950">The weekly chase</h2>
-            <p class="mt-2 text-sm leading-6 text-slate-600">Release managers, TPMs, and engineering directors spend hours in spreadsheets and status meetings asking one question: will this date hold?</p>
-          </article>
-          <article>
-            <h2 class="text-sm font-semibold text-slate-950">The missing link</h2>
-            <p class="mt-2 text-sm leading-6 text-slate-600">In a 15-person company, standup covers it. Across several squads and one shared release, the blocker sits in another project, often only as a comment.</p>
-          </article>
-          <article>
-            <h2 class="text-sm font-semibold text-slate-950">The expensive workaround</h2>
-            <p class="mt-2 text-sm leading-6 text-slate-600">Jira Plans needs Premium or Enterprise. Premium lists at $19.60 per user per month for the first 100 users, for the whole company, and it only schedules links someone already created.</p>
-          </article>
         </div>
       </section>
 
-      <section class="mx-auto max-w-6xl px-6 py-20">
+      <section class="mx-auto max-w-6xl px-6 py-16 lg:py-24">
         <p class="text-sm font-medium text-blue-700">What Monday looks like</p>
         <h2 class="mt-2 max-w-2xl text-3xl font-semibold tracking-tight">Three answers, from the Jira work you already have.</h2>
-        <div class="mt-12 grid gap-8 lg:grid-cols-3">
+        <div class="mt-12 grid gap-8">
           <article class="overflow-hidden rounded-2xl border border-slate-200">
-            <button type="button" class="shot" aria-label="Enlarge screenshot: A map of implicit cross-project dependencies, including links found in issue text and shared Fix Versions.">
-              <img src="/assets/feature-dependencies.png" alt="A map of implicit cross-project dependencies, including links found in issue text and shared Fix Versions." class="w-full cursor-zoom-in border-b border-slate-200 bg-slate-50" />
-            </button>
+            <div class="max-w-full overflow-x-auto" tabindex="0">
+              <button type="button" class="shot w-[960px] max-w-none md:w-full" aria-label="Enlarge screenshot: A map of implicit cross-project dependencies.">
+                <img src="/assets/feature-dependencies.png" width="1024" height="500" alt="A map of implicit cross-project dependencies, including links found in issue text and shared Fix Versions." class="w-[960px] max-w-none border-b border-slate-200 bg-slate-50 md:w-full" loading="lazy" decoding="async" />
+              </button>
+            </div>
             <div class="p-6">
-              <h3 class="text-base font-semibold text-slate-950">The blocker nobody linked</h3>
-              <p class="mt-2 text-sm leading-6 text-slate-600">Blocks links stay when a team remembered them. Slipstream also reads branch names, pull requests, and issue keys written in comments, and marks how sure each one is.</p>
+              <h3 class="text-lg font-semibold text-slate-950">The blocker nobody linked</h3>
+              <p class="mt-2 text-base leading-7 text-slate-600">Blocks links stay when a team remembered them. Slipstream also reads issue keys written in comments and descriptions, including branch, pull-request, or commit names that someone has pasted there, and marks how sure each link is (0.60 to 1.00).</p>
             </div>
           </article>
           <article class="overflow-hidden rounded-2xl border border-slate-200">
-            <button type="button" class="shot" aria-label="Enlarge screenshot: A Fix Version forecast with a target date, expected duration, and delivery confidence.">
-              <img src="/assets/radar-clean.png" alt="A Fix Version forecast with a target date, expected duration, and delivery confidence." class="w-full cursor-zoom-in border-b border-slate-200 bg-slate-50" />
-            </button>
+            <div class="max-w-full overflow-x-auto" tabindex="0">
+              <button type="button" class="shot w-[960px] max-w-none md:w-full" aria-label="Enlarge screenshot: A Fix Version forecast with a target date, expected duration, and PERT confidence.">
+                <img src="/assets/radar-forecast.png" width="2140" height="320" alt="Fix Version forecast with a target date, expected duration, PERT confidence, and a projected finish." class="w-[960px] max-w-none border-b border-slate-200 bg-slate-50 md:w-full" loading="lazy" decoding="async" />
+              </button>
+            </div>
             <div class="p-6">
-              <h3 class="text-base font-semibold text-slate-950">Whether the date still holds</h3>
-              <p class="mt-2 text-sm leading-6 text-slate-600">Each Fix Version with a release date gets a delivery chance and a projected finish. A version with no date is called out, so a missing date is never treated as healthy.</p>
+              <h3 class="text-lg font-semibold text-slate-950">Whether the date still holds</h3>
+              <p class="mt-2 text-base leading-7 text-slate-600">Each dated Fix Version gets a PERT confidence and a projected finish. A version with no date leaves confidence empty. It is never shown as 0% or 100%.</p>
             </div>
           </article>
           <article class="overflow-hidden rounded-2xl border border-slate-200">
-            <button type="button" class="shot" aria-label="Enlarge screenshot: Ranked release risks, with items that have no slack marked on the longest chain.">
-              <img src="/assets/feature-critical-path.png" alt="Ranked release risks, with items that have no slack marked on the longest chain." class="w-full cursor-zoom-in border-b border-slate-200 bg-slate-50" />
-            </button>
+            <div class="max-w-full overflow-x-auto" tabindex="0">
+              <button type="button" class="shot w-[960px] max-w-none md:w-full" aria-label="Enlarge screenshot: Ranked release risks on the critical path.">
+                <img src="/assets/feature-critical-path.png" width="1024" height="500" alt="Ranked release risks, with items that have no slack marked on the longest chain." class="w-[960px] max-w-none border-b border-slate-200 bg-slate-50 md:w-full" loading="lazy" decoding="async" />
+              </button>
+            </div>
             <div class="p-6">
-              <h3 class="text-base font-semibold text-slate-950">The chain with no slack</h3>
-              <p class="mt-2 text-sm leading-6 text-slate-600">The longest chain of remaining work is listed and ranked. You can ask what happens if one item slips. The answer stays on the page and does not rewrite Jira.</p>
+              <h3 class="text-lg font-semibold text-slate-950">The chain with no slack</h3>
+              <p class="mt-2 text-base leading-7 text-slate-600">The longest chain of remaining work is the FLOAT 0 path. Open items on it are ranked by Severity × Occurrence × Detection. You can ask what happens if one item slips. The answer stays on the page.</p>
             </div>
           </article>
         </div>
-        <p class="mt-8 text-sm text-slate-500">The gate rules, the formulas, and the setup steps are in the <a href="/guide.html" class="font-medium text-blue-700 hover:text-blue-800">guide</a>.</p>
+        <div class="mt-8 rounded-2xl border border-slate-200 p-6">
+          <h3 class="text-base font-semibold text-slate-950">A gate you can take into the release review</h3>
+          <p class="mt-2 text-sm leading-6 text-slate-600">Each Fix Version ends as GO, CONDITIONAL, HOLD, or NO DATE. The brief is on the Slipstream page and in the issue panel. <a href="/guide.html#gates" class="font-medium text-blue-700 hover:text-blue-800">Read the gate rules</a>.</p>
+        </div>
+      </section>
+
+      <section class="border-t border-slate-200">
+        <div class="mx-auto grid max-w-6xl gap-6 px-6 py-16 lg:grid-cols-2 lg:py-24">
+          <article id="why-not-plans" class="rounded-2xl border border-slate-200 p-6">
+            <h2 class="text-3xl font-semibold tracking-tight">Why not Jira Plans?</h2>
+            <ul class="mt-6 list-disc space-y-3 pl-5 leading-7 text-slate-600">
+              <li>Jira Plans comes only with Jira Premium and Enterprise, which are bought for the whole site. Slipstream runs on Jira Cloud without that upgrade, at $4.00 per user per month after a 30-day Evaluation.</li>
+              <li>Plans works from dependencies people have already linked. Slipstream also infers links from issue keys written in comments and descriptions, parent and epic links across projects, and shared Fix Versions, each with a confidence.</li>
+              <li>Slipstream adds a PERT confidence for a Fix Version date, an FMEA score per open issue, and a Stage-Gate call.</li>
+            </ul>
+            <p class="mt-6"><a href="/slipstream.html#compare" class="inline-flex min-h-11 items-center font-medium text-blue-700 hover:text-blue-800">Compare it with Jira Cloud and Jira Plans</a></p>
+          </article>
+          <article id="security-review" class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+            <h2 class="text-3xl font-semibold tracking-tight">Security review in one page.</h2>
+            <ul class="mt-6 list-disc space-y-3 pl-5 leading-7 text-slate-600">
+              <li>Forge only. <code class="rounded bg-white px-1 py-0.5 text-sm">permissions.external</code> is empty. There is no vendor server.</li>
+              <li>Scopes are read-only, plus <code class="rounded bg-white px-1 py-0.5 text-sm">storage:app</code>. There is no <code class="rounded bg-white px-1 py-0.5 text-sm">write:jira-work</code>.</li>
+              <li>The only person identifier stored is the assignee’s Atlassian account id.</li>
+              <li>Rows older than 30 days are deleted daily. Runtime is Node.js 22.</li>
+              <li>The brief uses a model hosted by Atlassian through Forge LLM. Free and expired installs make zero model calls.</li>
+            </ul>
+            <p class="mt-6"><a href="/privacy.html#security" class="inline-flex min-h-11 items-center font-medium text-blue-700 hover:text-blue-800">Read the scope list</a></p>
+          </article>
+        </div>
       </section>
 
       <section class="border-t border-slate-200 bg-slate-950 text-white">
-        <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 lg:grid-cols-2">
-          <div>
-            <p class="text-sm font-medium text-blue-300">The offer</p>
-            <h2 class="mt-3 text-3xl font-semibold tracking-tight">Cross-project release forecasting without upgrading every Jira seat.</h2>
-            <p class="mt-4 leading-7 text-slate-300">Atlassian bills the customer. A 30-day Evaluation comes first. After that, Paid is $4.00 per user per month, or $40 per user per year.</p>
-            <a href="/support.html#early-access" class="mt-8 inline-block rounded-md bg-white px-5 py-3 text-sm font-medium text-slate-950 hover:bg-slate-100">Request Early Access</a>
+        <div class="mx-auto max-w-3xl px-6 py-16 text-center lg:py-24">
+          <h2 class="text-3xl font-semibold tracking-tight">Paid is $4.00 per user per month after the Evaluation.</h2>
+          <p class="mt-4 text-base leading-7 text-slate-300">Or $40 per user per year. Atlassian bills the customer. An active Paid licence or Evaluation unlocks the paid features at any seat count. The app does not count seats.</p>
+          <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            <a href="/support.html#early-access" data-install class="inline-flex min-h-11 w-full items-center justify-center rounded-md bg-white px-5 py-3 text-sm font-medium text-slate-950 hover:bg-slate-100 sm:w-auto">Request early access</a>
+            <a href="/slipstream.html#pricing" class="inline-flex min-h-11 w-full items-center justify-center rounded-md border border-slate-500 px-5 py-3 text-sm font-medium text-white hover:bg-slate-900 sm:w-auto">See full pricing</a>
           </div>
-          <ul class="space-y-4 text-sm leading-6 text-slate-300">
-            <li class="rounded-xl border border-slate-800 bg-slate-900 p-5"><span class="block font-medium text-white">Free</span> Up to 10 Jira users, on up to 2 projects. One scheduled scan and one manual scan a day.</li>
-            <li class="rounded-xl border border-slate-800 bg-slate-900 p-5"><span class="block font-medium text-white">Paid and Evaluation</span> The full portfolio, hourly scans, and a short brief on the five highest-risk chains. The brief runs inside Forge.</li>
-            <li class="rounded-xl border border-slate-800 bg-slate-900 p-5"><span class="block font-medium text-white">Security</span> Traditional Connect apps route Jira data through external vendor servers. Slipstream has no vendor server—the scan stays 100% inside Atlassian.</li>
-          </ul>
         </div>
       </section>
 
-      <section class="mx-auto max-w-3xl px-6 py-20 text-center">
+      <section class="mx-auto max-w-3xl px-6 py-16 text-center lg:py-24">
         <h2 class="text-3xl font-semibold tracking-tight">Put it on the release you are worried about.</h2>
-        <p class="mt-4 text-lg leading-8 text-slate-600">One Fix Version. One scan. You will see the cross-project blockers, the longest chain, and whether the date still holds before the next status meeting.</p>
-        <a href="/support.html#early-access" class="mt-8 inline-block rounded-md bg-blue-700 px-5 py-3 text-sm font-medium text-white hover:bg-blue-800">Request Early Access</a>
+        <p class="mt-4 text-lg leading-8 text-slate-600">One Fix Version. One scan. You will see the cross-project blockers, the longest chain, and whether the date still holds.</p>
+        <a href="/support.html#early-access" data-install class="mt-8 inline-flex min-h-11 w-full items-center justify-center rounded-md bg-blue-700 px-5 py-3 text-sm font-medium text-white hover:bg-blue-800 sm:w-auto">Request early access</a>
       </section>
     </main>
     <footer class="border-t border-slate-200 bg-slate-950 text-slate-300">
@@ -141,70 +223,36 @@
           <p class="mt-3 text-sm leading-6">Release risk for Jira Cloud, built on Atlassian Forge.</p>
         </div>
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Product</p>
-          <ul class="mt-3 space-y-2 text-sm">
-            <li><a href="/slipstream.html" class="hover:text-white">Slipstream</a></li>
-            <li><a href="/guide.html" class="hover:text-white">Guide</a></li>
-            <li><a href="/support.html#early-access" class="hover:text-white">Request early access</a></li>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-300">Product</p>
+          <ul class="mt-3 space-y-1 text-sm">
+            <li><a href="/slipstream.html" class="inline-flex min-h-11 items-center hover:text-white">Slipstream</a></li>
+            <li><a href="/guide.html" class="inline-flex min-h-11 items-center hover:text-white">Guide</a></li>
+            <li><a href="/support.html#early-access" data-install class="inline-flex min-h-11 items-center hover:text-white">Request early access</a></li>
           </ul>
         </div>
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Company</p>
-          <ul class="mt-3 space-y-2 text-sm">
-            <li><a href="/privacy.html" class="hover:text-white">Privacy &amp; Security</a></li>
-            <li><a href="/support.html" class="hover:text-white">Support</a></li>
-            <li><a href="mailto:support@criticalpathworks.com" class="hover:text-white">support@criticalpathworks.com</a></li>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-300">Company</p>
+          <ul class="mt-3 space-y-1 text-sm">
+            <li><a href="/privacy.html" class="inline-flex min-h-11 items-center hover:text-white">Privacy and security</a></li>
+            <li><a href="/privacy.html#security" class="inline-flex min-h-11 items-center hover:text-white">Security</a></li>
+            <li><a href="/support.html" class="inline-flex min-h-11 items-center hover:text-white">Support</a></li>
+            <li><a href="mailto:support@criticalpathworks.com" class="inline-flex min-h-11 items-center hover:text-white">support@criticalpathworks.com</a></li>
           </ul>
         </div>
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Legal entity</p>
+          <p class="text-xs font-semibold uppercase tracking-wide text-slate-300">Legal entity</p>
           <p class="mt-3 text-sm leading-6">Critical Path Works Ltd<br />Company No. 17585654<br />Registered in England and Wales</p>
         </div>
       </div>
       <div class="border-t border-slate-800">
-        <p class="mx-auto max-w-6xl px-6 py-4 text-xs text-slate-500">© 2026 Critical Path Works Ltd. Atlassian is the merchant of record for Paid subscriptions.</p>
+        <p class="mx-auto max-w-6xl px-6 py-4 text-sm text-slate-400">© 2026 Critical Path Works Ltd. Atlassian is the merchant of record for Paid subscriptions.</p>
       </div>
     </footer>
-    <div id="shot-lightbox" class="shot-lightbox" hidden>
+    <div id="shot-lightbox" class="shot-lightbox" hidden role="dialog" aria-modal="true" aria-labelledby="shot-lightbox-title">
+      <p id="shot-lightbox-title" class="sr-only">Screenshot</p>
       <button type="button" class="shot-lightbox-close" aria-label="Close">×</button>
       <img alt="" />
     </div>
-    <script>
-      (function () {
-        var root = document.getElementById("shot-lightbox");
-        if (!root) return;
-        var full = root.querySelector("img");
-        var closer = root.querySelector(".shot-lightbox-close");
-        var last = null;
-        function open(src, alt, trigger) {
-          full.src = src;
-          full.alt = alt || "Screenshot";
-          last = trigger;
-          root.hidden = false;
-          document.body.style.overflow = "hidden";
-          closer.focus();
-        }
-        function close() {
-          if (root.hidden) return;
-          root.hidden = true;
-          full.removeAttribute("src");
-          document.body.style.overflow = "";
-          if (last) last.focus();
-        }
-        document.querySelectorAll("button.shot").forEach(function (button) {
-          button.addEventListener("click", function () {
-            var picture = button.querySelector("img");
-            if (!picture) return;
-            open(picture.currentSrc || picture.src, picture.alt, button);
-          });
-        });
-        root.addEventListener("click", function (event) {
-          if (event.target === root || event.target === closer) close();
-        });
-        document.addEventListener("keydown", function (event) {
-          if (event.key === "Escape") close();
-        });
-      })();
-    </script>
+    <script src="/assets/site.js" defer></script>
   </body>
 </html>
