@@ -44,7 +44,7 @@
         <a href="/guide.html" class="rounded-md px-3 py-2 hover:text-white focus-visible:outline-2 focus-visible:outline-brand-400">Guide</a>
       </nav>
       <div class="flex items-center gap-2">
-        <a data-marketplace href="https://marketplace.atlassian.com/search?query=Slipstream" class="hidden h-9 items-center rounded-full bg-white px-4 text-sm font-medium text-ink-950 transition hover:bg-slate-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 sm:inline-flex">Install Slipstream</a>
+        <a data-marketplace href="#pricing" class="hidden h-9 items-center rounded-full bg-white px-4 text-sm font-medium text-ink-950 transition hover:bg-slate-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 sm:inline-flex">Start free 30-day trial</a>
         <details class="group lg:hidden">
           <summary class="flex size-10 cursor-pointer items-center justify-center rounded-full border border-white/15 text-white focus-visible:outline-2 focus-visible:outline-brand-400" aria-label="Menu">
             <svg class="size-5 group-open:hidden" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
@@ -58,7 +58,7 @@
               <li><a href="#security" class="flex min-h-12 items-center">Security</a></li>
               <li><a href="/guide.html" class="flex min-h-12 items-center">Guide</a></li>
             </ul>
-            <a data-marketplace href="https://marketplace.atlassian.com/search?query=Slipstream" class="mt-4 flex h-12 items-center justify-center rounded-full bg-white text-sm font-semibold text-ink-950">Install from Atlassian Marketplace</a>
+            <a data-marketplace href="#pricing" class="mt-4 flex h-12 items-center justify-center rounded-full bg-white text-sm font-semibold text-ink-950">Start free 30-day trial</a>
           </nav>
         </details>
       </div>
@@ -94,22 +94,8 @@
         </div>
 
         <!-- Hand-off: product teaser -->
-        <a href="#slipstream" class="group rise rise-4 mx-auto mt-14 block max-w-3xl rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.07] to-white/[0.02] p-2 text-left shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] transition hover:border-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300">
-          <span class="flex flex-col gap-3 rounded-xl bg-ink-900/80 p-4 ring-1 ring-white/[0.06] sm:flex-row sm:items-center sm:gap-5">
-            <span class="flex items-center gap-3 sm:w-64 sm:shrink-0">
-              <img src="/assets/home/slipstream-mark.png" alt="" width="44" height="44" class="size-11 shrink-0 rounded-xl" />
-              <span class="min-w-0">
-                <span class="block text-[11px] font-semibold uppercase tracking-[0.14em] text-brand-300">Flagship product</span>
-                <span class="block text-[15px] font-semibold text-white">Slipstream</span>
-                <span class="block text-xs text-slate-400">Release Risk &amp; Dependency Radar</span>
-              </span>
-            </span>
-            <img src="/assets/home/teaser-gate.png" width="1141" height="192" alt="" class="h-24 w-full rounded-lg object-cover object-left-top ring-1 ring-white/10 sm:h-16 sm:flex-1" />
-            <span class="hidden size-9 shrink-0 items-center justify-center rounded-full border border-white/10 text-slate-300 transition group-hover:translate-y-0.5 group-hover:text-white sm:flex" aria-hidden="true">
-              <svg class="size-4" viewBox="0 0 16 16" fill="none"><path d="M8 3v10m0 0l-4-4m4 4l4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-          </span>
-          <span class="sr-only">Meet Slipstream, our flagship product</span>
+        <a href="#slipstream" aria-label="Slipstream by Critical Path Works. Runs on Atlassian. Zero external egress." class="rise rise-4 mx-auto mt-14 block max-w-5xl overflow-hidden rounded-2xl border border-white/10 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] transition hover:border-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300">
+          <img src="/assets/home/slipstream-banner.png" width="2400" height="380" alt="Slipstream by Critical Path Works. Runs on Atlassian. Zero external egress." class="block h-auto w-full" />
         </a>
       </section>
 
@@ -130,13 +116,12 @@
               </p>
               <div>
                 <div class="flex flex-col gap-3 sm:flex-row">
-                  <a data-marketplace href="https://marketplace.atlassian.com/search?query=Slipstream" class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-brand-600 px-6 text-[15px] font-semibold text-white shadow-[0_8px_30px_rgba(91,115,255,0.4)] transition hover:bg-brand-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300">
-                    Install from Atlassian Marketplace
+                  <a data-marketplace href="#pricing" class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-brand-600 px-6 text-[15px] font-semibold text-white shadow-[0_8px_30px_rgba(91,115,255,0.4)] transition hover:bg-brand-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300">
+                    Start free 30-day trial
                     <svg class="size-4" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 11L11 5M11 5H6m5 0v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </a>
-                  <a href="/slipstream.html" class="inline-flex h-12 items-center justify-center rounded-full border border-white/15 px-6 text-[15px] font-medium text-white transition hover:bg-white/[0.06] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300">Explore Slipstream</a>
                 </div>
-                <p class="mt-3 text-sm text-slate-400">30-day Evaluation · then $4.00/user/month · <a href="/slipstream.html#pricing" class="font-medium text-slate-200 underline decoration-white/30 underline-offset-4 hover:decoration-white">See pricing</a></p>
+                <p class="mt-3 text-sm text-slate-400">30-day Evaluation, then per-user pricing from $4.00 a month. <a href="#pricing" class="font-medium text-slate-200 underline decoration-white/30 underline-offset-4 hover:decoration-white">See pricing</a></p>
               </div>
             </div>
           </div>
@@ -150,7 +135,7 @@
                 <span class="flex gap-1.5" aria-hidden="true"><span class="size-2.5 rounded-full bg-slate-300"></span><span class="size-2.5 rounded-full bg-slate-300"></span><span class="size-2.5 rounded-full bg-slate-300"></span></span>
                 <span class="min-w-0 truncate rounded-md bg-white px-3 py-1 font-mono text-[11px] text-slate-500 ring-1 ring-slate-200">your-site.atlassian.net · Apps · Slipstream</span>
               </div>
-              <img src="/assets/feature-dependencies.png" width="1024" height="500" sizes="(min-width: 1280px) 72rem, calc(100vw - 2.5rem)" alt="Slipstream dependency map in a Jira Cloud test site, filtered to implicit cross-project links, with dashed edges and critical-path issues at FLOAT 0." class="block h-auto w-full" />
+              <img src="/assets/home/hero-dependencies.png" width="448" height="280" sizes="(min-width: 1280px) 72rem, calc(100vw - 2.5rem)" alt="Dependency list with percentage confidence and Fix Version evidence labels." class="block h-auto w-full" />
             </div>
             <figcaption class="mt-5 text-center text-sm text-slate-400">Slipstream in a Jira Cloud test site, showing sample project data.</figcaption>
           </figure>
@@ -196,7 +181,7 @@
           <!-- 1 -->
           <article class="flex flex-col rounded-2xl bg-white p-7 shadow-sm ring-1 ring-slate-200">
             <div class="rounded-xl bg-slate-50 p-4 ring-1 ring-slate-200/70 lg:min-h-[15.5rem]">
-              <img src="/assets/feature-dependencies.png" width="1024" height="500" alt="Dependency map filtered to implicit cross-project links between sample BILL, GROW, MOB and PLAT issues." class="aspect-[16/10] w-full rounded-lg object-cover object-left-top" loading="lazy" decoding="async" />
+              <img src="/assets/home/answer-dependencies.png" width="448" height="220" alt="Implicit dependencies with 60 to 75 percent confidence and Fix Version evidence." class="h-auto w-full rounded-lg" loading="lazy" decoding="async" />
             </div>
             <h3 class="mt-7 text-xl font-semibold tracking-tight">The blocker nobody linked</h3>
             <p class="mt-3 leading-7 text-slate-600">Slipstream keeps the Blocks links your teams created and adds implicit ones it finds in Jira text. Every edge shows how sure it is. Slipstream doesn’t connect to your repositories: a branch or PR name counts only if someone wrote it into Jira.</p>
@@ -204,7 +189,7 @@
           <!-- 2 -->
           <article class="flex flex-col rounded-2xl bg-white p-7 shadow-sm ring-1 ring-slate-200">
             <div class="rounded-xl bg-slate-50 p-4 ring-1 ring-slate-200/70 lg:min-h-[15.5rem]">
-              <img src="/assets/radar-forecast.png" width="2140" height="320" alt="Fix Version forecast with a target date, an expected duration, PERT confidence and a projected finish." class="aspect-[16/10] w-full rounded-lg object-cover object-left-top" loading="lazy" decoding="async" />
+              <img src="/assets/home/answer-forecast.png" width="495" height="150" alt="HOLD gate with readiness 25, 100 percent PERT confidence, and the ALPHA Test 1.0 projected finish." class="h-auto w-full rounded-lg" loading="lazy" decoding="async" />
             </div>
             <h3 class="mt-7 text-xl font-semibold tracking-tight">Whether the date still holds</h3>
             <p class="mt-3 leading-7 text-slate-600">Every Fix Version with a release date gets a PERT confidence and a projected finish. If a version has no date, it’s called out as NO DATE rather than treated as healthy.</p>
@@ -212,7 +197,7 @@
           <!-- 3 -->
           <article class="flex flex-col rounded-2xl bg-white p-7 shadow-sm ring-1 ring-slate-200">
             <div class="rounded-xl bg-slate-50 p-4 ring-1 ring-slate-200/70 lg:min-h-[15.5rem]">
-              <img src="/assets/home/answer-risks.png" width="790" height="500" alt="Top release risks ranked by RPN, with FLOAT 0 on several critical-path issues." class="aspect-[16/10] w-full rounded-lg object-cover object-left-top" loading="lazy" decoding="async" />
+              <img src="/assets/home/answer-risks.png" width="448" height="268" alt="Top FMEA risks with assignee display names, or Unassigned when nobody owns the issue." class="h-auto w-full rounded-lg" loading="lazy" decoding="async" />
             </div>
             <h3 class="mt-7 text-xl font-semibold tracking-tight">The chain with no slack</h3>
             <p class="mt-3 leading-7 text-slate-600">The critical path is listed and every open issue is ranked by risk, so you know what to swarm first. Ask “what if this slips?” and the answer stays in memory. Slipstream never rewrites Jira.</p>
@@ -283,63 +268,64 @@
         <div class="mx-auto max-w-2xl text-center">
           <p class="text-sm font-semibold text-brand-600">Pricing</p>
           <h2 id="pricing-title" class="mt-3 text-balance text-3xl font-semibold tracking-[-0.025em] sm:text-[2.6rem] sm:leading-[1.1]">Cross-project forecasting without a Premium upgrade.</h2>
-          <p class="mt-5 text-lg leading-8 text-slate-600">Start with a 30-day Evaluation. Atlassian bills Paid subscriptions. Free on the Marketplace is for up to 10 users, and inside the app it is limited to 2 projects.</p>
+          <p class="mt-5 text-lg leading-8 text-slate-600">Start with a 30-day Evaluation. Atlassian then bills per user, monthly, or annually at 10× the monthly rate.</p>
         </div>
 
-        <div class="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-2">
-          <article class="flex flex-col rounded-3xl bg-white p-8 ring-1 ring-slate-200">
-            <h3 class="text-lg font-semibold">Free</h3>
-            <p class="mt-1 text-sm text-slate-600">No active licence, or after an Evaluation ends</p>
-            <p class="mt-6 flex items-baseline gap-2"><span class="text-5xl font-semibold tracking-tight tnum">$0</span></p>
-            <ul class="mt-8 space-y-3 text-[15px] text-slate-700">
-              <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-slate-500" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Up to 10 users on the Marketplace</li>
-              <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-slate-500" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>At most 2 projects inside the app</li>
-              <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-slate-500" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>1 scheduled and 1 manual scan per 24 hours</li>
-              <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-slate-500" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Deterministic summary, with no model calls</li>
-              <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-slate-500" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>What-If in memory, and the blocker warning in the issue panel</li>
-            </ul>
-            <div class="mt-auto pt-10"><a data-marketplace href="https://marketplace.atlassian.com/search?query=Slipstream" class="flex h-12 items-center justify-center rounded-full border border-slate-300 px-6 text-[15px] font-semibold text-slate-900 transition hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600">Install from Marketplace</a></div>
-          </article>
+        <article class="mx-auto mt-14 max-w-3xl rounded-3xl bg-ink-950 p-8 text-white shadow-[0_30px_80px_-30px_rgba(66,87,232,0.55)] ring-1 ring-brand-500/60 sm:p-10">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <h3 class="text-lg font-semibold">30-day Evaluation</h3>
+            <span class="rounded-full bg-brand-500/20 px-3 py-1 text-xs font-semibold text-brand-300 ring-1 ring-brand-400/40">Then Paid, billed by Atlassian</span>
+          </div>
+          <p class="mt-1 text-sm text-slate-400">Every paid feature, for the size of the site</p>
+          <p class="mt-6 flex flex-wrap items-baseline gap-x-2"><span class="text-5xl font-semibold tracking-tight tnum">$4.00</span><span class="text-slate-400">per user / month for 1–100 users</span></p>
+          <p class="mt-1 text-sm text-slate-300">Annual billing is 10× the monthly rate for the same tier. For 1–100 users that is $40 per user / year.</p>
+          <ul class="mb-10 mt-8 space-y-3 text-[15px] text-slate-200">
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-brand-300" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>No project cap</li>
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-brand-300" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Hourly scheduled scans, uncapped manual scans, and scans started by issue and link events</li>
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-brand-300" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>A brief on the top 5 highest-RPN chains, written inside Forge</li>
+            <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-brand-300" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>What-If with multi-node delays, and the stored brief in the issue panel</li>
+          </ul>
+          <a data-marketplace href="#pricing" class="inline-flex h-12 items-center justify-center rounded-full bg-white px-6 text-[15px] font-semibold text-ink-950 transition hover:bg-slate-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300">Start free 30-day trial</a>
+        </article>
 
-          <article class="relative order-first flex flex-col rounded-3xl bg-ink-950 p-8 md:order-none text-white shadow-[0_30px_80px_-30px_rgba(66,87,232,0.55)] ring-1 ring-brand-500/60">
-            <div class="flex flex-wrap items-center justify-between gap-3">
-              <h3 class="whitespace-nowrap text-lg font-semibold">Paid and Evaluation</h3>
-              <span class="whitespace-nowrap rounded-full bg-brand-500/20 px-3 py-1 text-xs font-semibold text-brand-300 ring-1 ring-brand-400/40">30-day Evaluation first</span>
-            </div>
-            <p class="mt-1 text-sm text-slate-400">Every feature, at any seat count</p>
-            <p class="mt-6 flex flex-wrap items-baseline gap-x-2"><span class="text-5xl font-semibold tracking-tight tnum">$4.00</span><span class="text-slate-400">per user / month</span></p>
-            <p class="mt-1 text-sm text-slate-300 tnum">or $40 per user / year</p>
-            <ul class="mb-10 mt-8 space-y-3 text-[15px] text-slate-200">
-              <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-brand-300" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>No project cap</li>
-              <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-brand-300" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Hourly scheduled scans, uncapped manual scans, and scans started by issue and link events</li>
-              <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-brand-300" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>A brief on the top 5 highest-RPN chains, written inside Forge</li>
-              <li class="flex gap-3"><svg class="mt-1 size-4 shrink-0 text-brand-300" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>What-If with multi-node delays, and the stored brief in the issue panel</li>
-            </ul>
-            <a data-marketplace href="https://marketplace.atlassian.com/search?query=Slipstream" class="mt-auto inline-flex h-12 items-center justify-center rounded-full bg-white px-6 text-[15px] font-semibold text-ink-950 transition hover:bg-slate-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300">Start the 30-day Evaluation</a>
-          </article>
+        <div class="mx-auto mt-10 max-w-3xl overflow-x-auto rounded-2xl bg-white ring-1 ring-slate-200" role="region" aria-label="Per-user monthly price by site size" tabindex="0">
+          <table class="w-full min-w-[20rem] text-left text-sm">
+            <caption class="sr-only">Per-user monthly price by number of users. Annual billing is ten times the monthly rate.</caption>
+            <thead class="bg-slate-50 text-slate-600">
+              <tr><th scope="col" class="px-5 py-3 font-medium">Users</th><th scope="col" class="px-5 py-3 font-medium">Per user / month</th></tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 text-slate-700">
+              <tr><th scope="row" class="px-5 py-3 font-medium text-slate-900">1–100</th><td class="px-5 py-3 tnum">$4.00</td></tr>
+              <tr><th scope="row" class="px-5 py-3 font-medium text-slate-900">101–250</th><td class="px-5 py-3 tnum">$3.40</td></tr>
+              <tr><th scope="row" class="px-5 py-3 font-medium text-slate-900">251–1,000</th><td class="px-5 py-3 tnum">$2.80</td></tr>
+              <tr><th scope="row" class="px-5 py-3 font-medium text-slate-900">1,001–2,500</th><td class="px-5 py-3 tnum">$1.20</td></tr>
+              <tr><th scope="row" class="px-5 py-3 font-medium text-slate-900">2,501–5,000</th><td class="px-5 py-3 tnum">$0.50</td></tr>
+              <tr><th scope="row" class="px-5 py-3 font-medium text-slate-900">5,001–10,000</th><td class="px-5 py-3 tnum">$0.35</td></tr>
+              <tr><th scope="row" class="px-5 py-3 font-medium text-slate-900">10,001–25,000</th><td class="px-5 py-3 tnum">$0.25</td></tr>
+              <tr><th scope="row" class="px-5 py-3 font-medium text-slate-900">25,001+</th><td class="px-5 py-3 tnum">$0.15</td></tr>
+            </tbody>
+          </table>
         </div>
+        <p class="mx-auto mt-4 max-w-3xl text-center text-sm leading-6 text-slate-600">Atlassian is the merchant of record. If the Evaluation ends or the licence lapses, Slipstream drops to a limited mode (2 projects, 1 scheduled and 1 manual scan per 24 hours, no model calls).</p>
 
         <div class="mx-auto mt-10 max-w-5xl">
-          <div class="overflow-x-auto rounded-2xl bg-white ring-1 ring-slate-200" role="region" aria-label="Free compared with Paid and Evaluation" tabindex="0">
+          <div class="overflow-x-auto rounded-2xl bg-white ring-1 ring-slate-200" role="region" aria-label="Paid and Evaluation compared with a lapsed licence" tabindex="0">
             <table class="w-full text-left text-[13px] sm:text-sm">
-              <caption class="sr-only">Free compared with Paid and Evaluation</caption>
+              <caption class="sr-only">Paid and Evaluation compared with a lapsed licence</caption>
               <thead class="bg-slate-50 text-slate-600">
-                <tr><th scope="col" class="px-3 py-3 sm:px-5 font-medium">Capability</th><th scope="col" class="px-3 py-3 sm:px-5 font-medium">Free or expired Evaluation</th><th scope="col" class="px-3 py-3 sm:px-5 font-medium">Paid and Evaluation</th></tr>
+                <tr><th scope="col" class="px-3 py-3 sm:px-5 font-medium">Capability</th><th scope="col" class="px-3 py-3 sm:px-5 font-medium">Paid / Evaluation</th><th scope="col" class="px-3 py-3 sm:px-5 font-medium">Lapsed licence</th></tr>
               </thead>
               <tbody class="divide-y divide-slate-100 text-slate-700">
-                <tr><th scope="row" class="px-3 py-3 sm:px-5 font-medium text-slate-900">Model</th><td class="px-3 py-3 sm:px-5">Off. Deterministic summary</td><td class="px-3 py-3 sm:px-5">Top 5 highest-RPN chains, inside Forge</td></tr>
-                <tr><th scope="row" class="px-3 py-3 sm:px-5 font-medium text-slate-900">Marketplace users</th><td class="px-3 py-3 sm:px-5">Up to 10</td><td class="px-3 py-3 sm:px-5">Any seat count</td></tr>
-                <tr><th scope="row" class="px-3 py-3 sm:px-5 font-medium text-slate-900">Projects inside the app</th><td class="px-3 py-3 sm:px-5">At most 2</td><td class="px-3 py-3 sm:px-5">No cap</td></tr>
-                <tr><th scope="row" class="px-3 py-3 sm:px-5 font-medium text-slate-900">Scheduled scans</th><td class="px-3 py-3 sm:px-5">1 per 24 hours</td><td class="px-3 py-3 sm:px-5">Hourly</td></tr>
-                <tr><th scope="row" class="px-3 py-3 sm:px-5 font-medium text-slate-900">Manual scans</th><td class="px-3 py-3 sm:px-5">1 per 24 hours</td><td class="px-3 py-3 sm:px-5">Uncapped</td></tr>
-                <tr><th scope="row" class="px-3 py-3 sm:px-5 font-medium text-slate-900">Issue and link events</th><td class="px-3 py-3 sm:px-5">Ignored</td><td class="px-3 py-3 sm:px-5">Can start a scan</td></tr>
-                <tr><th scope="row" class="px-3 py-3 sm:px-5 font-medium text-slate-900">What-If</th><td class="px-3 py-3 sm:px-5">In memory, on the loaded snapshot</td><td class="px-3 py-3 sm:px-5">Same, including multi-node delays</td></tr>
-                <tr><th scope="row" class="px-3 py-3 sm:px-5 font-medium text-slate-900">Trial ROI counts</th><td class="px-3 py-3 sm:px-5">Off</td><td class="px-3 py-3 sm:px-5">On, from stored snapshots</td></tr>
-                <tr><th scope="row" class="px-3 py-3 sm:px-5 font-medium text-slate-900">Issue panel</th><td class="px-3 py-3 sm:px-5">Blocker warning</td><td class="px-3 py-3 sm:px-5">Same, plus the stored brief when a model ran</td></tr>
+                <tr><th scope="row" class="px-3 py-3 sm:px-5 font-medium text-slate-900">Model</th><td class="px-3 py-3 sm:px-5">Top 5 highest-RPN chains, inside Forge</td><td class="px-3 py-3 sm:px-5">Off. Deterministic summary</td></tr>
+                <tr><th scope="row" class="px-3 py-3 sm:px-5 font-medium text-slate-900">Projects inside the app</th><td class="px-3 py-3 sm:px-5">No cap</td><td class="px-3 py-3 sm:px-5">At most 2</td></tr>
+                <tr><th scope="row" class="px-3 py-3 sm:px-5 font-medium text-slate-900">Scheduled scans</th><td class="px-3 py-3 sm:px-5">Hourly</td><td class="px-3 py-3 sm:px-5">1 per 24 hours</td></tr>
+                <tr><th scope="row" class="px-3 py-3 sm:px-5 font-medium text-slate-900">Manual scans</th><td class="px-3 py-3 sm:px-5">Uncapped</td><td class="px-3 py-3 sm:px-5">1 per 24 hours</td></tr>
+                <tr><th scope="row" class="px-3 py-3 sm:px-5 font-medium text-slate-900">Issue and link events</th><td class="px-3 py-3 sm:px-5">Can start a scan</td><td class="px-3 py-3 sm:px-5">Ignored</td></tr>
+                <tr><th scope="row" class="px-3 py-3 sm:px-5 font-medium text-slate-900">What-If</th><td class="px-3 py-3 sm:px-5">In memory, including multi-node delays</td><td class="px-3 py-3 sm:px-5">In memory, on the loaded snapshot</td></tr>
+                <tr><th scope="row" class="px-3 py-3 sm:px-5 font-medium text-slate-900">Issue panel</th><td class="px-3 py-3 sm:px-5">Blocker warning, plus the stored brief when a model ran</td><td class="px-3 py-3 sm:px-5">Blocker warning</td></tr>
               </tbody>
             </table>
           </div>
-          <p class="mt-4 text-center text-sm text-slate-600">Any Marketplace volume discounts set in the Partner Portal are applied on top of the $4 list price. Atlassian is the merchant of record.</p>
         </div>
       </div>
     </section>
@@ -356,9 +342,9 @@
             <dl class="mt-10 grid gap-x-8 gap-y-7 sm:grid-cols-2">
               <div><dt class="font-semibold">Read-only</dt><dd class="mt-1.5 text-sm leading-6 text-slate-400">It declares no <code class="font-mono text-slate-300">write:jira-work</code> and no Confluence scopes. It never posts Jira comments.</dd></div>
               <div><dt class="font-semibold">No repository access</dt><dd class="mt-1.5 text-sm leading-6 text-slate-400">There’s no <code class="font-mono text-slate-300">/rest/dev-status</code> call and no <code class="font-mono text-slate-300">read:source-code</code> scope.</dd></div>
-              <div><dt class="font-semibold">Minimal personal data</dt><dd class="mt-1.5 text-sm leading-6 text-slate-400">The only person identifier stored is the assignee’s Atlassian account id.</dd></div>
+              <div><dt class="font-semibold">Minimal personal data</dt><dd class="mt-1.5 text-sm leading-6 text-slate-400">Slipstream stores the assignee’s account ID and display name only, never email addresses, and deletes them after 30 days.</dd></div>
               <div><dt class="font-semibold">30-day retention</dt><dd class="mt-1.5 text-sm leading-6 text-slate-400">Forge SQL rows older than 30 days are deleted daily. Every query is filtered by your installation’s <code class="font-mono text-slate-300">cloud_id</code>.</dd></div>
-              <div class="sm:col-span-2"><dt class="font-semibold">Model use stays on Atlassian</dt><dd class="mt-1.5 text-sm leading-6 text-slate-400">The brief is written by a model hosted by Atlassian through Forge LLM, on Paid and Evaluation only. Each scan sends at most 5 chains, with excerpts capped at 160 characters and sanitised. Free makes zero model calls. The model never computes the graph, path, confidence or RPN.</dd></div>
+              <div class="sm:col-span-2"><dt class="font-semibold">Model use stays on Atlassian</dt><dd class="mt-1.5 text-sm leading-6 text-slate-400">The brief is written by a model hosted by Atlassian through Forge LLM, on Paid and Evaluation only. Each scan sends at most 5 chains, with excerpts capped at 160 characters and sanitised. A lapsed licence makes zero model calls. The model never computes the graph, path, confidence or RPN.</dd></div>
             </dl>
           </div>
           <div class="lg:pt-10">
@@ -410,11 +396,11 @@
           </details>
           <details class="group py-1">
             <summary class="flex min-h-14 cursor-pointer items-center justify-between gap-6 rounded-md py-4 text-left font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600">Does the app count seats?<span class="faq-icon text-xl font-light text-slate-500 transition" aria-hidden="true">+</span></summary>
-            <p class="pb-5 leading-7 text-slate-600">Free on the Atlassian Marketplace is for up to 10 users. Inside the app, Free is limited to 2 projects. An active Paid licence or Evaluation has no project cap and keeps the paid features at any seat count. Atlassian bills $4.00 per user per month, or $40 per user per year.</p>
+            <p class="pb-5 leading-7 text-slate-600">An active Paid licence or Evaluation keeps every paid feature, with no project cap. Atlassian bills the monthly per-user rate for the site’s tier, or 10× that rate for the year. The 1–100 tier is $4.00 per user per month, or $40 per user per year. Larger sites pay less per user. See the pricing table.</p>
           </details>
           <details class="group py-1">
             <summary class="flex min-h-14 cursor-pointer items-center justify-between gap-6 rounded-md py-4 text-left font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600">What happens when the Evaluation ends?<span class="faq-icon text-xl font-light text-slate-500 transition" aria-hidden="true">+</span></summary>
-            <p class="pb-5 leading-7 text-slate-600">Without a Paid licence, the site moves to Free: up to 10 Marketplace users, at most 2 projects inside the app, 1 scheduled and 1 manual scan per 24 hours, and a deterministic summary with no model calls.</p>
+            <p class="pb-5 leading-7 text-slate-600">If the Evaluation ends or the licence lapses, Slipstream drops to a limited mode (2 projects, 1 scheduled and 1 manual scan per 24 hours, no model calls).</p>
           </details>
           <details class="group py-1">
             <summary class="flex min-h-14 cursor-pointer items-center justify-between gap-6 rounded-md py-4 text-left font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600">How is this different from Jira Plans?<span class="faq-icon text-xl font-light text-slate-500 transition" aria-hidden="true">+</span></summary>
@@ -422,7 +408,7 @@
           </details>
           <details class="group py-1">
             <summary class="flex min-h-14 cursor-pointer items-center justify-between gap-6 rounded-md py-4 text-left font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600">How long is data kept?<span class="faq-icon text-xl font-light text-slate-500 transition" aria-hidden="true">+</span></summary>
-            <p class="pb-5 leading-7 text-slate-600">Rows older than 30 days are deleted daily from Forge SQL. The only person identifier stored is the assignee’s Atlassian account id.</p>
+            <p class="pb-5 leading-7 text-slate-600">Rows older than 30 days are deleted daily from Forge SQL. Slipstream stores the assignee’s account ID and display name only, never email addresses, and deletes them after 30 days.</p>
           </details>
         </div>
       </div>
@@ -435,7 +421,7 @@
         <h2 id="cta-title" class="text-balance text-3xl font-semibold tracking-[-0.03em] sm:text-5xl">Put it on the release you’re worried about.</h2>
         <p class="mx-auto mt-5 max-w-xl text-lg leading-8 text-slate-300">One Fix Version and one scan. See the cross-project blockers, the longest chain and whether the date still holds, before the next status meeting.</p>
         <div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-          <a data-marketplace href="https://marketplace.atlassian.com/search?query=Slipstream" class="inline-flex h-12 items-center justify-center rounded-full bg-white px-6 text-[15px] font-semibold text-ink-950 transition hover:bg-slate-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300">Install from Atlassian Marketplace</a>
+          <a data-marketplace href="#pricing" class="inline-flex h-12 items-center justify-center rounded-full bg-white px-6 text-[15px] font-semibold text-ink-950 transition hover:bg-slate-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-300">Start free 30-day trial</a>
         </div>
       </div>
     </section>
@@ -454,10 +440,10 @@
       <nav aria-label="Slipstream">
         <p class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">Slipstream</p>
         <ul class="mt-4 text-sm">
-          <li><a href="/slipstream.html" class="inline-flex min-h-10 items-center hover:text-white">Product</a></li>
-          <li><a href="/slipstream.html#pricing" class="inline-flex min-h-10 items-center hover:text-white">Pricing</a></li>
+          <li><a href="/#slipstream" class="inline-flex min-h-10 items-center hover:text-white">Product</a></li>
+          <li><a href="/#pricing" class="inline-flex min-h-10 items-center hover:text-white">Pricing</a></li>
           <li><a href="/guide.html" class="inline-flex min-h-10 items-center hover:text-white">Guide</a></li>
-          <li><a data-marketplace href="https://marketplace.atlassian.com/search?query=Slipstream" class="inline-flex min-h-10 items-center hover:text-white">Atlassian Marketplace</a></li>
+          <li><a data-marketplace href="#pricing" class="inline-flex min-h-10 items-center hover:text-white">Atlassian Marketplace</a></li>
         </ul>
       </nav>
       <nav aria-label="Company">
@@ -483,10 +469,8 @@
     </div>
   </footer>
 
+  <script src="/assets/site.js"></script>
   <script>
-    // TODO(Dave): set the real Slipstream Atlassian Marketplace listing URL here. Every [data-marketplace] link uses it.
-    const MARKETPLACE_URL = "https://marketplace.atlassian.com/search?query=Slipstream";
-    document.querySelectorAll("a[data-marketplace]").forEach(function (a) { a.href = MARKETPLACE_URL; });
     // Close the mobile menu after a link is chosen or on Escape
     document.querySelectorAll("header details").forEach(function (d) {
       d.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { d.open = false; }); });

@@ -29,7 +29,7 @@
           <span class="text-sm font-semibold tracking-tight text-slate-900">Critical Path Works</span>
         </a>
         <nav class="hidden items-center gap-6 text-sm text-slate-600 md:flex" aria-label="Primary">
-          <a href="/slipstream.html" class="hover:text-slate-900">Product</a>
+          <a href="/#slipstream" class="hover:text-slate-900">Product</a>
           <a href="/guide.html" class="text-slate-900" aria-current="page">Guide</a>
           <a href="/privacy.html#security" class="hover:text-slate-900">Security</a>
           <a href="/support.html#early-access" data-install class="inline-flex min-h-8 items-center rounded-md bg-blue-700 px-4 py-2 font-medium text-white hover:bg-blue-800">Request early access</a>
@@ -37,7 +37,7 @@
         <details class="nav-menu md:hidden">
           <summary aria-label="Menu" class="inline-flex min-h-11 cursor-pointer list-none items-center rounded-md border border-slate-300 px-3 py-2 text-sm font-medium text-slate-900">Menu</summary>
           <div class="absolute inset-x-0 top-full z-50 border-b border-slate-200 bg-white px-6 py-4 text-sm shadow-lg">
-            <a href="/slipstream.html" class="flex min-h-11 items-center">Product</a>
+            <a href="/#slipstream" class="flex min-h-11 items-center">Product</a>
             <a href="/guide.html" class="flex min-h-11 items-center">Guide</a>
             <a href="/privacy.html#security" class="flex min-h-11 items-center">Security</a>
             <a href="/support.html#early-access" data-install class="mt-2 inline-flex min-h-11 w-full items-center justify-center rounded-md bg-blue-700 px-3 py-2 font-medium text-white">Request early access</a>
@@ -56,13 +56,13 @@
           <a href="#fmea" class="inline-flex min-h-11 shrink-0 snap-start items-center py-2 hover:text-slate-900">FMEA formulas</a>
           <a href="#issue" class="inline-flex min-h-11 shrink-0 snap-start items-center py-2 hover:text-slate-900">Inside the issue</a>
           <a href="#what-if" class="inline-flex min-h-11 shrink-0 snap-start items-center py-2 hover:text-slate-900">What-if</a>
-          <a href="#plans" class="inline-flex min-h-11 shrink-0 snap-start items-center py-2 hover:text-slate-900">Free and Paid</a>
+          <a href="#plans" class="inline-flex min-h-11 shrink-0 snap-start items-center py-2 hover:text-slate-900">Plans</a>
         </nav>
       </aside>
       <main id="main" class="min-w-0 max-w-3xl">
         <p class="text-sm font-medium text-blue-700">Technical guide</p>
         <h1 class="mt-3 text-4xl font-semibold tracking-tight text-slate-950">How Slipstream reads a release.</h1>
-        <p class="mt-4 text-lg leading-8 text-slate-600">Graph traversal, critical-path maths, PERT confidence, and FMEA scores run in deterministic TypeScript. The model never computes the graph, the path, the confidence, or the RPN. On Paid and Evaluation it writes a short brief after those scores exist. Free and expired installs make zero model calls.</p>
+        <p class="mt-4 text-lg leading-8 text-slate-600">Graph traversal, critical-path maths, PERT confidence, and FMEA scores run in deterministic TypeScript. The model never computes the graph, the path, the confidence, or the RPN. On Paid and Evaluation it writes a short brief after those scores exist. A lapsed licence makes zero model calls.</p>
 
         <section id="setup" class="mt-14 scroll-mt-24">
           <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Setup</h2>
@@ -194,7 +194,7 @@
 
         <section id="issue" class="mt-14 scroll-mt-24">
           <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Inside the Jira issue</h2>
-          <p class="mt-4 leading-7">The issue panel is titled Slipstream. On Free, and on an expired Evaluation, it shows a blocker warning. On Paid and Evaluation it shows the same warning, plus the stored brief when a model ran. The only person identifier stored is the assignee’s Atlassian account id. Names and email addresses are not stored.</p>
+          <p class="mt-4 leading-7">The issue panel is titled Slipstream. On a lapsed licence it shows a blocker warning. On Paid and Evaluation it shows the same warning, plus the stored brief when a model ran. Slipstream stores the assignee’s account ID and display name only, never email addresses, and deletes them after 30 days.</p>
         </section>
 
         <section id="what-if" class="mt-14 scroll-mt-24">
@@ -208,29 +208,27 @@
         </section>
 
         <section id="plans" class="mt-14 scroll-mt-24">
-          <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Free and Paid</h2>
-          <p class="mt-4 leading-7">An active Paid licence or an active Evaluation unlocks the paid column at any seat count, with no project cap. A missing, inactive, or lapsed licence means Free: up to 10 users on the Marketplace, and at most 2 projects inside the app. List price after the 30-day Evaluation is $4.00 per user per month, or $40 per user per year. Atlassian bills the customer.</p>
+          <h2 class="text-2xl font-semibold tracking-tight text-slate-950">Paid and a lapsed licence</h2>
+          <p class="mt-4 leading-7">An active Paid licence or an active Evaluation unlocks the paid column, with no project cap. If the Evaluation ends or the licence lapses, Slipstream drops to a limited mode (2 projects, 1 scheduled and 1 manual scan per 24 hours, no model calls). List price for 1–100 users is $4.00 per user per month, or $40 per user per year, which is 10× the monthly rate. Atlassian bills the customer. <a href="/#pricing" class="font-medium text-blue-700 hover:text-blue-800">See the full tier table</a>.</p>
           <p class="mt-6 text-xs text-slate-600 sm:hidden">Scroll sideways for the full table.</p>
-          <div class="mt-2 overflow-x-auto" tabindex="0" role="region" aria-label="Free and Paid comparison">
+          <div class="mt-2 overflow-x-auto" tabindex="0" role="region" aria-label="Paid and Evaluation compared with a lapsed licence">
             <table class="w-full min-w-[40rem] border-collapse text-left text-sm">
-              <caption class="sr-only">Free or expired Evaluation compared with Paid and the 30-day Evaluation</caption>
+              <caption class="sr-only">Paid and Evaluation compared with a lapsed licence</caption>
               <thead>
                 <tr class="border-b border-slate-200 text-slate-600">
                   <th scope="col" class="py-2 pr-4 font-medium">Capability</th>
-                  <th scope="col" class="py-2 pr-4 font-medium">Free or expired Evaluation</th>
-                  <th scope="col" class="py-2 font-medium">Paid and 30-day Evaluation</th>
+                  <th scope="col" class="py-2 pr-4 font-medium">Paid / Evaluation</th>
+                  <th scope="col" class="py-2 font-medium">Lapsed licence</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="border-b border-slate-100"><th scope="row" class="py-3 pr-4 font-medium">Model brief</th><td class="py-3 pr-4">Off. Deterministic summary only</td><td class="py-3">Brief on the top 5 highest-RPN chains, run inside Forge</td></tr>
-                <tr class="border-b border-slate-100"><th scope="row" class="py-3 pr-4 font-medium">Marketplace users</th><td class="py-3 pr-4">Up to 10</td><td class="py-3">Any seat count</td></tr>
-                <tr class="border-b border-slate-100"><th scope="row" class="py-3 pr-4 font-medium">Projects inside the app</th><td class="py-3 pr-4">At most 2</td><td class="py-3">No cap</td></tr>
-                <tr class="border-b border-slate-100"><th scope="row" class="py-3 pr-4 font-medium">Scheduled scans</th><td class="py-3 pr-4">1 per 24 hours</td><td class="py-3">Hourly</td></tr>
-                <tr class="border-b border-slate-100"><th scope="row" class="py-3 pr-4 font-medium">Manual scans</th><td class="py-3 pr-4">1 per 24 hours</td><td class="py-3">Uncapped</td></tr>
-                <tr class="border-b border-slate-100"><th scope="row" class="py-3 pr-4 font-medium">Issue and link events</th><td class="py-3 pr-4">Ignored</td><td class="py-3">Can start a scan</td></tr>
-                <tr class="border-b border-slate-100"><th scope="row" class="py-3 pr-4 font-medium">What-If</th><td class="py-3 pr-4">In memory, on the loaded snapshot</td><td class="py-3">Same, including multi-node delays</td></tr>
-                <tr class="border-b border-slate-100"><th scope="row" class="py-3 pr-4 font-medium">Trial ROI counts</th><td class="py-3 pr-4">Off</td><td class="py-3">On, from stored snapshots</td></tr>
-                <tr><th scope="row" class="py-3 pr-4 font-medium">Issue panel</th><td class="py-3 pr-4">Blocker warning</td><td class="py-3">Same, plus the stored brief when a model ran</td></tr>
+                <tr class="border-b border-slate-100"><th scope="row" class="py-3 pr-4 font-medium">Model brief</th><td class="py-3 pr-4">Brief on the top 5 highest-RPN chains, run inside Forge</td><td class="py-3">Off. Deterministic summary only</td></tr>
+                <tr class="border-b border-slate-100"><th scope="row" class="py-3 pr-4 font-medium">Projects inside the app</th><td class="py-3 pr-4">No cap</td><td class="py-3">At most 2</td></tr>
+                <tr class="border-b border-slate-100"><th scope="row" class="py-3 pr-4 font-medium">Scheduled scans</th><td class="py-3 pr-4">Hourly</td><td class="py-3">1 per 24 hours</td></tr>
+                <tr class="border-b border-slate-100"><th scope="row" class="py-3 pr-4 font-medium">Manual scans</th><td class="py-3 pr-4">Uncapped</td><td class="py-3">1 per 24 hours</td></tr>
+                <tr class="border-b border-slate-100"><th scope="row" class="py-3 pr-4 font-medium">Issue and link events</th><td class="py-3 pr-4">Can start a scan</td><td class="py-3">Ignored</td></tr>
+                <tr class="border-b border-slate-100"><th scope="row" class="py-3 pr-4 font-medium">What-If</th><td class="py-3 pr-4">In memory, including multi-node delays</td><td class="py-3">In memory, on the loaded snapshot</td></tr>
+                <tr><th scope="row" class="py-3 pr-4 font-medium">Issue panel</th><td class="py-3 pr-4">Blocker warning, plus the stored brief when a model ran</td><td class="py-3">Blocker warning</td></tr>
               </tbody>
             </table>
           </div>
@@ -247,7 +245,7 @@
         <div>
           <p class="text-xs font-semibold uppercase tracking-wide text-slate-300">Product</p>
           <ul class="mt-3 space-y-1 text-sm">
-            <li><a href="/slipstream.html" class="inline-flex min-h-11 items-center hover:text-white">Slipstream</a></li>
+            <li><a href="/#slipstream" class="inline-flex min-h-11 items-center hover:text-white">Slipstream</a></li>
             <li><a href="/guide.html" class="inline-flex min-h-11 items-center hover:text-white">Guide</a></li>
             <li><a href="/support.html#early-access" data-install class="inline-flex min-h-11 items-center hover:text-white">Request early access</a></li>
           </ul>

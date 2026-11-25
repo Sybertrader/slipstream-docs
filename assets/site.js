@@ -1,14 +1,11 @@
-/* TODO(Dave): Marketplace listing URL. Leave this empty until the listing exists.
-   When it is a URL, every [data-install] link becomes "Install from Atlassian Marketplace". */
-var SLIPSTREAM_MARKETPLACE_URL = "";
+/* TODO(Dave): after Marketplace approval, set this to the public listing URL.
+   Until then every install button stays on the pricing section. */
+var MARKETPLACE_URL = "#pricing";
 
 (function () {
-  if (SLIPSTREAM_MARKETPLACE_URL) {
-    document.querySelectorAll("[data-install]").forEach(function (el) {
-      el.setAttribute("href", SLIPSTREAM_MARKETPLACE_URL);
-      el.textContent = "Install from Atlassian Marketplace";
-    });
-  }
+  document.querySelectorAll("a[data-marketplace]").forEach(function (el) {
+    el.setAttribute("href", MARKETPLACE_URL);
+  });
 
   function closeMenus() {
     document.querySelectorAll("details.nav-menu[open]").forEach(function (menu) {
