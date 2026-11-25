@@ -1,8 +1,28 @@
 /* TODO(Dave): after Marketplace approval, set this to the public listing URL.
    Until then every install button stays on the pricing section. */
 var MARKETPLACE_URL = "#pricing";
+var PAGE_REV = "e6e36c445b68";
 
 (function () {
+  var revKey = "slipstream-site-rev";
+  if (sessionStorage.getItem(revKey) !== PAGE_REV) {
+    fetch("/assets/site.js", { cache: "no-store" }).then(function (res) {
+      return res.ok ? res.text() : "";
+    }).then(function (text) {
+      var found = text.match(/var PAGE_REV = "e6e36c445b68"]*)"/);
+      if (!found || found[1] === PAGE_REV) return;
+      if (new URL(location.href).searchParams.get("rev") === found[1]) return;
+      sessionStorage.setItem(revKey, found[1]);
+      var next = new URL(location.href);
+      next.searchParams.set("rev", found[1]);
+      location.replace(next.toString());
+    }).catch(function () {});
+  } else if (new URL(location.href).searchParams.get("rev") === PAGE_REV) {
+    var clean = new URL(location.href);
+    clean.searchParams.delete("rev");
+    history.replaceState(null, "", clean.pathname + clean.search + clean.hash);
+  }
+
   document.querySelectorAll("a[data-marketplace]").forEach(function (el) {
     el.setAttribute("href", MARKETPLACE_URL);
   });
