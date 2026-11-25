@@ -1,7 +1,8 @@
 /* TODO(Dave): after Marketplace approval, set this to the public listing URL.
    Until then every install button stays on the pricing section. */
 var MARKETPLACE_URL = "#pricing";
-var PAGE_REV = "e6e36c445b68";
+/* The deploy workflow replaces source with the published commit id. */
+var PAGE_REV = "41a6bd956517";
 
 (function () {
   var revKey = "slipstream-site-rev";
@@ -9,7 +10,7 @@ var PAGE_REV = "e6e36c445b68";
     fetch("/assets/site.js", { cache: "no-store" }).then(function (res) {
       return res.ok ? res.text() : "";
     }).then(function (text) {
-      var found = text.match(/var PAGE_REV = "e6e36c445b68"]*)"/);
+      var found = text.match(/var PAGE_REV = "([^"]*)"/);
       if (!found || found[1] === PAGE_REV) return;
       if (new URL(location.href).searchParams.get("rev") === found[1]) return;
       sessionStorage.setItem(revKey, found[1]);
